@@ -1,4 +1,4 @@
-# Drone-Based Miniature Book Sorting System (Image Processing Focus)
+# Drone-Based Miniature Book Sorting System 
 
 ## Team Information
 - **Name:** Wunmi [Your Last Name]  
