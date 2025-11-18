@@ -1,7 +1,7 @@
 # Drone-Based Miniature Book Sorting System 
 
 ## Team Information
-- **Name:** Wunmi [Your Last Name]  
+- **Name:** Wunmi Salami
 - **Email:** ooos6@pitt.edu  
 
 ## Project Description
