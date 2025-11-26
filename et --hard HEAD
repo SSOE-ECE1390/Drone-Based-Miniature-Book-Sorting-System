@@ -1,0 +1,15 @@
+[33m0a4d433[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m HEAD@{0}: commit: Remove large DLL files from repo
+[33m7b5b758[m HEAD@{1}: commit: Trying git push again
+[33m2214915[m HEAD@{2}: commit: models
+[33m0bf8a17[m HEAD@{3}: commit: fixes
+[33m543aa10[m HEAD@{4}: pull --tags origin main: Merge made by the 'ort' strategy.
+[33mc5448a2[m HEAD@{5}: commit: working
+[33mbc05716[m HEAD@{6}: commit: update
+[33mc948921[m HEAD@{7}: commit: yolo
+[33m2997b7d[m HEAD@{8}: commit: changes
+[33mdc855cf[m HEAD@{9}: commit: DONE
+[33med868f9[m HEAD@{10}: commit: update
+[33m6a015ef[m HEAD@{11}: commit: venv
+[33m8da8dcc[m HEAD@{12}: commit: new files
+[33mff954ff[m HEAD@{13}: commit: sorting_algorithm
+[33m05fdc7d[m HEAD@{14}: clone: from https://github.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System.git
