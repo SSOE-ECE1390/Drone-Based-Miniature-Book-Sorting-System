@@ -44,9 +44,9 @@ class Tello:
 
         # to receive video -- send cmd: command, streamon
         self.socket.sendto(b'command', self.tello_address)
-        print ('sent: command')
+        print('sent: command')
         self.socket.sendto(b'streamon', self.tello_address)
-        print ('sent: streamon')
+        print('sent: streamon')
 
         self.socket_video.bind((local_ip, self.local_video_port))
 
@@ -86,7 +86,7 @@ class Tello:
                 self.response, ip = self.socket.recvfrom(3000)
                 #print(self.response)
             except socket.error as exc:
-                print ("Caught exception socket.error : %s" % exc)
+                print("Caught exception socket.error : %s" % exc)
 
     def _receive_video_thread(self):
         """
@@ -95,7 +95,7 @@ class Tello:
         Runs as a thread, sets self.frame to the most recent frame Tello captured.
 
         """
-        packet_data = ""
+        packet_data = b""  # Changed to bytes
         while True:
             try:
                 res_string, ip = self.socket_video.recvfrom(2048)
@@ -104,10 +104,10 @@ class Tello:
                 if len(res_string) != 1460:
                     for frame in self._h264_decode(packet_data):
                         self.frame = frame
-                    packet_data = ""
+                    packet_data = b""  # Changed to bytes
 
             except socket.error as exc:
-                print ("Caught exception socket.error : %s" % exc)
+                print("Caught exception socket.error : %s" % exc)
     
     def _h264_decode(self, packet_data):
         """
@@ -122,10 +122,10 @@ class Tello:
         for framedata in frames:
             (frame, w, h, ls) = framedata
             if frame is not None:
-                # print 'frame size %i bytes, w %i, h %i, linesize %i' % (len(frame), w, h, ls)
+                # print('frame size %i bytes, w %i, h %i, linesize %i' % (len(frame), w, h, ls))
 
-                frame = np.fromstring(frame, dtype=np.ubyte, count=len(frame), sep='')
-                frame = (frame.reshape((h, ls / 3, 3)))
+                frame = np.frombuffer(frame, dtype=np.ubyte)  # Changed from fromstring
+                frame = (frame.reshape((h, ls // 3, 3)))  # Changed / to //
                 frame = frame[:, :w, :]
                 res_frame_list.append(frame)
 
@@ -140,7 +140,7 @@ class Tello:
 
         """
 
-        print (">> send cmd: {}".format(command))
+        print(">> send cmd: {}".format(command))
         self.abort_flag = False
         timer = threading.Timer(self.command_timeout, self.set_abort_flag)
 
@@ -272,7 +272,7 @@ class Tello:
         """
         height = self.send_command('height?')
         height = str(height)
-        height = filter(str.isdigit, height)
+        height = ''.join(filter(str.isdigit, height))  # Fixed filter
         try:
             height = int(height)
             self.last_height = height
