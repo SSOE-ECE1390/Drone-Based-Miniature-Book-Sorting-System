@@ -8,9 +8,14 @@ from ctypes import cdll, CDLL
 
 # Add project directory to PATH so FFmpeg DLLs can be found
 project_dir = os.path.dirname(os.path.abspath(__file__))
-if sys.platform == 'win32':
+if sys.platform == "win32":
     # On Windows, load FFmpeg DLLs before importing the extension
-    ffmpeg_dlls = ['avcodec-62.dll', 'avformat-62.dll', 'avutil-60.dll', 'swscale-7.dll']
+    ffmpeg_dlls = [
+        "avcodec-62.dll",
+        "avformat-62.dll",
+        "avutil-60.dll",
+        "swscale-7.dll",
+    ]
     for dll_name in ffmpeg_dlls:
         dll_path = os.path.join(project_dir, dll_name)
         if os.path.exists(dll_path):
@@ -22,11 +27,19 @@ if sys.platform == 'win32':
 # Now import the extension
 import libh264decoder
 
+
 class Tello:
     """Wrapper class to interact with the Tello drone."""
 
-    def __init__(self, local_ip, local_port, imperial=False, command_timeout=.3, tello_ip='192.168.10.1',
-                 tello_port=8889):
+    def __init__(
+        self,
+        local_ip,
+        local_port,
+        imperial=False,
+        command_timeout=0.3,
+        tello_ip="192.168.10.1",
+        tello_port=8889,
+    ):
         """
         Binds to the local IP/port and puts the Tello into command mode.
 
@@ -43,12 +56,16 @@ class Tello:
         self.decoder = libh264decoder.H264Decoder()
         self.command_timeout = command_timeout
         self.imperial = imperial
-        self.response = None  
+        self.response = None
         self.frame = None  # numpy array BGR -- current camera output frame
         self.is_freeze = False  # freeze current camera output
         self.last_frame = None
-        self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # socket for sending cmd
-        self.socket_video = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)  # socket for receiving video stream
+        self.socket = socket.socket(
+            socket.AF_INET, socket.SOCK_DGRAM
+        )  # socket for sending cmd
+        self.socket_video = socket.socket(
+            socket.AF_INET, socket.SOCK_DGRAM
+        )  # socket for receiving video stream
         self.tello_address = (tello_ip, tello_port)
         self.local_video_port = 11111  # port for receiving video stream
         self.last_height = 0
@@ -61,10 +78,10 @@ class Tello:
         self.receive_thread.start()
 
         # to receive video -- send cmd: command, streamon
-        self.socket.sendto(b'command', self.tello_address)
-        print('sent: command')
-        self.socket.sendto(b'streamon', self.tello_address)
-        print('sent: streamon')
+        self.socket.sendto(b"command", self.tello_address)
+        print("sent: command")
+        self.socket.sendto(b"streamon", self.tello_address)
+        print("sent: streamon")
 
         self.socket_video.bind((local_ip, self.local_video_port))
 
@@ -79,7 +96,7 @@ class Tello:
 
         self.socket.close()
         self.socket_video.close()
-    
+
     def read(self):
         """Return the last frame from camera."""
         if self.is_freeze:
@@ -102,7 +119,7 @@ class Tello:
         while True:
             try:
                 self.response, ip = self.socket.recvfrom(3000)
-                #print(self.response)
+                # print(self.response)
             except socket.error as exc:
                 print("Caught exception socket.error : %s" % exc)
 
@@ -126,13 +143,13 @@ class Tello:
 
             except socket.error as exc:
                 print("Caught exception socket.error : %s" % exc)
-    
+
     def _h264_decode(self, packet_data):
         """
         decode raw h264 format data from Tello
-        
+
         :param packet_data: raw h264 data array
-       
+
         :return: a list of decoded frame
         """
         res_frame_list = []
@@ -143,7 +160,7 @@ class Tello:
                 # print('frame size %i bytes, w %i, h %i, linesize %i' % (len(frame), w, h, ls))
 
                 frame = np.frombuffer(frame, dtype=np.ubyte)  # Changed from fromstring
-                frame = (frame.reshape((h, ls // 3, 3)))  # Changed / to //
+                frame = frame.reshape((h, ls // 3, 3))  # Changed / to //
                 frame = frame[:, :w, :]
                 res_frame_list.append(frame)
 
@@ -162,29 +179,29 @@ class Tello:
         self.abort_flag = False
         timer = threading.Timer(self.command_timeout, self.set_abort_flag)
 
-        self.socket.sendto(command.encode('utf-8'), self.tello_address)
+        self.socket.sendto(command.encode("utf-8"), self.tello_address)
 
         timer.start()
         while self.response is None:
             if self.abort_flag is True:
                 break
         timer.cancel()
-        
+
         if self.response is None:
-            response = 'none_response'
+            response = "none_response"
         else:
-            response = self.response.decode('utf-8')
+            response = self.response.decode("utf-8")
 
         self.response = None
 
         return response
-    
+
     def set_abort_flag(self):
         """
         Sets self.abort_flag to True.
 
         Used by the timer in Tello.send_command() to indicate to that a response
-        
+
         timeout has occurred.
 
         """
@@ -200,7 +217,7 @@ class Tello:
 
         """
 
-        return self.send_command('takeoff')
+        return self.send_command("takeoff")
 
     def set_speed(self, speed):
         """
@@ -227,7 +244,7 @@ class Tello:
         else:
             speed = int(round(speed * 27.7778))
 
-        return self.send_command('speed %s' % speed)
+        return self.send_command("speed %s" % speed)
 
     def rotate_cw(self, degrees):
         """
@@ -241,7 +258,7 @@ class Tello:
 
         """
 
-        return self.send_command('cw %s' % degrees)
+        return self.send_command("cw %s" % degrees)
 
     def rotate_ccw(self, degrees):
         """
@@ -254,7 +271,7 @@ class Tello:
             str: Response from Tello, 'OK' or 'FALSE'.
 
         """
-        return self.send_command('ccw %s' % degrees)
+        return self.send_command("ccw %s" % degrees)
 
     def flip(self, direction):
         """
@@ -268,7 +285,7 @@ class Tello:
 
         """
 
-        return self.send_command('flip %s' % direction)
+        return self.send_command("flip %s" % direction)
 
     def get_response(self):
         """
@@ -288,9 +305,9 @@ class Tello:
             int: Height(dm) of tello.
 
         """
-        height = self.send_command('height?')
+        height = self.send_command("height?")
         height = str(height)
-        height = ''.join(filter(str.isdigit, height))  # Fixed filter
+        height = "".join(filter(str.isdigit, height))  # Fixed filter
         try:
             height = int(height)
             self.last_height = height
@@ -306,8 +323,8 @@ class Tello:
             int: Percent battery life remaining.
 
         """
-        
-        battery = self.send_command('battery?')
+
+        battery = self.send_command("battery?")
 
         try:
             battery = int(battery)
@@ -324,7 +341,7 @@ class Tello:
 
         """
 
-        flight_time = self.send_command('time?')
+        flight_time = self.send_command("time?")
 
         try:
             flight_time = int(flight_time)
@@ -341,7 +358,7 @@ class Tello:
 
         """
 
-        speed = self.send_command('speed?')
+        speed = self.send_command("speed?")
 
         try:
             speed = float(speed)
@@ -363,7 +380,7 @@ class Tello:
 
         """
 
-        return self.send_command('land')
+        return self.send_command("land")
 
     def move(self, direction, distance):
         """Moves in a direction for a distance.
@@ -390,7 +407,7 @@ class Tello:
         else:
             distance = int(round(distance * 100))
 
-        return self.send_command('%s %s' % (direction, distance))
+        return self.send_command("%s %s" % (direction, distance))
 
     def move_backward(self, distance):
         """Moves backward for a distance.
@@ -405,7 +422,7 @@ class Tello:
 
         """
 
-        return self.move('back', distance)
+        return self.move("back", distance)
 
     def move_down(self, distance):
         """Moves down for a distance.
@@ -420,7 +437,7 @@ class Tello:
 
         """
 
-        return self.move('down', distance)
+        return self.move("down", distance)
 
     def move_forward(self, distance):
         """Moves forward for a distance.
@@ -434,7 +451,7 @@ class Tello:
             str: Response from Tello, 'OK' or 'FALSE'.
 
         """
-        return self.move('forward', distance)
+        return self.move("forward", distance)
 
     def move_left(self, distance):
         """Moves left for a distance.
@@ -448,7 +465,7 @@ class Tello:
             str: Response from Tello, 'OK' or 'FALSE'.
 
         """
-        return self.move('left', distance)
+        return self.move("left", distance)
 
     def move_right(self, distance):
         """Moves right for a distance.
@@ -459,7 +476,7 @@ class Tello:
             distance (int): Distance to move.
 
         """
-        return self.move('right', distance)
+        return self.move("right", distance)
 
     def move_up(self, distance):
         """Moves up for a distance.
@@ -474,4 +491,4 @@ class Tello:
 
         """
 
-        return self.move('up', distance)
+        return self.move("up", distance)
