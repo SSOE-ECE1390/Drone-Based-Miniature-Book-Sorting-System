@@ -2,6 +2,24 @@ import socket
 import threading
 import time
 import numpy as np
+import sys
+import os
+from ctypes import cdll, CDLL
+
+# Add project directory to PATH so FFmpeg DLLs can be found
+project_dir = os.path.dirname(os.path.abspath(__file__))
+if sys.platform == 'win32':
+    # On Windows, load FFmpeg DLLs before importing the extension
+    ffmpeg_dlls = ['avcodec-62.dll', 'avformat-62.dll', 'avutil-60.dll', 'swscale-7.dll']
+    for dll_name in ffmpeg_dlls:
+        dll_path = os.path.join(project_dir, dll_name)
+        if os.path.exists(dll_path):
+            try:
+                cdll.LoadLibrary(dll_path)
+            except Exception as e:
+                print(f"Warning: Could not preload {dll_name}: {e}")
+
+# Now import the extension
 import libh264decoder
 
 class Tello:
