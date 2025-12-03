@@ -1,1 +1,4 @@
 *.dll
+
+# Ignore captured video files and large drone data
+Drone_Capture/

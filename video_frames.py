@@ -1,71 +1,73 @@
 import cv2
 import os
 from skimage.metrics import structural_similarity as ssim
-import numpy as np
 
 # -------- SETTINGS --------
-VIDEO_PATH = "input.mp4"
+FOLDER = "Drone_Capture"
 OUT_DIR = "frames"
-FPS_EXTRACT = 4  # 2–5 recommended
-BLUR_THRESH = 120  # Laplacian variance cutoff
-SSIM_THRESH = 0.95  # duplicate cutoff
-EXPOSURE_LOW = 40  # too dark
-EXPOSURE_HIGH = 220  # too bright
+FPS_EXTRACT = 4
+BLUR_THRESH = 120
+SSIM_THRESH = 0.95
+EXPOSURE_LOW = 40
+EXPOSURE_HIGH = 220
 # --------------------------
 
 os.makedirs(OUT_DIR, exist_ok=True)
 
 
-def too_blurry(frame):
-    return cv2.Laplacian(frame, cv2.CV_64F).var() < BLUR_THRESH
+def too_blurry(f):
+    return cv2.Laplacian(f, cv2.CV_64F).var() < BLUR_THRESH
 
 
-def bad_exposure(frame):
-    mean = frame.mean()
-    return mean < EXPOSURE_LOW or mean > EXPOSURE_HIGH
+def bad_exposure(f):
+    m = f.mean()
+    return m < EXPOSURE_LOW or m > EXPOSURE_HIGH
 
 
-def is_duplicate(prev, curr):
-    g1 = cv2.cvtColor(prev, cv2.COLOR_BGR2GRAY)
-    g2 = cv2.cvtColor(curr, cv2.COLOR_BGR2GRAY)
+def is_duplicate(a, b):
+    g1 = cv2.cvtColor(a, cv2.COLOR_BGR2GRAY)
+    g2 = cv2.cvtColor(b, cv2.COLOR_BGR2GRAY)
     return ssim(g1, g2) > SSIM_THRESH
 
 
-cap = cv2.VideoCapture(VIDEO_PATH)
-orig_fps = cap.get(cv2.CAP_PROP_FPS)
-interval = int(orig_fps // FPS_EXTRACT) if orig_fps > FPS_EXTRACT else 1
+def process_video(path):
+    cap = cv2.VideoCapture(path)
+    orig_fps = cap.get(cv2.CAP_PROP_FPS)
+    interval = int(orig_fps // FPS_EXTRACT) if orig_fps > FPS_EXTRACT else 1
 
-count = 0
-saved = 0
-prev_frame = None
+    count = 0
+    saved = 0
+    prev = None
 
-while True:
-    ret = cap.grab()
-    if not ret:
-        break
+    while True:
+        ret = cap.grab()
+        if not ret:
+            break
 
-    # Only decode selected frames
-    if count % interval == 0:
-        _, frame = cap.retrieve()
+        if count % interval == 0:
+            _, frame = cap.retrieve()
 
-        if too_blurry(frame):
-            count += 1
-            continue
+            if too_blurry(frame):
+                count += 1
+                continue
+            if bad_exposure(frame):
+                count += 1
+                continue
+            if prev is not None and is_duplicate(prev, frame):
+                count += 1
+                continue
 
-        if bad_exposure(frame):
-            count += 1
-            continue
+            name = f"{os.path.splitext(os.path.basename(path))[0]}_{saved:06d}.jpg"
+            cv2.imwrite(os.path.join(OUT_DIR, name), frame)
+            prev = frame
+            saved += 1
 
-        if prev_frame is not None and is_duplicate(prev_frame, frame):
-            count += 1
-            continue
+        count += 1
 
-        out_path = f"{OUT_DIR}/{saved:06d}.jpg"
-        cv2.imwrite(out_path, frame)
-        prev_frame = frame
-        saved += 1
+    cap.release()
 
-    count += 1
 
-cap.release()
-print(f"Saved {saved} frames.")
+# run on all mp4 files
+for file in os.listdir(FOLDER):
+    if file.lower().endswith(".mp4"):
+        process_video(os.path.join(FOLDER, file))
