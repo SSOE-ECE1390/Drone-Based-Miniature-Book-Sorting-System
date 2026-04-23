@@ -18,8 +18,6 @@ class TelloUI:
         self.frame = None
         self.thread = None
         self.stopEvent = None
-        self.shelf_reader = None
-        self.shelf_reading_active = False
 
         self.distance = 0.1
         self.degree = 30
@@ -33,16 +31,6 @@ class TelloUI:
             self.root, text="Snapshot!", command=self.takeSnapshot
         )
         self.btn_snapshot.pack(
-            side="bottom", fill="both", expand="yes", padx=10, pady=5
-        )
-
-        self.btn_shelf_read = tki.Button(
-            self.root,
-            text="Start Shelf Reading",
-            relief="raised",
-            command=self.toggleShelfReading,
-        )
-        self.btn_shelf_read.pack(
             side="bottom", fill="both", expand="yes", padx=10, pady=5
         )
 
@@ -81,39 +69,6 @@ class TelloUI:
                 if self.frame is None or self.frame.size == 0:
                     continue
 
-                current_time = time.time()
-
-                # Check if shelf reading is active
-                if (
-                    self.shelf_reading_active
-                    and hasattr(self, "shelf_reader")
-                    and self.shelf_reader is not None
-                ):
-
-                    # Process every 5 seconds
-                    if (current_time - last_process_time) > 5.0:
-                        print(f"\n[PROCESSING FRAME]")
-                        self.shelf_reader.read_shelf(self.frame)
-                        processed_frame = self.shelf_reader.visualize_results(
-                            self.frame
-                        )
-
-                        # Save processed frame
-                        import datetime
-
-                        ts = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-                        cv2.imwrite(
-                            f"processed_{ts}.jpg",
-                            cv2.cvtColor(processed_frame, cv2.COLOR_RGB2BGR),
-                        )
-                        print(f"[SAVED] processed_{ts}.jpg")
-
-                        self.frame = processed_frame
-                        last_process_time = current_time
-
-                        # Move right after processing
-                        self.telloMoveRight(self.distance)
-
                 image = Image.fromarray(self.frame)
 
                 if system == "Windows" or system == "Linux":
@@ -126,21 +81,6 @@ class TelloUI:
                     time.sleep(0.03)
         except RuntimeError as e:
             print("[INFO] caught a RuntimeError")
-
-    def toggleShelfReading(self):
-        if self.shelf_reading_active:
-            self.shelf_reading_active = False
-            self.btn_shelf_read.config(text="Start Shelf Reading", relief="raised")
-            print("[INFO] Shelf reading stopped")
-            if hasattr(self, "shelf_reader") and self.shelf_reader is not None:
-                report = self.shelf_reader.get_shelf_report()
-                print(f"Total books found: {report['call_numbers_read']}")
-                print(f"Call numbers: {report['call_number_sequence']}")
-        else:
-            self.shelf_reading_active = True
-            self.shelf_reading_start_time = time.time()
-            self.btn_shelf_read.config(text="Stop Shelf Reading", relief="sunken")
-            print("[INFO] Shelf reading started - stabilizing for 5 seconds...")
 
     def _updateGUIImage(self, image):
         image = ImageTk.PhotoImage(image)

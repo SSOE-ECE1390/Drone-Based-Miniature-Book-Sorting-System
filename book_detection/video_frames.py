@@ -1,16 +1,18 @@
 import cv2
 import os
 from skimage.metrics import structural_similarity as ssim
+import numpy as np
 
-# -------- SETTINGS --------
+# -------- SETTINGS (original) --------
 FOLDER = "Drone_Capture"
 OUT_DIR = "frames"
 FPS_EXTRACT = 4
+
 BLUR_THRESH = 120
 SSIM_THRESH = 0.95
 EXPOSURE_LOW = 40
 EXPOSURE_HIGH = 220
-# --------------------------
+# -------------------------------------
 
 os.makedirs(OUT_DIR, exist_ok=True)
 
@@ -50,9 +52,11 @@ def process_video(path):
             if too_blurry(frame):
                 count += 1
                 continue
+
             if bad_exposure(frame):
                 count += 1
                 continue
+
             if prev is not None and is_duplicate(prev, frame):
                 count += 1
                 continue
@@ -65,6 +69,7 @@ def process_video(path):
         count += 1
 
     cap.release()
+    print(f"{path} -> {saved} frames saved.")
 
 
 # run on all mp4 files

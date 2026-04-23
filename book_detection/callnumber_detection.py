@@ -20,6 +20,16 @@ class ShelfReader:
         self.sorting_algorithm = sorting_algorithm()
         self.shelf_inventory = []
         self.debug = debug
+        self.report_file = open("report.txt", "w")
+
+    def __del__(self):
+        if hasattr(self, "report_file"):
+            self.report_file.close()
+
+    def _log(self, message):
+        print(message)
+        self.report_file.write(message + "\n")
+        self.report_file.flush()
 
     def read_shelf(self, image):
         if isinstance(image, str):
@@ -28,9 +38,10 @@ class ShelfReader:
                 raise FileNotFoundError(f"Could not load image: {image}")
 
         self.shelf_inventory = []
+        self.sorting_algorithm.callnumbers = []  # Reset
 
         spines = self._detect_spines(image)
-        print(f"Detected {len(spines)} book spines")
+        self._log(f"Detected {len(spines)} book spines")
 
         for i, spine_bbox in enumerate(spines):
             book_info = self._process_spine(image, spine_bbox, book_index=i)
@@ -118,7 +129,7 @@ class ShelfReader:
                 "status": "BAD_CAPTURE",
                 "order_error": None,
             }
-            print(
+            self._log(
                 f"Book {book_index}: Bad capture - bounding box has too much variation, skipping"
             )
         else:
@@ -132,9 +143,16 @@ class ShelfReader:
             }
 
             if not call_number:
-                print(f"Book {book_index}: Spine detected but call number not readable")
+                self._log(
+                    f"Book {book_index}: Spine detected but call number not readable"
+                )
             else:
-                print(f"Book {book_index}: {call_number}")
+                self._log(f"Book {book_index}: {call_number}")
+                # 1. Add to sorting algorithm
+                try:
+                    self.sorting_algorithm.add_callnumber(call_number)
+                except Exception as e:
+                    self._log(f"Could not add call number to sorter: {e}")
 
         return book_info
 
@@ -153,7 +171,7 @@ class ShelfReader:
             return text_list
 
         except Exception as e:
-            print(f"OCR error: {e}")
+            self._log(f"OCR error: {e}")
             return []
 
     def _parse_call_number(self, raw_text):
@@ -179,6 +197,7 @@ class ShelfReader:
         if len(valid_books) < 2:
             return
 
+        # Adjacent comparison
         for i in range(1, len(valid_books)):
             prev_book = valid_books[i - 1]
             curr_book = valid_books[i]
@@ -193,13 +212,35 @@ class ShelfReader:
                         f"Should come before {prev_book['call_number']}"
                     )
                     curr_book["status"] = "OUT_OF_ORDER"
-                    print(
+                    self._log(
                         f"ORDER ERROR: Book {curr_book['index']} "
                         f"({curr_book['call_number']}) is out of order"
                     )
 
             except Exception as e:
-                print(f"Could not compare books {i-1} and {i}: {e}")
+                self._log(f"Could not compare books {i-1} and {i}: {e}")
+
+        # 2. Get sorted list from sorting algorithm
+        try:
+            sorted_list = self.sorting_algorithm.sort_callnumbers()
+            observed_list = [b["call_number"] for b in valid_books]
+
+            # 3. Compare sorted vs observed
+            self._log("\n=== SHELF ORDER ANALYSIS ===")
+            self._log(f"Observed sequence: {observed_list}")
+            self._log(f"Correct sequence:  {sorted_list}")
+
+            if observed_list == sorted_list:
+                self._log("✓ Shelf is in correct order")
+            else:
+                self._log("✗ Shelf is NOT in correct order")
+                self._log("\nMisplaced books:")
+                for i, (obs, correct) in enumerate(zip(observed_list, sorted_list)):
+                    if obs != correct:
+                        self._log(f"  Position {i}: has '{obs}', should be '{correct}'")
+
+        except Exception as e:
+            self._log(f"Could not perform full sort comparison: {e}")
 
     def get_shelf_report(self):
         total_books = len(self.shelf_inventory)

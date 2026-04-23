@@ -16,8 +16,9 @@ if sys.platform == "win32":
         "avutil-60.dll",
         "swscale-7.dll",
     ]
+    ffmpeg_dll_dir = os.path.join(project_dir, "ffmpeg_dlls")
     for dll_name in ffmpeg_dlls:
-        dll_path = os.path.join(project_dir, dll_name)
+        dll_path = os.path.join(ffmpeg_dll_dir, dll_name)
         if os.path.exists(dll_path):
             try:
                 cdll.LoadLibrary(dll_path)

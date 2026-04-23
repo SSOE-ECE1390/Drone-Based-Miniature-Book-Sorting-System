@@ -5,3 +5,6 @@ Drone_Capture/
 
 # Ignore generated video frames folder
 frames/
+
+# Ignore manually created frames
+manual_frames/
