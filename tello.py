@@ -4,7 +4,7 @@ import time
 import numpy as np
 import sys
 import os
-from ctypes import cdll, CDLL
+from ctypes import cdll, CDLL, c_int
 
 # Add project directory to PATH so FFmpeg DLLs can be found
 project_dir = os.path.dirname(os.path.abspath(__file__))
@@ -25,6 +25,13 @@ if sys.platform == "win32":
                 cdll.LoadLibrary(dll_path)
             except Exception as e:
                 print(f"Warning: Could not preload {dll_name}: {e}")
+
+    # Suppress FFmpeg logging by setting log level to quiet (-8 = AV_LOG_QUIET)
+    try:
+        avutil = cdll.LoadLibrary(os.path.join(ffmpeg_dll_dir, "avutil-60.dll"))
+        avutil.av_log_set_level(c_int(-8))  # AV_LOG_QUIET
+    except:
+        pass  # If this fails, just continue - messages will still appear but it's OK
 
 # Add ffmpeg_dlls folder to Python path so it can find the extension module
 sys.path.insert(0, ffmpeg_dll_dir)
@@ -59,7 +66,10 @@ class Tello:
 
         self.abort_flag = False
         self.decoder = libh264decoder.H264Decoder()
-        self.command_timeout = command_timeout
+        self.command_timeout = (
+            1.0  # Increased from 0.3 to allow more time for drone response
+        )
+        self.MAX_HEIGHT_DM = 3  # Maximum height in decimeters (30cm = ~1 foot)
         self.imperial = imperial
         self.response = None
         self.frame = None  # numpy array BGR -- current camera output frame
@@ -197,8 +207,10 @@ class Tello:
 
         if self.response is None:
             response = "none_response"
+            print(f"[DRONE] Command '{command}' - No response (timeout)")
         else:
             response = self.response.decode("utf-8")
+            print(f"[DRONE] Command '{command}' - Response: {response}")
             if not self.connected:
                 self.connected = True
                 print("Connected to Tello Drone")
@@ -221,14 +233,19 @@ class Tello:
 
     def takeoff(self):
         """
-        Initiates take-off.
+        Initiates take-off and immediately descends 2 feet to lower altitude.
 
         Returns:
             str: Response from Tello, 'OK' or 'FALSE'.
 
         """
+        response = self.send_command("takeoff")
+        time.sleep(1)
 
-        return self.send_command("takeoff")
+        # Move down 2 feet (~0.6 meters) to maintain low altitude
+        self.move_down(0.6)
+
+        return response
 
     def set_speed(self, speed):
         """

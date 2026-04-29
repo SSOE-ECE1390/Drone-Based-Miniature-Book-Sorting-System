@@ -1,5 +1,8 @@
 *.dll
 
+# Environment variables - NEVER commit .env files with secrets
+.env
+
 # Python cache files
 __pycache__/
 *.py[cod]

@@ -18,6 +18,8 @@ class TelloUI:
         self.frame = None
         self.thread = None
         self.stopEvent = None
+        self.sending_command_thread = None
+        self.is_streaming = False
 
         self.distance = 0.1
         self.degree = 30
@@ -27,42 +29,43 @@ class TelloUI:
         self.root = tki.Tk()
         self.panel = None
 
-        self.btn_snapshot = tki.Button(
-            self.root, text="Snapshot!", command=self.takeSnapshot
-        )
-        self.btn_snapshot.pack(
-            side="bottom", fill="both", expand="yes", padx=10, pady=5
-        )
-
-        self.btn_pause = tki.Button(
-            self.root, text="Pause", relief="raised", command=self.pauseVideo
-        )
-        self.btn_pause.pack(side="bottom", fill="both", expand="yes", padx=10, pady=5)
-
-        self.btn_landing = tki.Button(
+        self.btn_start = tki.Button(
             self.root,
-            text="Open Command Panel",
-            relief="raised",
-            command=self.openCmdWindow,
+            text="START",
+            command=self.startVideo,
+            bg="green",
+            fg="white",
+            font=("Arial", 14, "bold"),
         )
-        self.btn_landing.pack(side="bottom", fill="both", expand="yes", padx=10, pady=5)
+        self.btn_start.pack(side="left", fill="both", expand="yes", padx=10, pady=5)
+
+        self.btn_stop = tki.Button(
+            self.root,
+            text="STOP",
+            command=self.stopVideo,
+            bg="red",
+            fg="white",
+            font=("Arial", 14, "bold"),
+        )
+        self.btn_stop.pack(side="right", fill="both", expand="yes", padx=10, pady=5)
 
         self.stopEvent = threading.Event()
-        self.thread = threading.Thread(target=self.videoLoop, args=())
-        self.thread.start()
 
         self.root.wm_title("TELLO Controller")
         self.root.wm_protocol("WM_DELETE_WINDOW", self.onClose)
 
-        self.sending_command_thread = threading.Thread(target=self._sendingCommand)
-
     def videoLoop(self):
         try:
             time.sleep(0.5)
-            self.sending_command_thread.start()
-            last_process_time = 0
+            # Start keepalive thread
+            if self.sending_command_thread is None:
+                self.sending_command_thread = threading.Thread(
+                    target=self._sendingCommand
+                )
+                self.sending_command_thread.daemon = True
+                self.sending_command_thread.start()
 
-            while not self.stopEvent.is_set():
+            while not self.stopEvent.is_set() and self.is_streaming:
                 system = platform.system()
 
                 self.frame = self.tello.read()
@@ -92,9 +95,34 @@ class TelloUI:
             self.panel.configure(image=image)
             self.panel.image = image
 
+    def startVideo(self):
+        """Start the video stream and takeoff"""
+        if not self.is_streaming:
+            print("[UI] Starting video stream...")
+            self.is_streaming = True
+            self.stopEvent.clear()
+            self.thread = threading.Thread(target=self.videoLoop, args=())
+            self.thread.start()
+            print("[DRONE] Taking off...")
+            self.tello.takeoff()
+
+    def stopVideo(self):
+        """Stop the video stream and land"""
+        if self.is_streaming:
+            print("[DRONE] Landing...")
+            self.tello.land()
+            print("[UI] Stopping video stream...")
+            self.is_streaming = False
+            self.stopEvent.set()
+            if self.thread is not None:
+                self.thread.join(timeout=2.0)
+
     def _sendingCommand(self):
-        while True:
-            self.tello.send_command("command")
+        while self.is_streaming and not self.stopEvent.is_set():
+            try:
+                self.tello.send_command("command")
+            except:
+                pass
             time.sleep(5)
 
     def _setQuitWaitingFlag(self):
@@ -218,9 +246,11 @@ class TelloUI:
             self.tello.video_freeze(True)
 
     def telloTakeOff(self):
+        # Keep for compatibility but startVideo should be called instead
         return self.tello.takeoff()
 
     def telloLanding(self):
+        # Keep for compatibility but stopVideo should be called instead
         return self.tello.land()
 
     def telloFlip_l(self):

@@ -1,44 +1,55 @@
-from websockets.sync.client import connect
+import serial
 import time
 
 
 class ShelfController:
-    def __init__(self, ip="172.20.10.11", port=81):
-        self.ip = ip
+    def __init__(self, port="COM3", baudrate=115200):
         self.port = port
-        self.uri = f"ws://{ip}:{port}"
-        self.sock = None
+        self.baudrate = baudrate
+        self.serial = None
         self.connected = False
         self.status = [True] * 10
 
     def connect(self):
         while not self.connected:
             try:
-                # Disable keepalive pings to prevent timeout errors with ESP32
-                self.sock = connect(self.uri, ping_interval=None)
+                self.serial = serial.Serial(self.port, self.baudrate, timeout=1)
+                time.sleep(2)  # Wait for ESP32 to initialize after serial connection
                 self.connected = True
-                print("Connected to ESP32")
+                print("Connected to ESP32 via serial")
             except Exception as e:
                 print(f"Connection failed: {e}")
                 time.sleep(1)
 
     def release(self, slot):
         if self.connected:
-            self.sock.send(f"release {slot}")
+            try:
+                self.serial.write(f"release {slot}\n".encode())
+            except Exception as e:
+                print(f"Error sending command: {e}")
 
     def hold(self, slot):
         if self.connected:
-            self.sock.send(f"hold {slot}")
+            try:
+                self.serial.write(f"hold {slot}\n".encode())
+            except Exception as e:
+                print(f"Error sending command: {e}")
 
     def release_all(self):
         if self.connected:
-            self.sock.send("release_all")
+            try:
+                self.serial.write("release_all\n".encode())
+            except Exception as e:
+                print(f"Error sending command: {e}")
 
     def hold_all(self):
         if self.connected:
-            self.sock.send("hold_all")
+            try:
+                self.serial.write("hold_all\n".encode())
+            except Exception as e:
+                print(f"Error sending command: {e}")
 
     def disconnect(self):
-        if self.sock:
-            self.sock.close()
+        if self.serial:
+            self.serial.close()
             self.connected = False
