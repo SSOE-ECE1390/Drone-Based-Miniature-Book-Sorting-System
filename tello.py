@@ -8,6 +8,8 @@ from ctypes import cdll, CDLL
 
 # Add project directory to PATH so FFmpeg DLLs can be found
 project_dir = os.path.dirname(os.path.abspath(__file__))
+ffmpeg_dll_dir = os.path.join(project_dir, "ffmpeg_dlls")
+
 if sys.platform == "win32":
     # On Windows, load FFmpeg DLLs before importing the extension
     ffmpeg_dlls = [
@@ -16,7 +18,6 @@ if sys.platform == "win32":
         "avutil-60.dll",
         "swscale-7.dll",
     ]
-    ffmpeg_dll_dir = os.path.join(project_dir, "ffmpeg_dlls")
     for dll_name in ffmpeg_dlls:
         dll_path = os.path.join(ffmpeg_dll_dir, dll_name)
         if os.path.exists(dll_path):
@@ -24,6 +25,9 @@ if sys.platform == "win32":
                 cdll.LoadLibrary(dll_path)
             except Exception as e:
                 print(f"Warning: Could not preload {dll_name}: {e}")
+
+# Add ffmpeg_dlls folder to Python path so it can find the extension module
+sys.path.insert(0, ffmpeg_dll_dir)
 
 # Now import the extension
 import libh264decoder
@@ -61,6 +65,7 @@ class Tello:
         self.frame = None  # numpy array BGR -- current camera output frame
         self.is_freeze = False  # freeze current camera output
         self.last_frame = None
+        self.connected = False
         self.socket = socket.socket(
             socket.AF_INET, socket.SOCK_DGRAM
         )  # socket for sending cmd
@@ -80,9 +85,7 @@ class Tello:
 
         # to receive video -- send cmd: command, streamon
         self.socket.sendto(b"command", self.tello_address)
-        print("sent: command")
         self.socket.sendto(b"streamon", self.tello_address)
-        print("sent: streamon")
 
         self.socket_video.bind((local_ip, self.local_video_port))
 
@@ -122,6 +125,9 @@ class Tello:
                 self.response, ip = self.socket.recvfrom(3000)
                 # print(self.response)
             except socket.error as exc:
+                if self.connected:
+                    print("Disconnected from Tello Drone")
+                    self.connected = False
                 print("Caught exception socket.error : %s" % exc)
 
     def _receive_video_thread(self):
@@ -143,6 +149,9 @@ class Tello:
                     packet_data = b""  # Changed to bytes
 
             except socket.error as exc:
+                if self.connected:
+                    print("Disconnected from Tello Drone")
+                    self.connected = False
                 print("Caught exception socket.error : %s" % exc)
 
     def _h264_decode(self, packet_data):
@@ -175,8 +184,6 @@ class Tello:
         :return (str): Response from Tello.
 
         """
-
-        print(">> send cmd: {}".format(command))
         self.abort_flag = False
         timer = threading.Timer(self.command_timeout, self.set_abort_flag)
 
@@ -192,6 +199,9 @@ class Tello:
             response = "none_response"
         else:
             response = self.response.decode("utf-8")
+            if not self.connected:
+                self.connected = True
+                print("Connected to Tello Drone")
 
         self.response = None
 
