@@ -35,3 +35,6 @@ frames/
 
 # Ignore manually created frames
 manual_frames/
+
+# Ignore training dataset directory
+dataset/
