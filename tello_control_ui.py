@@ -106,6 +106,21 @@ class TelloUI:
             print("[DRONE] Taking off...")
             self.tello.takeoff()
 
+            # Start ChatGPT autonomous control
+            print("[GPT] Initializing ChatGPT vision controller...")
+            from gpt_drone_controller import GPTDroneController
+
+            gpt_controller = GPTDroneController(self.tello)
+            print("[GPT] Connected to OpenAI API")
+            print("[GPT] Starting autonomous water bottle search...")
+            # Run in a separate thread so UI stays responsive
+            gpt_thread = threading.Thread(
+                target=gpt_controller.run_autonomous_task,
+                args=(120,),
+            )
+            gpt_thread.daemon = True
+            gpt_thread.start()
+
     def stopVideo(self):
         """Stop the video stream and land"""
         if self.is_streaming:

@@ -1,74 +1,36 @@
 import cv2
 import base64
 import time
-from io import BytesIO
 import json
 import os
+from openai import OpenAI
 from dotenv import load_dotenv
 
-# Load environment variables from .env file
 load_dotenv()
+
+PHASE_DESCEND = "descend"
+PHASE_FIND_MAGNET = "find_magnet"
+PHASE_COLLECT = "collect"
+PHASE_VERIFY = "verify"
+PHASE_RETURN = "return"
 
 
 class GPTDroneController:
-    """
-    Controls drone using ChatGPT vision API to interpret video feed
-    and execute tasks autonomously.
-    """
-
     def __init__(self, tello, gpt_api_key=None):
-        """
-        Initialize GPT Drone Controller
-
-        Args:
-            tello: Tello drone object
-            gpt_api_key: OpenAI API key for ChatGPT (if None, loads from .env)
-        """
         self.tello = tello
-        # Load from .env if not provided
-        if gpt_api_key is None:
-            gpt_api_key = os.getenv("OPENAI_API_KEY")
-        self.gpt_api_key = gpt_api_key
-        self.model = os.getenv("OPENAI_MODEL", "gpt-4-vision-preview")
+        self.gpt_api_key = gpt_api_key or os.getenv("OPENAI_API_KEY")
+        self.model = os.getenv("OPENAI_MODEL", "gpt-4o")
         self.is_running = False
-        self.task = None
-        self.last_response = None
-        
-        if not self.gpt_api_key:
-            print("[GPT] WARNING: OPENAI_API_KEY not found in .env file")
-            frame: numpy array from drone camera
+        self.phase = PHASE_DESCEND
+        self.client = OpenAI(api_key=self.gpt_api_key)
 
-        Returns:
-            base64 encoded string
-        """
+    def encode_frame(self, frame):
         _, buffer = cv2.imencode(".jpg", frame)
         return base64.b64encode(buffer).decode("utf-8")
 
-    def send_frame_to_gpt(self, frame, task_instruction):
-        """
-        Send current drone frame to ChatGPT with task instruction
-
-        Args:
-            frame: current drone video frame
-            task_instruction: what the drone should do (e.g., "land on water bottle")
-
-        Returns:
-            dict with drone action and confidence
-        """
-        if self.gpt_api_key is None:
-            print("[GPT] API key not configured")
-            return None
-
+    def ask_gpt(self, frame, prompt):
         try:
-            import openai
-
-            openai.api_key = self.gpt_api_key
-
-            # Encode frame
-            frame_b64 = self.encode_frame_to_base64(frame)
-
-            # Send to GPT with vision capability
-            response = openai.ChatCompletion.create(
+            response = self.client.chat.completions.create(
                 model=self.model,
                 messages=[
                     {
@@ -76,130 +38,150 @@ class GPTDroneController:
                         "content": [
                             {
                                 "type": "image_url",
-                                "image_url": f"data:image/jpeg;base64,{frame_b64}",
+                                "image_url": {
+                                    "url": f"data:image/jpeg;base64,{self.encode_frame(frame)}"
+                                },
                             },
-                            {
-                                "type": "text",
-                                "text": f"""You are controlling a DJI Tello drone. 
-                                
-Current task: {task_instruction}
-
-Analyze the current video frame and provide the next action the drone should take.
-
-Respond ONLY with a JSON object in this format:
-{{
-    "action": "move_forward|move_backward|move_left|move_right|move_up|move_down|land|takeoff|rotate_cw|rotate_ccw|hover",
-    "distance_or_degrees": <number>,
-    "confidence": <0.0-1.0>,
-    "explanation": "<brief reason>"
-}}
-
-Be decisive. If you can see the target (water bottle/magnet), move toward it. If you can't see it, suggest movement.""",
-                            },
+                            {"type": "text", "text": prompt},
                         ],
                     }
                 ],
-                max_tokens=100,
+                max_tokens=150,
             )
-
-            # Parse response
-            response_text = response.choices[0].message.content
-            print(f"[GPT] {response_text}")
-
-            # Try to parse JSON
-            action_data = json.loads(response_text)
-            
-            # Check if water bottle was spotted
-            explanation = action_data.get("explanation", "").lower()
-            if "water" in explanation or "bottle" in explanation:
-                print("[GPT] *** WATER SPOTTED ***")
-                self.last_response = action_data
-            
-            return action_data
-
-        except json.JSONDecodeError:
-            print("[GPT] Could not parse response as JSON")
-            return None
-        except Exception as e:
+            content = response.choices[0].message.content
+            content = (
+                content.strip()
+                .removeprefix("```json")
+                .removeprefix("```")
+                .removesuffix("```")
+                .strip()
+            )
+            return json.loads(content)
+        except (json.JSONDecodeError, Exception) as e:
             print(f"[GPT] Error: {e}")
             return None
 
-    def execute_action(self, action_data):
-        """
-        Execute drone action from GPT response
-
-        Args:
-            action_data: dict with action and parameters
-        """
-        if action_data is None:
-            return
-
-        action = action_data.get("action", "hover")
-        param = action_data.get("distance_or_degrees", 0.1)
-
-        if action == "move_forward":
-            self.tello.move_forward(param)
-        elif action == "move_backward":
-            self.tello.move_backward(param)
-        elif action == "move_left":
-            self.tello.move_left(param)
-        elif action == "move_right":
-            self.tello.move_right(param)
-        elif action == "move_up":
-            self.tello.move_up(param)
-        elif action == "move_down":
-            self.tello.move_down(param)
-        elif action == "land":
-            print("[DRONE] *** LANDING NOW ***")
-            self.tello.land()
-            self.is_running = False
-        elif action == "takeoff":
-            self.tello.takeoff()
-        elif action == "rotate_cw":
-            self.tello.rotate_cw(param)
-        elif action == "rotate_ccw":
-            self.tello.rotate_ccw(param)
-        elif action == "hover":
-            time.sleep(0.5)
-
-    def run_autonomous_task(self, task_instruction, duration_seconds=30):
-        """
-        Run autonomous task for specified duration
-
-        Args:
-            task_instruction: what drone should do
-            duration_seconds: how long to attempt the task
-        """
-        self.is_running = True
-        self.task = task_instruction
-        start_time = time.time()
-
-        print(f"[TASK] Starting: {task_instruction}")
-        print(f"[TASK] Duration: {duration_seconds}s")
-
-        last_gpt_send = time.time()
-        while self.is_running and (time.time() - start_time) < duration_seconds:
-            # Get current frame from drone
+    def wait_for_frame(self):
+        print("[GPT] Waiting for camera feed...")
+        while True:
             frame = self.tello.read()
+            if frame is not None and frame.size > 0:
+                print("[GPT] Camera ready")
+                return frame
+            time.sleep(0.1)
 
-            if frame is None or frame.size == 0:
+    def get_frame(self):
+        frame = self.tello.read()
+        if frame is None or frame.size == 0:
+            return None
+        return frame
+
+    def run_autonomous_task(self, duration_seconds=120):
+        self.is_running = True
+        self.phase = PHASE_DESCEND
+        print("[GPT] API started")
+
+        self.wait_for_frame()
+
+        start_time = time.time()
+        last_gpt_send = 0
+
+        while self.is_running and (time.time() - start_time) < duration_seconds:
+            frame = self.get_frame()
+            if frame is None:
                 time.sleep(0.1)
                 continue
-            
-            # Only send 1 frame per second to ChatGPT (not every frame)
-            current_time = time.time()
-            if current_time - last_gpt_send >= 1.0:
-                # Send to GPT for analysis
-                action_data = self.send_frame_to_gpt(frame, task_instruction)
 
-                # Execute action
-                if action_data:
-                    self.execute_action(action_data)
-                
-                last_gpt_send = current_time
-            
-            # Display video at normal rate
-            time.sleep(0.03)
+            if time.time() - last_gpt_send < 1.5:
+                time.sleep(0.03)
+                continue
 
-        print(f"[TASK] Completed: {task_instruction}")
+            last_gpt_send = time.time()
+
+            if self.phase == PHASE_DESCEND:
+                self._phase_descend(frame)
+            elif self.phase == PHASE_FIND_MAGNET:
+                self._phase_find_magnet(frame)
+            elif self.phase == PHASE_COLLECT:
+                self._phase_collect(frame)
+            elif self.phase == PHASE_VERIFY:
+                self._phase_verify(frame)
+            elif self.phase == PHASE_RETURN:
+                self._phase_return()
+                break
+
+        if self.is_running:
+            print("[TASK] Time limit reached - landing")
+            self.tello.land()
+
+        self.is_running = False
+
+    def _phase_descend(self, frame):
+        result = self.ask_gpt(
+            frame,
+            (
+                "You are controlling a DJI Tello drone descending to find a water bottle on the floor. "
+                "Look at this frame and return ONLY a JSON object with two fields: "
+                "sees_bottle (bool), explanation. "
+                "Set sees_bottle to true ONLY if you clearly see a water bottle in the frame."
+            ),
+        )
+        if not result:
+            return
+        if result.get("sees_bottle"):
+            print("[GPT] Bottle found")
+            self.phase = PHASE_FIND_MAGNET
+        else:
+            self.tello.send_command("down 30")
+
+    def _phase_find_magnet(self, frame):
+        result = self.ask_gpt(
+            frame,
+            (
+                "You are controlling a DJI Tello drone hovering above a water bottle. "
+                "Look at this frame and return ONLY a JSON object with two fields: "
+                "sees_magnet (bool), explanation. "
+                "You are looking for a small circular magnet on top of the water bottle cap. "
+                "Set sees_magnet to true ONLY if you clearly see the magnet on top of the bottle cap."
+            ),
+        )
+        if not result:
+            return
+        if result.get("sees_magnet"):
+            print("[GPT] Magnet found")
+            self.phase = PHASE_COLLECT
+        else:
+            self.tello.send_command("down 20")
+
+    def _phase_collect(self, frame):
+        print("[GPT] Collecting magnet - flying over bottle")
+        self.tello.send_command("forward 20")
+        time.sleep(3)
+        self.tello.send_command("back 40")
+        time.sleep(3)
+        self.phase = PHASE_VERIFY
+
+    def _phase_verify(self, frame):
+        result = self.ask_gpt(
+            frame,
+            (
+                "You are controlling a DJI Tello drone. You just attempted to collect a magnet from the top of a water bottle. "
+                "Look at this frame. Is there still a magnet visible on top of the water bottle cap? "
+                "Return ONLY a JSON object with two fields: magnet_still_on_bottle (bool), explanation."
+            ),
+        )
+        if not result:
+            return
+        if not result.get("magnet_still_on_bottle", True):
+            print("[GPT] Magnet collected - returning to land")
+            self.phase = PHASE_RETURN
+        else:
+            print("[GPT] Magnet still on bottle - retrying collection")
+            self.phase = PHASE_FIND_MAGNET
+
+    def _phase_return(self):
+        print("[GPT] Landing")
+        self.tello.send_command("up 50")
+        time.sleep(3)
+        self.tello.land()
         self.is_running = False
