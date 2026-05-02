@@ -118,7 +118,7 @@ class Tello:
         res_frame_list = []
         frames = self.decoder.decode(packet_data)
         for framedata in frames:
-            (frame, w, h, ls) = framedata
+            frame, w, h, ls = framedata
             if frame is not None:
                 frame = np.frombuffer(frame, dtype=np.ubyte)
                 frame = frame.reshape((h, ls // 3, 3))
@@ -142,7 +142,6 @@ class Tello:
             response = "none_response"
         else:
             response = self.response.decode("utf-8", errors="ignore")
-            print(f"[DRONE] Command '{command}' - Response: {response}")
             if not self.connected:
                 self.connected = True
                 print("Connected to Tello Drone")

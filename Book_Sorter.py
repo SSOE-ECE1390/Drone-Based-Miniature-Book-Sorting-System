@@ -1,60 +1,221 @@
-from ultralytics import YOLO
-
-CORRECT_ORDER = [
-    0,
-    1,
-    2,
-    3,
-    4,
-    5,
-]  # vertical_line, horizontal_line, circle, square, cross, x
-MODEL_PATH = "best.pt"
-
-model = YOLO(MODEL_PATH)
+CORRECT_ORDER = ["I", "+", "X", "-", "[]", "O"]
+SHELF_SLOTS = [0, 1, 2, 3, 4, 5]
+TEMP_SLOT = 8
 
 
-def detect_books(frame):
-    results = model(frame, conf=0.5, verbose=False)[0]
-    slots = [None] * 6
-    frame_w = frame.shape[1]
-    slot_w = frame_w / 6
+class BookSorter:
+    def __init__(self, shelf_controller):
+        self.shelf = shelf_controller
 
-    for box in results.boxes:
-        cx = float(box.xywh[0][0])
-        slot_idx = min(int(cx / slot_w), 5)
-        slots[slot_idx] = int(box.cls[0])
+        self.slot_map = None  # {symbol: slot}
+        self.hardware_slot_map = {  # {slot: "hold" | "released"}
+            0: "hold",
+            1: "hold",
+            2: "hold",
+            3: "hold",
+            4: "hold",
+            5: "hold",
+            8: "released",
+        }
 
-    return slots
+        self.last_frame = None
+        self.expected_frame = None
 
+        self.hw_state = {"swap": None}
+        self.last_print = None
 
-def get_swaps(detected):
-    order = list(detected)
-    swaps = []
+    # -------------------------
+    # FRAME ENTRY
+    # -------------------------
+    def process_frame(self, frame):
+        if not frame or len(frame) != 6:
+            return
 
-    for i in range(len(order)):
-        if order[i] == CORRECT_ORDER[i]:
-            continue
-        target = CORRECT_ORDER[i]
-        try:
-            j = order.index(target, i + 1)
-            swaps.append((i + 1, j + 1))
-            order[i], order[j] = order[j], order[i]
-        except ValueError:
-            print(f"[SORT] Book {target} not found in remaining slots")
+        if frame == self.last_frame:
+            return
 
-    return swaps
+        if self.expected_frame is not None and frame != self.expected_frame:
+            self._print_once(f"DEVIATION: expected {self.expected_frame}, got {frame}")
+        self.expected_frame = None
 
+        self.last_frame = frame
+        self._update_slot_map(frame)
 
-def analyze_shelf(frame):
-    detected = detect_books(frame)
-    print(f"[SORT] Detected: {detected}")
+        if self.hw_state["swap"] is None:
+            self._check_and_start_swap()
+        else:
+            self._continue_swap()
 
-    if detected == CORRECT_ORDER:
-        print("[SORT] Shelf is in correct order")
-        return []
+    # -------------------------
+    # FRAME → SLOT MAP
+    # -------------------------
+    def _update_slot_map(self, frame):
+        # frame is 6 symbols left-to-right; assign in order to currently-held slots.
+        held_shelf_slots = [
+            s for s in SHELF_SLOTS if self.hardware_slot_map[s] == "hold"
+        ]
+        new_map = {}
 
-    swaps = get_swaps(detected)
-    for s in swaps:
-        print(f"[SORT] Swap slot {s[0]} <-> slot {s[1]}")
+        # first N symbols go to the held shelf slots in order
+        for sym, slot in zip(frame, held_shelf_slots):
+            new_map[sym] = slot
 
-    return swaps
+        # remaining symbols belong to TEMP if TEMP is held
+        leftover = frame[len(held_shelf_slots) :]
+        if leftover and self.hardware_slot_map[TEMP_SLOT] == "hold":
+            new_map[leftover[0]] = TEMP_SLOT
+
+        self.slot_map = new_map
+
+    # -------------------------
+    # HARDWARE COMMANDS
+    # -------------------------
+    def _release(self, slot):
+        self.shelf.release(slot)
+        self.hardware_slot_map[slot] = "released"
+
+    def _hold(self, slot):
+        self.shelf.hold(slot)
+        self.hardware_slot_map[slot] = "hold"
+
+    # -------------------------
+    # CHECK CORRECTNESS
+    # -------------------------
+    def _check_and_start_swap(self):
+        if all(self.slot_map.get(sym) == i for i, sym in enumerate(CORRECT_ORDER)):
+            self._print_once("SHELF OK")
+            return
+
+        a_sym, b_sym, a_slot, b_slot = self._find_first_mismatch()
+        if a_slot is None:
+            return
+
+        self.hw_state["swap"] = {
+            "a_sym": a_sym,
+            "b_sym": b_sym,
+            "a_slot": a_slot,
+            "b_slot": b_slot,
+            "step": 1,
+        }
+        self._print_once(
+            f"STARTING SWAP: {b_sym} should be at slot {a_slot} "
+            f"(currently {a_sym}); swapping {a_sym}@{a_slot} ↔ {b_sym}@{b_slot}"
+        )
+        self._step_1()
+
+    # -------------------------
+    # FIND MISMATCH
+    # -------------------------
+    def _find_first_mismatch(self):
+        for i, correct_sym in enumerate(CORRECT_ORDER):
+            current_sym = next(
+                (s for s, slot in self.slot_map.items() if slot == i), None
+            )
+            if current_sym != correct_sym:
+                wrong_slot = self.slot_map.get(correct_sym)
+                return current_sym, correct_sym, i, wrong_slot
+        return None, None, None, None
+
+    # -------------------------
+    # CONTINUE SWAP
+    # -------------------------
+    def _continue_swap(self):
+        step = self.hw_state["swap"]["step"]
+        self._print_once(f"CONTINUING SWAP: step {step}")
+        if step == 1:
+            self._step_1()
+        elif step == 2:
+            self._step_2()
+        elif step == 3:
+            self._step_3()
+
+    # -------------------------
+    # STEP 1: A_SLOT contents -> TEMP
+    # -------------------------
+    def _step_1(self):
+        a_slot = self.hw_state["swap"]["a_slot"]
+        a_sym = self.hw_state["swap"]["a_sym"]
+
+        held_after = [
+            s
+            for s in SHELF_SLOTS
+            if self.hardware_slot_map[s] == "hold" and s != a_slot
+        ]
+        remaining_syms = sorted(
+            [sym for sym, slot in self.slot_map.items() if slot in held_after],
+            key=lambda s: self.slot_map[s],
+        )
+        self.expected_frame = remaining_syms + [a_sym]
+
+        self._release(a_slot)
+        self._hold(TEMP_SLOT)
+
+        self.hw_state["swap"]["step"] = 2
+        self._print_once(f"MOVE {a_sym} → TEMP")
+
+    # -------------------------
+    # STEP 2: B_SLOT contents -> A_SLOT
+    # -------------------------
+    def _step_2(self):
+        a_slot = self.hw_state["swap"]["a_slot"]
+        b_slot = self.hw_state["swap"]["b_slot"]
+        a_sym = self.hw_state["swap"]["a_sym"]
+        b_sym = self.hw_state["swap"]["b_sym"]
+
+        post = dict(self.slot_map)
+        post[b_sym] = a_slot
+
+        held_after = [
+            s
+            for s in SHELF_SLOTS
+            if self.hardware_slot_map[s] == "hold" and s != b_slot
+        ]
+        held_after.append(a_slot)
+        held_after = sorted(set(held_after))
+
+        shelf_syms = sorted(
+            [sym for sym, slot in post.items() if slot in held_after],
+            key=lambda s: post[s],
+        )
+        self.expected_frame = shelf_syms + [a_sym]
+
+        self._release(b_slot)
+        self._hold(a_slot)
+
+        self.hw_state["swap"]["step"] = 3
+        self._print_once(f"MOVE {b_sym} → slot {a_slot}")
+
+    # -------------------------
+    # STEP 3: TEMP contents -> B_SLOT
+    # -------------------------
+    def _step_3(self):
+        a_sym = self.hw_state["swap"]["a_sym"]
+        b_slot = self.hw_state["swap"]["b_slot"]
+
+        post = dict(self.slot_map)
+        post[a_sym] = b_slot
+
+        held_after = [s for s in SHELF_SLOTS if self.hardware_slot_map[s] == "hold"]
+        held_after.append(b_slot)
+        held_after = sorted(set(held_after))
+
+        shelf_syms = sorted(
+            [sym for sym, slot in post.items() if slot in held_after],
+            key=lambda s: post[s],
+        )
+        self.expected_frame = shelf_syms
+
+        self._release(TEMP_SLOT)
+        self._hold(b_slot)
+
+        self._print_once(f"MOVE {a_sym} → slot {b_slot}")
+        self._print_once("SWAP COMPLETE")
+        self.hw_state["swap"] = None
+
+    # -------------------------
+    # PRINT CONTROL
+    # -------------------------
+    def _print_once(self, msg):
+        if msg != self.last_print:
+            print(f"[SHELF] {msg}")
+            self.last_print = msg

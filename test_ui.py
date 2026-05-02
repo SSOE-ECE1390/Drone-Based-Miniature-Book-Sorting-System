@@ -3,9 +3,9 @@ from tkinter import ttk
 
 
 class TestUI:
-    def __init__(self, shelf_controller):
+    def __init__(self, shelf_controller, master=None):
         self.shelf = shelf_controller
-        self.root = tk.Tk()
+        self.root = tk.Toplevel(master) if master else tk.Tk()
         self.root.title("Shelf Test")
         self.root.geometry("500x350")
         self.setup_ui()

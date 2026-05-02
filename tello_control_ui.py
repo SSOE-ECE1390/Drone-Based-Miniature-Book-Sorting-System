@@ -8,11 +8,12 @@ import cv2
 import os
 import time
 import platform
+from Book_Sorter import BookSorter
 
 
 class TelloUI:
 
-    def __init__(self, tello, outputpath):
+    def __init__(self, tello, outputpath, shelf=None):
         self.tello = tello
         self.outputPath = outputpath
         self.frame = None
@@ -25,6 +26,8 @@ class TelloUI:
         self.degree = 30
 
         self.quit_waiting_flag = False
+        self.last_sort_time = 0
+        self.book_sorter = BookSorter(shelf) if shelf else None
 
         self.root = tki.Tk()
         self.panel = None
@@ -72,6 +75,16 @@ class TelloUI:
                 if self.frame is None or self.frame.size == 0:
                     continue
 
+                if time.time() - self.last_sort_time >= 2.0:
+                    self.last_sort_time = time.time()
+                    if self.book_sorter:
+                        t = threading.Thread(
+                            target=self.book_sorter.process_frame,
+                            args=(self.frame.copy(),),
+                        )
+                        t.daemon = True
+                        t.start()
+
                 image = Image.fromarray(self.frame)
 
                 if system == "Windows" or system == "Linux":
@@ -96,36 +109,17 @@ class TelloUI:
             self.panel.image = image
 
     def startVideo(self):
-        """Start the video stream and takeoff"""
         if not self.is_streaming:
             print("[UI] Starting video stream...")
+            print("[DRONE] Connected to DJI Tello")
             self.is_streaming = True
             self.stopEvent.clear()
             self.thread = threading.Thread(target=self.videoLoop, args=())
             self.thread.start()
-            print("[DRONE] Taking off...")
-            self.tello.takeoff()
-
-            # Start ChatGPT autonomous control
-            print("[GPT] Initializing ChatGPT vision controller...")
-            from gpt_drone_controller import GPTDroneController
-
-            gpt_controller = GPTDroneController(self.tello)
-            print("[GPT] Connected to OpenAI API")
-            print("[GPT] Starting autonomous water bottle search...")
-            # Run in a separate thread so UI stays responsive
-            gpt_thread = threading.Thread(
-                target=gpt_controller.run_autonomous_task,
-                args=(120,),
-            )
-            gpt_thread.daemon = True
-            gpt_thread.start()
+            # self.tello.takeoff()
 
     def stopVideo(self):
-        """Stop the video stream and land"""
         if self.is_streaming:
-            print("[DRONE] Landing...")
-            self.tello.land()
             print("[UI] Stopping video stream...")
             self.is_streaming = False
             self.stopEvent.set()
