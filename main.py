@@ -13,7 +13,6 @@ import tello
 import threading
 from tello_control_ui import TelloUI
 from shelf_controller import ShelfController
-from Book_detector import BookDetector
 from test_ui import TestUI
 from gpt_drone_controller import GPTDroneController
 
@@ -22,7 +21,6 @@ def main():
     shelf = ShelfController()
     shelf.connect()
 
-    detector = BookDetector(shelf)
     drone = tello.Tello("", 8889)
     vplayer = TelloUI(drone, "./img/", shelf)
 

@@ -9,6 +9,7 @@ import os
 import time
 import platform
 from Book_Sorter import BookSorter
+from Frame_converter import FrameToSymbols
 
 
 class TelloUI:
@@ -27,7 +28,9 @@ class TelloUI:
 
         self.quit_waiting_flag = False
         self.last_sort_time = 0
+        self.sort_in_progress = False
         self.book_sorter = BookSorter(shelf) if shelf else None
+        self.symbol_detector = FrameToSymbols()
 
         self.root = tki.Tk()
         self.panel = None
@@ -75,15 +78,28 @@ class TelloUI:
                 if self.frame is None or self.frame.size == 0:
                     continue
 
-                if time.time() - self.last_sort_time >= 2.0:
+                if (
+                    time.time() - self.last_sort_time >= 2.0
+                    and not self.sort_in_progress
+                    and self.book_sorter
+                ):
                     self.last_sort_time = time.time()
-                    if self.book_sorter:
-                        t = threading.Thread(
-                            target=self.book_sorter.process_frame,
-                            args=(self.frame.copy(),),
-                        )
-                        t.daemon = True
-                        t.start()
+                    self.sort_in_progress = True
+
+                    def _detect_and_sort(frame):
+                        try:
+                            symbols = self.symbol_detector.detect(frame)
+                            if symbols:
+                                self.book_sorter.process_frame(symbols)
+                        finally:
+                            self.sort_in_progress = False
+
+                    t = threading.Thread(
+                        target=_detect_and_sort,
+                        args=(self.frame.copy(),),
+                    )
+                    t.daemon = True
+                    t.start()
 
                 image = Image.fromarray(self.frame)
 
@@ -125,6 +141,10 @@ class TelloUI:
             self.stopEvent.set()
             if self.thread is not None:
                 self.thread.join(timeout=2.0)
+                self.thread = None
+            if self.sending_command_thread is not None:
+                self.sending_command_thread.join(timeout=2.0)
+                self.sending_command_thread = None
 
     def _sendingCommand(self):
         while self.is_streaming and not self.stopEvent.is_set():

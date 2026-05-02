@@ -36,6 +36,8 @@ class BookSorter:
 
         if self.expected_frame is not None and frame != self.expected_frame:
             self._print_once(f"DEVIATION: expected {self.expected_frame}, got {frame}")
+            self.hw_state["swap"] = None
+            self._reset_hardware_state()
         self.expected_frame = None
 
         self.last_frame = frame
@@ -78,6 +80,14 @@ class BookSorter:
         self.shelf.hold(slot)
         self.hardware_slot_map[slot] = "hold"
 
+    def _reset_hardware_state(self):
+        # all shelf slots held, TEMP released
+        for s in SHELF_SLOTS:
+            if self.hardware_slot_map[s] != "hold":
+                self._hold(s)
+        if self.hardware_slot_map[TEMP_SLOT] != "released":
+            self._release(TEMP_SLOT)
+
     # -------------------------
     # CHECK CORRECTNESS
     # -------------------------
@@ -97,10 +107,7 @@ class BookSorter:
             "b_slot": b_slot,
             "step": 1,
         }
-        self._print_once(
-            f"STARTING SWAP: {b_sym} should be at slot {a_slot} "
-            f"(currently {a_sym}); swapping {a_sym}@{a_slot} ↔ {b_sym}@{b_slot}"
-        )
+        self._print_once(f"SHELF MISMATCH — swapping {a_sym} and {b_sym}")
         self._step_1()
 
     # -------------------------
