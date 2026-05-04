@@ -89,7 +89,7 @@ Several design directions were explored and iterated on before arriving at the f
 
 The final system consists of three integrated subsystems: the drone, the shelf, and the vision controller.
 
-The drone is a DJI Tello with a Towjug 20mm adhesive ferrite magnet mounted to its underside via a 3D-printed payload clip (Printables model 479370). The drone takes off, stabilizes, and hovers over the shelf. Its onboard camera feed is streamed live to the laptop, where a YOLO detection loop identifies the book spine symbols in each frame and passes them to the sorting algorithm.
+The drone is a DJI Tello with a Towjug 20mm adhesive ferrite magnet adhered directly to its underside. The drone takes off, stabilizes, and hovers over the shelf. Its onboard camera feed is streamed live to the laptop, where a YOLO detection loop identifies the book spine symbols in each frame and passes them to the sorting algorithm.
 
 The shelf holds 6 book slots, each with an Adafruit P20/15 5V electromagnet underneath. When a book is dropped into a slot, the ESP32-S3 activates the corresponding relay channel, energizing the electromagnet which attracts the carbon steel washer at the bottom of the book and locks it in place.
 
@@ -148,8 +148,6 @@ This project combines autonomous drone flight, real-time YOLOv8 book spine detec
 
 **Adafruit Electromagnet P20/15 (PID 3872)** — Product page and datasheet: [adafruit.com/product/3872](https://www.adafruit.com/product/3872)
 
-**Drone Payload Clip** — 3D-printed payload clip model used to mount the ferrite magnet on the Tello underside: [printables.com/model/479370](https://www.printables.com/model/479370)
-
 **Wiring — ESP32 and relay module:**
 
 ![Wiring](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/wire.jpg)
@@ -162,11 +160,36 @@ ESP32-S3 DevKitC plugged directly into the 16-channel relay module via jumper wi
 
 ### 3.1 Drone Payload Verification
 
-The DJI Tello has a real-world payload limit of approximately 60g. The drone-side pickup assembly weighs approximately 7.3g total: Towjug 20mm adhesive ferrite magnet (~2.3g) and 3D-printed payload clip (~5g). This is well within the payload budget.
+The DJI Tello has a real-world payload limit of approximately 60g. The full pickup assembly was verified as follows:
+
+| Component | Weight |
+|---|---|
+| PLA book body (22×25×30mm, 20% infill) | ~8.4g |
+| 2× M10×20×2mm carbon steel washer | ~7.4g |
+| 2× M3×8mm carbon steel screw | ~1.0g |
+| **Book assembly total** | **~16.8g** |
+| Towjug 20mm adhesive ferrite magnet (drone underside) | ~2.3g |
+| **Grand total** | **~19.1g** |
+
+This is well within the 60g payload budget.
 
 ### 3.2 Shelf and Electromagnet Verification
 
-The shelf subsystem was verified independently before integrating with the drone. The ESP32-S3 successfully activates individual relay channels via GPIO, energizing the Adafruit P20/15 electromagnets on demand. The 5V 5A wall adapter provides sufficient current for up to 6 electromagnets drawing ~400mA each. Books with carbon steel washers at the base were confirmed to be held securely in slots when the electromagnet is active and released cleanly when the electromagnet is deactivated.
+The shelf subsystem was verified independently before integrating with the drone. The system uses 10 Adafruit P20/15 5V electromagnets, each drawing approximately 400mA at full activation.
+
+**Power calculations:**
+
+| Parameter | Value |
+|---|---|
+| Electromagnets | 10 |
+| Current per electromagnet | 400mA |
+| Total current (all active) | 4.0A |
+| Supply voltage | 5V |
+| Total power draw | 20W |
+
+A 5V 5A DC barrel jack power supply was selected to meet the 4.0A peak demand with margin. The ESP32-S3 cannot power the 16-channel relay module directly — ESP32 GPIO pins are rated for a maximum of 12mA source/sink current each, which is far below the relay coil activation current. The relay module is therefore powered independently from the 5V 5A DC barrel jack supply, and the ESP32 GPIO pins only provide the low-current control signal to each relay's IN pin.
+
+The ESP32-S3 successfully activates individual relay channels via GPIO, energizing the electromagnets on demand. Books with carbon steel washers at the base were confirmed to be held securely in slots when the electromagnet is active and released cleanly when deactivated.
 
 ### 3.3 Vision Model Verification
 
@@ -178,11 +201,11 @@ The YOLOv8n model (`best.pt`) runs entirely on the local machine — no internet
 
 ### 4.1 System Overview
 
-The system operates as follows: the user presses START in the Tello controller UI, the drone takes off and stabilizes, the YOLO detection loop begins scanning the camera feed, the drone descends toward the shelf, identifies a book, picks it up via magnetic attachment, transports it to the correct slot, the shelf electromagnet locks the book in place, and the drone returns. All three subsystems — drone, shelf, and vision controller — run simultaneously on a single laptop, communicating via WiFi (drone), serial USB (shelf), and a local model inference pipeline (YOLO).
+The user presses START in the Tello controller UI, the drone takes off and stabilizes, and the YOLO detection loop begins scanning the camera feed. The drone descends toward the shelf and the vision pipeline identifies the books and their spine symbols, which can be used to detect out-of-order books. All three subsystems — drone, shelf, and vision controller — run simultaneously on a single laptop, communicating via WiFi (drone), serial USB (shelf), and a local model inference pipeline (YOLO).
 
 ### 4.2 DJI Tello Drone Subsystem
 
-The drone subsystem is built on a custom `tello.py` wrapper around the Tello SDK. The key fix introduced in this project was adding `MOVE_DELAY = 3.0` seconds after every movement command. Without this delay, the Tello returns `error Not joystick` because it receives a new command before finishing the previous one. The `takeoff()` method includes a 3-second stabilization sleep after liftoff. All movement commands (`move_forward`, `move_down`, etc.) send raw SDK strings directly to the drone via UDP socket rather than going through the unit-converting `move()` method, which was found to produce out-of-range values for standard movement distances.
+The DJI Tello is a small consumer drone with a 5MP 720p camera, Wi-Fi connectivity, and a Tello SDK 2.0 interface for programmatic control. It communicates over UDP — commands are sent to port 8889, state data is received on port 8890, and the video stream is received on port 11111. The drone is controlled entirely via the `tello.py` wrapper, which sends SDK command strings over the UDP socket. Movement commands include `takeoff`, `land`, `up`, `down`, `forward`, `back`, `left`, `right`, and rotation via `cw`/`ccw`. The onboard camera streams H.264-encoded video which is decoded on the host laptop and fed into the YOLO detection pipeline.
 
 ### 4.3 Smart Shelf Subsystem
 
@@ -227,8 +250,6 @@ All 3D-printed components were designed in OpenSCAD and printed in PLA at 20% in
 **Enclosure bottom** — 249×33×1mm plate with 9 electromagnet holes (4.5mm M4 clearance) aligned to the shelf slot centers, and M3 corner mounting holes.
 
 **Books** — 22×25×30mm with 3.2mm screw holes through the top and bottom center for M3 screws that secure the carbon steel washers. A shape marker tile printed separately in black PLA is super-glued to the front face of each book.
-
-**Payload clip** — holds the Towjug 20mm ferrite magnet on the underside of the Tello. Attaches without modifying the drone body.
 
 ![Assembled book with washer and marker](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/shelf_book.JPG)
 
