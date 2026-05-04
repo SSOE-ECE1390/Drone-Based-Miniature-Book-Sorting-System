@@ -38,3 +38,9 @@ manual_frames/
 
 # Ignore training dataset directory
 dataset/
+
+# Ignore input videos folder
+videos/
+
+# Ignore extracted frames output
+extracted_frames/

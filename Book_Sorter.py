@@ -4,40 +4,52 @@ TEMP_SLOT = 8
 
 
 class BookSorter:
-    def __init__(self, shelf_controller):
+    def __init__(self, shelf_controller, log_callback=None):
         self.shelf = shelf_controller
+        self.log_callback = log_callback
 
-        self.slot_map = None  # {symbol: slot}
-        self.hardware_slot_map = {  # {slot: "hold" | "released"}
+        self.slot_map = None
+        self.hardware_slot_map = {
             0: "hold",
             1: "hold",
             2: "hold",
             3: "hold",
             4: "hold",
             5: "hold",
+            6: "released",
+            7: "released",
             8: "released",
         }
 
+        for s in SHELF_SLOTS:
+            self.shelf.hold(s)
+        self.shelf.release(6)
+        self.shelf.release(7)
+        self.shelf.release(8)
+
         self.last_frame = None
         self.expected_frame = None
-
         self.hw_state = {"swap": None}
         self.last_print = None
 
-    # -------------------------
+    def _log(self, msg):
+        if msg != self.last_print:
+            self.last_print = msg
+            if self.log_callback:
+                self.log_callback(msg)
+
+    # ------------------------------------------------------------------ #
     # FRAME ENTRY
-    # -------------------------
+    # ------------------------------------------------------------------ #
     def process_frame(self, frame):
         if not frame or len(frame) != 6:
             return
-
         if frame == self.last_frame:
             return
 
         if self.expected_frame is not None and frame != self.expected_frame:
-            self._print_once(f"DEVIATION: expected {self.expected_frame}, got {frame}")
-            self.hw_state["swap"] = None
-            self._reset_hardware_state()
+            self._log(f"DEVIATION: expected {self.expected_frame}, got {frame}")
+            return
         self.expected_frame = None
 
         self.last_frame = frame
@@ -48,52 +60,47 @@ class BookSorter:
         else:
             self._continue_swap()
 
-    # -------------------------
-    # FRAME → SLOT MAP
-    # -------------------------
+    # ------------------------------------------------------------------ #
+    # FRAME TO SLOT MAP
+    # ------------------------------------------------------------------ #
     def _update_slot_map(self, frame):
-        # frame is 6 symbols left-to-right; assign in order to currently-held slots.
         held_shelf_slots = [
             s for s in SHELF_SLOTS if self.hardware_slot_map[s] == "hold"
         ]
         new_map = {}
-
-        # first N symbols go to the held shelf slots in order
         for sym, slot in zip(frame, held_shelf_slots):
             new_map[sym] = slot
-
-        # remaining symbols belong to TEMP if TEMP is held
         leftover = frame[len(held_shelf_slots) :]
         if leftover and self.hardware_slot_map[TEMP_SLOT] == "hold":
             new_map[leftover[0]] = TEMP_SLOT
-
         self.slot_map = new_map
 
-    # -------------------------
+    # ------------------------------------------------------------------ #
     # HARDWARE COMMANDS
-    # -------------------------
+    # ------------------------------------------------------------------ #
     def _release(self, slot):
+        self._log(f"ESP32: release slot {slot}")
         self.shelf.release(slot)
         self.hardware_slot_map[slot] = "released"
 
     def _hold(self, slot):
+        self._log(f"ESP32: hold slot {slot}")
         self.shelf.hold(slot)
         self.hardware_slot_map[slot] = "hold"
 
     def _reset_hardware_state(self):
-        # all shelf slots held, TEMP released
         for s in SHELF_SLOTS:
             if self.hardware_slot_map[s] != "hold":
                 self._hold(s)
         if self.hardware_slot_map[TEMP_SLOT] != "released":
             self._release(TEMP_SLOT)
 
-    # -------------------------
+    # ------------------------------------------------------------------ #
     # CHECK CORRECTNESS
-    # -------------------------
+    # ------------------------------------------------------------------ #
     def _check_and_start_swap(self):
         if all(self.slot_map.get(sym) == i for i, sym in enumerate(CORRECT_ORDER)):
-            self._print_once("SHELF OK")
+            self._log("SHELF OK")
             return
 
         a_sym, b_sym, a_slot, b_slot = self._find_first_mismatch()
@@ -107,12 +114,12 @@ class BookSorter:
             "b_slot": b_slot,
             "step": 1,
         }
-        self._print_once(f"SHELF MISMATCH — swapping {a_sym} and {b_sym}")
+        self._log(f"MISMATCH: swapping {a_sym} and {b_sym}")
         self._step_1()
 
-    # -------------------------
+    # ------------------------------------------------------------------ #
     # FIND MISMATCH
-    # -------------------------
+    # ------------------------------------------------------------------ #
     def _find_first_mismatch(self):
         for i, correct_sym in enumerate(CORRECT_ORDER):
             current_sym = next(
@@ -123,12 +130,12 @@ class BookSorter:
                 return current_sym, correct_sym, i, wrong_slot
         return None, None, None, None
 
-    # -------------------------
+    # ------------------------------------------------------------------ #
     # CONTINUE SWAP
-    # -------------------------
+    # ------------------------------------------------------------------ #
     def _continue_swap(self):
         step = self.hw_state["swap"]["step"]
-        self._print_once(f"CONTINUING SWAP: step {step}")
+        self._log(f"SWAP step {step}")
         if step == 1:
             self._step_1()
         elif step == 2:
@@ -136,9 +143,9 @@ class BookSorter:
         elif step == 3:
             self._step_3()
 
-    # -------------------------
-    # STEP 1: A_SLOT contents -> TEMP
-    # -------------------------
+    # ------------------------------------------------------------------ #
+    # STEP 1: A_SLOT contents to TEMP
+    # ------------------------------------------------------------------ #
     def _step_1(self):
         a_slot = self.hw_state["swap"]["a_slot"]
         a_sym = self.hw_state["swap"]["a_sym"]
@@ -158,11 +165,11 @@ class BookSorter:
         self._hold(TEMP_SLOT)
 
         self.hw_state["swap"]["step"] = 2
-        self._print_once(f"MOVE {a_sym} → TEMP")
+        self._log(f"MOVE {a_sym} to TEMP")
 
-    # -------------------------
-    # STEP 2: B_SLOT contents -> A_SLOT
-    # -------------------------
+    # ------------------------------------------------------------------ #
+    # STEP 2: B_SLOT contents to A_SLOT
+    # ------------------------------------------------------------------ #
     def _step_2(self):
         a_slot = self.hw_state["swap"]["a_slot"]
         b_slot = self.hw_state["swap"]["b_slot"]
@@ -190,11 +197,11 @@ class BookSorter:
         self._hold(a_slot)
 
         self.hw_state["swap"]["step"] = 3
-        self._print_once(f"MOVE {b_sym} → slot {a_slot}")
+        self._log(f"MOVE {b_sym} to slot {a_slot}")
 
-    # -------------------------
-    # STEP 3: TEMP contents -> B_SLOT
-    # -------------------------
+    # ------------------------------------------------------------------ #
+    # STEP 3: TEMP contents to B_SLOT
+    # ------------------------------------------------------------------ #
     def _step_3(self):
         a_sym = self.hw_state["swap"]["a_sym"]
         b_slot = self.hw_state["swap"]["b_slot"]
@@ -215,14 +222,5 @@ class BookSorter:
         self._release(TEMP_SLOT)
         self._hold(b_slot)
 
-        self._print_once(f"MOVE {a_sym} → slot {b_slot}")
-        self._print_once("SWAP COMPLETE")
+        self._log(f"SWAP COMPLETE: {a_sym} now in slot {b_slot}")
         self.hw_state["swap"] = None
-
-    # -------------------------
-    # PRINT CONTROL
-    # -------------------------
-    def _print_once(self, msg):
-        if msg != self.last_print:
-            print(f"[SHELF] {msg}")
-            self.last_print = msg

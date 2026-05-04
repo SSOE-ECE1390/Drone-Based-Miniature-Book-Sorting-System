@@ -9,33 +9,27 @@ if sys.platform == "win32":
     sys.stdout.flush()
     os.dup2(devnull.fileno(), 2)
 
+from PyQt5.QtWidgets import QApplication
 import tello
 import threading
 from tello_control_ui import TelloUI
 from shelf_controller import ShelfController
-from test_ui import TestUI
-from gpt_drone_controller import GPTDroneController
+
+# from gpt_drone_controller import GPTDroneController
 
 
 def main():
     shelf = ShelfController()
     shelf.connect()
 
+    app = QApplication(sys.argv)
     drone = tello.Tello("", 8889)
     vplayer = TelloUI(drone, "./img/", shelf)
+    drone.on_connected = vplayer.sig_connected.emit
+    drone.on_disconnected = vplayer.sig_disconnected.emit
 
-    test_ui = TestUI(shelf, vplayer.root)
-
-    # gpt_controller = GPTDroneController(drone)
-    # gpt_thread = threading.Thread(
-    #    target=gpt_controller.run_autonomous_task, args=(120,)
-    # )
-    # gpt_thread.daemon = True
-    # gpt_thread.start()
-
-    vplayer.root.mainloop()
-
-    shelf.disconnect()
+    vplayer.show()
+    sys.exit(app.exec_())
 
 
 if __name__ == "__main__":

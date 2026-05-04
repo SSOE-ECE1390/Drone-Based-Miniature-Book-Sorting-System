@@ -16,7 +16,6 @@ class ShelfController:
                 self.serial = serial.Serial(self.port, self.baudrate, timeout=1)
                 time.sleep(2)  # Wait for ESP32 to initialize after serial connection
                 self.connected = True
-                print("Connected to ESP32 via serial")
             except Exception as e:
                 print(f"Connection failed: {e}")
                 time.sleep(1)

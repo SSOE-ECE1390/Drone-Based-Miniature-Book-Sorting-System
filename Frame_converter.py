@@ -17,7 +17,7 @@ _PROMPT = (
 
 
 class FrameToSymbols:
-    def __init__(self, api_key=None, model="gpt-4o"):
+    def __init__(self, api_key=None, model="gpt-4o-mini"):
         self.client = OpenAI(api_key=api_key or os.environ.get("OPENAI_API_KEY"))
         self.model = model
         self.timeout = float(os.environ.get("FRAME_TO_SYMBOLS_TIMEOUT", "10"))
@@ -40,7 +40,7 @@ class FrameToSymbols:
                                 "type": "image_url",
                                 "image_url": {
                                     "url": f"data:image/jpeg;base64,{b64}",
-                                    "detail": "low",
+                                    "detail": "high",
                                 },
                             },
                         ],
@@ -54,6 +54,7 @@ class FrameToSymbols:
             return None
 
         text = resp.choices[0].message.content.strip()
+        print(f"[GPT → SYSTEM] {text}")
         return self._parse(text)
 
     def _encode_jpeg(self, frame):
@@ -83,10 +84,11 @@ class FrameToSymbols:
     def _parse(self, text):
         parts = [p.strip() for p in text.split(",")]
         if len(parts) != 6:
-            print(f"[FRAME→SYMBOLS] bad response: {text!r}")
             return None
         for p in parts:
             if p not in VALID_SYMBOLS:
-                print(f"[FRAME→SYMBOLS] unknown symbol {p!r} in: {text!r}")
+                return None
+        for sym in VALID_SYMBOLS:
+            if parts.count(sym) > 1:
                 return None
         return parts

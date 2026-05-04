@@ -46,6 +46,8 @@ class Tello:
         imperial=False,
         tello_ip="192.168.10.1",
         tello_port=8889,
+        on_connected=None,
+        on_disconnected=None,
     ):
         self.abort_flag = False
         self.decoder = libh264decoder.H264Decoder()
@@ -56,6 +58,8 @@ class Tello:
         self.is_freeze = False
         self.last_frame = None
         self.connected = False
+        self.on_connected = on_connected
+        self.on_disconnected = on_disconnected
         self.socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.socket_video = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
         self.tello_address = (tello_ip, tello_port)
@@ -94,6 +98,9 @@ class Tello:
         while True:
             try:
                 self.response, ip = self.socket.recvfrom(3000)
+                print(
+                    f"[DRONE → PC] {self.response.decode('utf-8', errors='ignore').strip()}"
+                )
             except socket.error as exc:
                 if self.connected:
                     print("Disconnected from Tello Drone")
@@ -131,6 +138,7 @@ class Tello:
         timer = threading.Timer(self.command_timeout, self.set_abort_flag)
 
         self.socket.sendto(command.encode("utf-8"), self.tello_address)
+        print(f"[PC → DRONE] {command}")
 
         timer.start()
         while self.response is None:
