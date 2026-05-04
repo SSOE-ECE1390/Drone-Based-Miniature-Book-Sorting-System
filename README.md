@@ -220,6 +220,10 @@ Book identification uses a YOLOv8n model trained on real footage of the physical
 
 The chart shows training and validation loss (box, classification, and DFL) alongside precision, recall, mAP@50, and mAP@50-95 across 42 epochs. All three loss curves drop sharply in the first 5 epochs and flatten cleanly, with no divergence between training and validation — indicating no overfitting. Precision and recall both converge to ~0.99, and mAP@50 and mAP@50-95 both reach ~1.0 by epoch 10 and hold steady for the remainder of training — strong results for a 6-class symbol detection task on a custom dataset.
 
+`Frame_converter.py` loads `best.pt` at runtime and runs this model on every incoming drone frame. Below is an example detection — each book spine is identified with a bounding box and confidence score, sorted left to right into the symbol order passed to `BookSorter`:
+
+![Detection frame with bounding boxes](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/frame.jpg)
+
 `Frame_converter.py` loads `best.pt` at runtime, runs inference per frame, sorts detections left to right, and validates exactly 6 unique known symbols before returning the ordered list or `None`.
 
 `Book_Sorter.py` receives the symbol list and executes a 4-step confirmation-based swap algorithm using slot 8 as temp. Each step sets an `expected_frame` and waits for camera confirmation before advancing. Step 4 confirms the completed swap and resets `last_frame` to None so the next mismatch check fires immediately. `Book_Sorter_Test.py` covers six offline test cases validating the full algorithm.
