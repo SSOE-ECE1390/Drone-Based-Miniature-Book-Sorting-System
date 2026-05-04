@@ -98,35 +98,27 @@ Each book is 3D-printed PLA at 20% infill, 22×25×30mm, with an M3 screw securi
 ### 2.3 System Architecture
 
 ```mermaid
-%%{init: {'theme': 'default'}}%%
-flowchart LR
-    subgraph Drone["🚁 DJI Tello"]
-        Camera["Camera\nH.264 stream"]
-        TelloPy["tello.py\nSDK wrapper"]
+%%{init: {'theme': 'neutral'}}%%
+flowchart TD
+    subgraph Drone["🚁 DJI Tello Drone"]
+        Camera["Onboard Camera\nH.264 stream"]
+        TelloPy["tello.py\nTello SDK wrapper — UDP WiFi"]
     end
 
     subgraph Host["💻 Host Laptop"]
-        main["main.py"]
-        TelloUI["TelloUI\ntello_control_ui.py"]
-        FTS["FrameToSymbols\nFrame_converter.py"]
-        YOLO["YOLOv8n\nbest.pt"]
-        BS["BookSorter\nBook_Sorter.py"]
-        SC["ShelfController\nshelf_controller.py"]
+        main["main.py\nEntry point"]
+        TelloUI["tello_control_ui.py\nTelloUI — PyQt5"]
+        FTS["Frame_converter.py\nFrameToSymbols"]
+        YOLO["best.pt\nYOLOv8n — local inference"]
+        BS["Book_Sorter.py\nBookSorter — swap algorithm"]
+        SC["shelf_controller.py\nShelfController — pyserial"]
     end
 
-    subgraph ESP32["🔌 ESP32-S3"]
-        Arduino["ESP32_Controller.ino"]
-        Slots05["Slots 0–5\nShelf magnets"]
-        Slots68["Slots 6–8\nAux magnets"]
+    subgraph ESP32["🔌 ESP32-S3 + 16-ch Relay Module"]
+        Arduino["ESP32_Controller.ino\nRelay GPIO control"]
+        Slots05["Slots 0–5\nShelf electromagnets"]
+        Slots68["Slots 6–8\nAux electromagnets"]
     end
-
-    classDef drone fill:#dbeafe,stroke:#3b82f6,color:#1e3a5f
-    classDef host fill:#dcfce7,stroke:#22c55e,color:#14532d
-    classDef esp fill:#fef9c3,stroke:#eab308,color:#713f12
-
-    class Camera,TelloPy drone
-    class main,TelloUI,FTS,YOLO,BS,SC host
-    class Arduino,Slots05,Slots68 esp
 
     main --> TelloUI
     main --> SC
@@ -134,10 +126,10 @@ flowchart LR
     TelloPy -->|"WiFi UDP"| Camera
     Camera -->|"decoded frames"| FTS
     FTS --> YOLO
-    YOLO -->|"symbol list"| BS
+    YOLO -->|"ordered symbol list"| BS
     BS --> SC
     BS --> TelloUI
-    SC -->|"serial 115200 baud"| Arduino
+    SC -->|"serial — 115200 baud"| Arduino
     Arduino --> Slots05
     Arduino --> Slots68
 ```
