@@ -35,10 +35,9 @@
    - [5.2 Drone Takeoff and Landing Tests](#52-drone-takeoff-and-landing-tests)
    - [5.3 GPT Water Bottle Detection Test](#53-gpt-water-bottle-detection-test)
    - [5.4 Magnet Pickup Test](#54-magnet-pickup-test)
-   - [5.5 Book Detection Test](#55-book-detection-test)
-   - [5.6 Full System Integration Test](#56-full-system-integration-test)
-   - [5.7 Unsuccessful Attempts and Fixes](#57-unsuccessful-attempts-and-fixes)
-   - [5.8 Demonstration Videos](#58-demonstration-videos)
+   - [5.5 Full System Integration Test](#55-full-system-integration-test)
+   - [5.6 Unsuccessful Attempts and Fixes](#56-unsuccessful-attempts-and-fixes)
+   - [5.7 Demonstration Videos](#57-demonstration-videos)
 6. [Bill of Materials](#6-bill-of-materials)
    - [6.1 Hardware Components](#61-hardware-components)
 7. [AI Usage Summary](#7-ai-usage-summary)
@@ -83,7 +82,7 @@ Several design directions were explored and iterated on before arriving at the f
 
 **Book pickup mechanism** also went through multiple iterations. The original design embedded neodymium rare earth magnets in the top of each book, with a matching magnet mounted on the drone underside. Testing revealed a critical flaw: the neodymium magnets were so strong that books on adjacent shelf slots attracted each other, causing the entire shelf to collapse. The design was revised to use a Towjug 20mm anisotropic flexible ferrite adhesive magnet on the drone underside, with M10×20×2mm carbon steel washers screwed into the top of each book. The flexible ferrite magnet is strong enough to hold a book during flight but weak enough not to disturb neighboring books on the shelf.
 
-**Book design** also changed significantly. The original plan was to 3D print miniature books at 40×30×50mm with low infill. The first print batch failed because the super glue used to attach shape markers did not bond to PLA reliably. A brief detour into using single-digit 7-segment LED displays as books was explored but abandoned because the display face (14×19mm) was too small to fit a readable shape marker while also accommodating a washer. The final design returned to 3D printing at 22×25×30mm with a realistic book shape — front and back covers, spine bump, and page grooves — with M3 screw holes through the top and bottom to secure the washers mechanically rather than by adhesive.
+**Book design** also changed significantly. The original plan was to 3D print miniature books at 40×30×50mm with low infill. The design was revised to 22×25×30mm with M3 screw holes through the top and bottom to secure the carbon steel washers mechanically — super glue did not hold the washers to PLA reliably under repeated magnetic pickup forces.
 
 ### 2.2 Final Design Description
 
@@ -97,7 +96,7 @@ Each book is 3D-printed PLA at 20% infill, 22×25×30mm, with an M3 screw securi
 
 ### 2.3 System Architecture
 
-> *[System architecture diagram to be inserted here]*
+![System Architecture](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/system_Architecture.png)
 
 ### 2.4 How This Expands on Previous Work
 
@@ -105,7 +104,21 @@ This project integrates several domains that are typically treated separately: a
 
 ### 2.5 References and Schematics
 
-> *[Wiring schematics and references to be inserted here]*
+**Tello Python SDK** — `tello.py` is based on the official DJI Tello Python sample code: [github.com/dji-sdk/Tello-Python](https://github.com/dji-sdk/Tello-Python). The UDP socket architecture, H264 video decoding via `libh264decoder`, and Tkinter UI structure are all derived from the `Tello_Video` sample in that repository.
+
+**Tello SDK 2.0 User Guide** — Official command reference for all SDK commands used (`takeoff`, `land`, `up`, `down`, `forward`, `back`, `left`, `right`, `cw`, `ccw`, `speed`, `battery?`, `streamon`): [dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf](https://dl-cdn.ryzerobotics.com/downloads/Tello/Tello%20SDK%202.0%20User%20Guide.pdf)
+
+**ESP32-S3-DevKitC-1 Datasheet** — Pinout and GPIO reference used for relay wiring: [docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1/user_guide.html)
+
+**Adafruit Electromagnet P20/15 (PID 3872)** — Product page and datasheet: [adafruit.com/product/3872](https://www.adafruit.com/product/3872)
+
+**Drone Payload Clip** — 3D-printed payload clip model used to mount the ferrite magnet on the Tello underside: [printables.com/model/479370](https://www.printables.com/model/479370)
+
+**Wiring — ESP32 and relay module:**
+
+![Wiring](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/wire.JPG)
+
+ESP32-S3 DevKitC plugged directly into the 16-channel relay module via jumper wires. 10 blue signal wires run out to the electromagnets under each shelf slot. Red and black power wires connect to the external 5V supply via a barrel jack adapter. A USB cable connects the ESP32 to the laptop for serial control.
 
 ---
 
@@ -167,7 +180,7 @@ All 3D-printed components were designed in OpenSCAD and printed in PLA at 20% in
 
 **Payload clip** — holds the Towjug 20mm ferrite magnet on the underside of the Tello. Attaches without modifying the drone body.
 
-> *[Insert assembled book with washer and marker photos here]*
+![Assembled book with washer and marker](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/shelf_book.JPG)
 
 **OpenSCAD renders:**
 
@@ -186,9 +199,15 @@ Three network interfaces operate simultaneously on one laptop during a full syst
 
 ### 4.9 Design Challenges
 
-The project encountered and resolved a significant number of technical challenges across hardware and software.
+**16-channel relay module** had limited documentation, which made understanding the NO/NC wiring convention and optocoupler power requirements a significant learning curve early in the hardware build.
 
-`error Not joystick` from the Tello SDK was the most persistent drone-side issue. The drone returns this error when a new command arrives before the previous movement has completed. The fix was adding a class-level `MOVE_DELAY = 3.0` constant applied after every movement command in `tello.py`. The `gpt-4-vision-preview` model was deprecated mid-project with no advance warning, requiring an immediate switch to `gpt-4o` and a fix to the `image_url` format which changed from a plain string to a dictionary `{"url": "..."}` in the new client. A duplicate takeoff bug caused the drone to attempt takeoff twice — once from the UI and once from the GPT controller — with the second call hitting an already-airborne drone. This was resolved by moving takeoff out of the UI entirely. GPT consistently wrapped JSON responses in markdown fences, causing `json.JSONDecodeError`, resolved by stripping markdown fences before parsing.
+**Magnet and washer attachment** — getting the magnets and later the washers to stay on the books was a persistent challenge. The original 3D print design had to be revised to use screws, but the screw heads were not as flush as expected, which restricted the ferrite magnet on the drone from lying flat against the washer and reduced pickup reliability.
+
+**Drone battery life** — the Tello is only capable of approximately 13–15 minutes of flight per battery. Additional batteries were ordered which allowed several hours of continuous testing per session rather than being limited to a single short flight.
+
+**Dual-network constraint** — the laptop had to be simultaneously connected to the Tello's WiFi hotspot for drone control and to the internet for OpenAI API calls. These two connections cannot share the same WiFi adapter. Resolved using iPhone USB tethering to route internet traffic over cellular while keeping WiFi free for the Tello. This setup worked well for home testing but proved fragile in locations without reliable cellular coverage.
+
+**3D printing precision** — getting hole sizes, wall thicknesses, and slot dimensions right required calculating everything down to the millimeter. This was made more critical by the Tello's payload constraint of approximately 50g, which meant every gram of the book design had to be accounted for to stay within the drone's lift capacity.
 
 ---
 
@@ -208,17 +227,13 @@ Testing followed a progressive integration strategy: each subsystem was verified
 
 ### 5.4 Magnet Pickup Test
 
-> *[Pending — books not yet printed]*
+> *[Pending]*
 
-### 5.5 Book Detection Test
-
-> *[Pending — YOLO model not yet trained]*
-
-### 5.6 Full System Integration Test
+### 5.5 Full System Integration Test
 
 > *[Pending]*
 
-### 5.7 Unsuccessful Attempts and Fixes
+### 5.6 Unsuccessful Attempts and Fixes
 
 **Neodymium magnets on books** caused adjacent books on the shelf to attract each other and collapse the entire shelf. Replaced with carbon steel washers on books and a weak flexible ferrite magnet on the drone.
 
@@ -228,9 +243,7 @@ Testing followed a progressive integration strategy: each subsystem was verified
 
 **QR codes → ArUco markers → shape markers** — three full pivots in identification strategy, each driven by a practical constraint. QR codes required too much drone precision to resolve. ArUco markers at book size were below reliable detection resolution from the drone camera. Shape markers are large, bold, and distinguishable even at low resolution and off-axis angles.
 
-**`gpt-4-vision-preview` deprecated** mid-project with no warning. Required switching model to `gpt-4o`, updating the OpenAI client from legacy `openai.ChatCompletion.create` to `self.client.chat.completions.create`, and fixing the `image_url` format.
-
-### 5.8 Demonstration Videos
+### 5.7 Demonstration Videos
 
 > *[To be added]*
 
@@ -250,8 +263,6 @@ Testing followed a progressive integration strategy: each subsystem was verified
 | 5V 5A Wall Adapter w/ Screw Terminal | Amazon | — | 1 | $9.99 |
 | Towjug Round Adhesive Magnets 20mm | Amazon | 30 pack | 1 | $3.99 |
 | M3×8mm Countersunk Screws | Amazon | MewuDecor 50 pack | 1 | $5.99 |
-| 3D Printed Drone Payload Clip | Printables | Model 479370 | 1 | $0 |
-| 3D Printed Books PLA 20% infill | Printed | 22×25×30mm | 6 | — |
 
 ---
 
@@ -259,6 +270,7 @@ Testing followed a progressive integration strategy: each subsystem was verified
 
 ### 7.1 Where AI Was Used
 
+AI was used for debugging and error message interpretation throughout the project. When the Tello SDK returned unfamiliar error strings, Claude was used to look up their meaning against the official documentation and identify the root cause.
 
 ### 7.2 Example of AI Use
 
@@ -282,8 +294,12 @@ GPT-4o vision is a viable real-time controller for drone navigation at the proto
 
 ### 8.3 What I Would Do Differently
 
-The YOLO training approach was a significant time investment that was ultimately not used. Starting directly with GPT-4o vision for symbol detection would have saved several weeks. The book pickup mechanism would benefit from a more rigid drone payload mount — the flexible ferrite magnet clip introduces positional uncertainty that makes precise pickup harder to guarantee. The shelf enclosure went through two full rebuilds due to wiring and slot assignment errors; a cleaner initial wiring diagram with labeled slots would have prevented both.
+More research into drone flight dynamics before starting would have changed several early decisions. A lot of effort went into analyzing payload weight, but not enough into the actual complexities of stable hovering, precision positioning, and the effect of motor wash on a lightweight payload — all of which became real challenges during testing.
+
+More research into magnetization would also have helped. The assumption was that the electromagnets would be significantly stronger than the ferrite magnet on the drone, but the actual magnetic force available was never properly calculated before committing to the design. A proper force analysis upfront would have caught this earlier.
+
+The washer-based pickup mechanism did not produce the best outcome. If starting over, a different attachment approach would be explored — the washers introduced alignment sensitivity and inconsistency that made reliable pickup difficult to guarantee.
 
 ### 8.4 Future Work
 
-The most immediate next step is completing the full autonomous pickup loop — descend, navigate to center over a book, descend to contact, verify magnetic attachment, transport to correct slot, and release. A more robust lateral navigation phase in `gpt_drone_controller.py` is needed for this, with GPT providing left/right/forward/back corrections until the book is centered under the drone. Longer term, the system could be scaled to a full-size shelf with a larger drone, a more powerful pickup mechanism, and a barcode or RFID-based identification system that does not depend on line-of-sight symbol detection.
+The most important area for future work is the magnet system. Without a reliable pickup mechanism it was very difficult to demonstrate the drone completing a full pick-and-place cycle. The priority would be researching alternative attachment methods — the screw head sitting proud of the washer surface created too much gap between the drone magnet and the book, making reliable pickup inconsistent. Finding a flatter, more flush mounting solution for the washer, or replacing the washer entirely with a different ferromagnetic target, would be the first thing to tackle before attempting further autonomous sorting tests.
