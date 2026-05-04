@@ -3,7 +3,7 @@ import time
 
 
 class ShelfController:
-    def __init__(self, port="COM3", baudrate=115200):
+    def __init__(self, port="COM16", baudrate=115200):
         self.port = port
         self.baudrate = baudrate
         self.serial = None
@@ -16,6 +16,7 @@ class ShelfController:
                 self.serial = serial.Serial(self.port, self.baudrate, timeout=1)
                 time.sleep(2)  # Wait for ESP32 to initialize after serial connection
                 self.connected = True
+                print(f"Connected to ESP32 on {self.port}")
             except Exception as e:
                 print(f"Connection failed: {e}")
                 time.sleep(1)

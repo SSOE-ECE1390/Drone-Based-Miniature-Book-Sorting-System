@@ -158,11 +158,16 @@ class HardwareSlotWidget(QWidget):
             num_label.setFont(QFont("Consolas", 9))
             num_label.setStyleSheet(f"color: {DIM_COLOR};")
             num_label.setAlignment(Qt.AlignCenter)
-            state_label = QLabel("HELD")
+            default_held = i <= 5
+            state_label = QLabel("HELD" if default_held else "RELEASED")
             state_label.setFont(QFont("Consolas", 9, QFont.Bold))
             state_label.setAlignment(Qt.AlignCenter)
             state_label.setFixedWidth(72)
-            state_label.setStyleSheet(f"color: {SYMBOL_CORRECT_COLOR.name()};")
+            state_label.setStyleSheet(
+                f"color: {SYMBOL_CORRECT_COLOR.name()};"
+                if default_held
+                else f"color: {SYMBOL_WRONG_COLOR.name()};"
+            )
             self.slot_labels[i] = state_label
             col.addWidget(num_label)
             col.addWidget(state_label)
@@ -400,7 +405,7 @@ class TelloUI(QMainWindow):
 
                 if not self.is_paused:
                     if (
-                        time.time() - self.last_sort_time >= 5.0
+                        time.time() - self.last_sort_time >= 1.0
                         and not self.sort_in_progress
                         and self.book_sorter
                     ):
@@ -440,6 +445,7 @@ class TelloUI(QMainWindow):
         if not self.is_streaming:
             print("[UI] Starting video stream...")
             print("[DRONE] Connected to DJI Tello")
+            self.tello.send_command_without_wait("streamon")
             self.is_streaming = True
             self.stopEvent.clear()
             self.thread = threading.Thread(target=self.videoLoop, args=())

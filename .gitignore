@@ -26,7 +26,8 @@ wheels/
 *.egg
 *.pyc
 *.pyo
-
+venv/
+.venv/
 # Ignore captured video files and large drone data
 Drone_Capture/
 

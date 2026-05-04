@@ -1,3 +1,5 @@
+import time
+
 CORRECT_ORDER = ["I", "+", "X", "-", "[]", "O"]
 SHELF_SLOTS = [0, 1, 2, 3, 4, 5]
 TEMP_SLOT = 8
@@ -23,8 +25,11 @@ class BookSorter:
 
         for s in SHELF_SLOTS:
             self.shelf.hold(s)
+            time.sleep(0.05)
         self.shelf.release(6)
+        time.sleep(0.05)
         self.shelf.release(7)
+        time.sleep(0.05)
         self.shelf.release(8)
 
         self.last_frame = None
@@ -142,6 +147,8 @@ class BookSorter:
             self._step_2()
         elif step == 3:
             self._step_3()
+        elif step == 4:
+            self._step_4()
 
     # ------------------------------------------------------------------ #
     # STEP 1: A_SLOT contents to TEMP
@@ -160,6 +167,7 @@ class BookSorter:
             key=lambda s: self.slot_map[s],
         )
         self.expected_frame = remaining_syms + [a_sym]
+        self._log(f"EXPECTED FRAME: {self.expected_frame}")
 
         self._release(a_slot)
         self._hold(TEMP_SLOT)
@@ -192,6 +200,7 @@ class BookSorter:
             key=lambda s: post[s],
         )
         self.expected_frame = shelf_syms + [a_sym]
+        self._log(f"EXPECTED FRAME: {self.expected_frame}")
 
         self._release(b_slot)
         self._hold(a_slot)
@@ -218,9 +227,20 @@ class BookSorter:
             key=lambda s: post[s],
         )
         self.expected_frame = shelf_syms
+        self._log(f"EXPECTED FRAME: {self.expected_frame}")
 
         self._release(TEMP_SLOT)
         self._hold(b_slot)
 
-        self._log(f"SWAP COMPLETE: {a_sym} now in slot {b_slot}")
+        self.hw_state["swap"]["step"] = 4
+        self._log(f"MOVE {a_sym} to slot {b_slot} — awaiting confirmation")
+
+    # ------------------------------------------------------------------ #
+    # STEP 4: CONFIRMATION — camera must see the final frame
+    # ------------------------------------------------------------------ #
+    def _step_4(self):
+        a_sym = self.hw_state["swap"]["a_sym"]
+        b_slot = self.hw_state["swap"]["b_slot"]
+        self._log(f"SWAP COMPLETE: {a_sym} confirmed in slot {b_slot}")
         self.hw_state["swap"] = None
+        self.last_frame = None

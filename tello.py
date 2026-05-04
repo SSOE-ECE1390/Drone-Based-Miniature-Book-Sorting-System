@@ -1,38 +1,20 @@
+import os
+import sys
+
+_dll_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "ffmpeg_dlls")
+os.add_dll_directory(_dll_dir)
+sys.path.insert(0, _dll_dir)
+
+import libh264decoder
+
 import socket
 import threading
 import time
 import numpy as np
-import sys
-import os
 from ctypes import cdll, c_int
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
 ffmpeg_dll_dir = os.path.join(project_dir, "ffmpeg_dlls")
-
-if sys.platform == "win32":
-    ffmpeg_dlls = [
-        "avcodec-62.dll",
-        "avformat-62.dll",
-        "avutil-60.dll",
-        "swscale-7.dll",
-    ]
-    for dll_name in ffmpeg_dlls:
-        dll_path = os.path.join(ffmpeg_dll_dir, dll_name)
-        if os.path.exists(dll_path):
-            try:
-                cdll.LoadLibrary(dll_path)
-            except Exception as e:
-                print(f"Warning: Could not preload {dll_name}: {e}")
-
-    try:
-        avutil = cdll.LoadLibrary(os.path.join(ffmpeg_dll_dir, "avutil-60.dll"))
-        avutil.av_log_set_level(c_int(-8))
-    except:
-        pass
-
-sys.path.insert(0, ffmpeg_dll_dir)
-
-import libh264decoder
 
 
 class Tello:

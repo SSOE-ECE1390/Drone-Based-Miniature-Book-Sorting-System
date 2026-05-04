@@ -1,94 +1,47 @@
-import base64
+import cv2
+import numpy as np
+from ultralytics import YOLO
 import os
 
-import cv2
-from openai import OpenAI
-
 VALID_SYMBOLS = ["I", "+", "X", "-", "[]", "O"]
-
-_PROMPT = (
-    "The image shows a shelf with exactly 6 books in a row. "
-    "Each book has one printed symbol on its spine, drawn from this set: "
-    f"{VALID_SYMBOLS}. "
-    "Return the symbols you see, left to right, as a comma-separated list "
-    "with no extra text, no spaces, no quotes. "
-    "Example output: I,+,X,-,[],O"
-)
+CLASS_NAMES = ["I", "+", "X", "-", "[]", "O"]
+MODEL_PATH = os.environ.get("YOLO_MODEL_PATH", "best.pt")
+CONF_THRESHOLD = 0.5
 
 
 class FrameToSymbols:
-    def __init__(self, api_key=None, model="gpt-4o-mini"):
-        self.client = OpenAI(api_key=api_key or os.environ.get("OPENAI_API_KEY"))
-        self.model = model
-        self.timeout = float(os.environ.get("FRAME_TO_SYMBOLS_TIMEOUT", "10"))
-        self.max_image_side = int(os.environ.get("FRAME_TO_SYMBOLS_MAX_SIDE", "640"))
+    def __init__(self, model_path=None):
+        path = model_path or MODEL_PATH
+        self.model = YOLO(path)
 
     def detect(self, frame):
-        b64 = self._encode_jpeg(frame)
-        if b64 is None:
+        bgr = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
+        results = self.model(bgr, verbose=False, conf=CONF_THRESHOLD)[0]
+
+        if results.boxes is None or len(results.boxes) == 0:
             return None
 
-        try:
-            resp = self.client.chat.completions.create(
-                model=self.model,
-                messages=[
-                    {
-                        "role": "user",
-                        "content": [
-                            {"type": "text", "text": _PROMPT},
-                            {
-                                "type": "image_url",
-                                "image_url": {
-                                    "url": f"data:image/jpeg;base64,{b64}",
-                                    "detail": "high",
-                                },
-                            },
-                        ],
-                    }
-                ],
-                max_tokens=50,
-                timeout=self.timeout,
-            )
-        except Exception as e:
-            print(f"[FRAME→SYMBOLS] API error: {e}")
+        boxes = []
+        for box in results.boxes:
+            x1, y1, x2, y2 = box.xyxy[0].tolist()
+            cls_id = int(box.cls[0].item())
+            conf = float(box.conf[0].item())
+            cx = (x1 + x2) / 2
+            symbol = CLASS_NAMES[cls_id]
+            boxes.append((cx, symbol, conf))
+
+        boxes = sorted(boxes, key=lambda b: b[0])
+
+        if len(boxes) != 6:
             return None
 
-        text = resp.choices[0].message.content.strip()
-        print(f"[GPT → SYSTEM] {text}")
-        return self._parse(text)
+        symbols = [b[1] for b in boxes]
 
-    def _encode_jpeg(self, frame):
-        try:
-            bgr = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
-            height, width = bgr.shape[:2]
-            longest_side = max(height, width)
-            if longest_side > self.max_image_side:
-                scale = self.max_image_side / float(longest_side)
-                bgr = cv2.resize(
-                    bgr,
-                    (int(width * scale), int(height * scale)),
-                    interpolation=cv2.INTER_AREA,
-                )
-            ok, buf = cv2.imencode(
-                ".jpg",
-                bgr,
-                [int(cv2.IMWRITE_JPEG_QUALITY), 70],
-            )
-            if not ok:
-                return None
-            return base64.b64encode(buf.tobytes()).decode("utf-8")
-        except Exception as e:
-            print(f"[FRAME→SYMBOLS] encode error: {e}")
-            return None
-
-    def _parse(self, text):
-        parts = [p.strip() for p in text.split(",")]
-        if len(parts) != 6:
-            return None
-        for p in parts:
-            if p not in VALID_SYMBOLS:
+        for sym in symbols:
+            if sym not in VALID_SYMBOLS:
                 return None
         for sym in VALID_SYMBOLS:
-            if parts.count(sym) > 1:
+            if symbols.count(sym) > 1:
                 return None
-        return parts
+
+        return symbols

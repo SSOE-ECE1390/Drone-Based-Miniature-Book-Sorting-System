@@ -85,8 +85,18 @@ void relay_setup()
     for (int i = 0; i < NUM_SLOTS; i++)
     {
         pinMode(RELAY_PINS[i], OUTPUT);
-        digitalWrite(RELAY_PINS[i], wiredOnNO[i] ? LOW : HIGH);
-        slotHolding[i] = true;
+        if (i <= 5)
+        {
+            // slots 0-5: start held
+            digitalWrite(RELAY_PINS[i], wiredOnNO[i] ? LOW : HIGH);
+            slotHolding[i] = true;
+        }
+        else
+        {
+            // slots 6-8: start released
+            digitalWrite(RELAY_PINS[i], wiredOnNO[i] ? HIGH : LOW);
+            slotHolding[i] = false;
+        }
     }
 }
 

@@ -30,6 +30,7 @@
    - [4.7 3D Printed Books](#47-3d-printed-books)
    - [4.8 Inter-Subsystem Communication](#48-inter-subsystem-communication)
    - [4.9 Design Challenges](#49-design-challenges)
+   - [4.10 Controller UI](#410-controller-ui)
 5. [Design Testing](#5-design-testing)
    - [5.1 Test Plan](#51-test-plan)
    - [5.2 Drone Takeoff and Landing Tests](#52-drone-takeoff-and-landing-tests)
@@ -88,7 +89,7 @@ Several design directions were explored and iterated on before arriving at the f
 
 The final system consists of three integrated subsystems: the drone, the shelf, and the vision controller.
 
-The drone is a DJI Tello with a Towjug 20mm adhesive ferrite magnet mounted to its underside via a 3D-printed payload clip (Printables model 479370). The drone runs a 5-phase autonomous task loop managed by `gpt_drone_controller.py`: DESCEND (move down 30cm at a time until the book is spotted), FIND_MAGNET (move down 20cm at a time until the washer is visible), COLLECT (fly forward and back to snap the magnet onto the washer), VERIFY (check whether the magnet is still on the book top — if gone, collection succeeded), and RETURN (ascend 50cm and land).
+The drone is a DJI Tello with a Towjug 20mm adhesive ferrite magnet mounted to its underside via a 3D-printed payload clip (Printables model 479370). The drone takes off, stabilizes, and hovers over the shelf. Its onboard camera feed is streamed live to the laptop, where a YOLO detection loop identifies the book spine symbols in each frame and passes them to the sorting algorithm.
 
 The shelf holds 6 book slots, each with an Adafruit P20/15 5V electromagnet underneath. When a book is dropped into a slot, the ESP32-S3 activates the corresponding relay channel, energizing the electromagnet which attracts the carbon steel washer at the bottom of the book and locks it in place.
 
@@ -100,7 +101,7 @@ Each book is 3D-printed PLA at 20% infill, 22×25×30mm, with an M3 screw securi
 
 ### 2.4 How This Expands on Previous Work
 
-This project integrates several domains that are typically treated separately: autonomous drone navigation, computer vision via large language models, electromagnetic actuation, and embedded systems control. No existing off-the-shelf system combines all four for the purpose of physical shelf management. The use of GPT-4o as a real-time drone navigation controller — not just for classification but for issuing movement commands — represents a novel application of vision-language models in physical robotics. The dual-network architecture (Tello WiFi for drone control + iPhone USB tethering for internet access) is a non-trivial systems integration challenge that had to be solved from scratch.
+This project combines autonomous drone flight, real-time YOLOv8 book spine detection, electromagnetic shelf actuation, and a confirmation-based multi-step sorting algorithm in a single integrated system. Each of these domains has been explored individually in prior work, but no existing system integrates all four for the purpose of physical shelf sorting. The confirmation-based swap algorithm — where each step waits for camera verification before advancing — adds a robustness layer that distinguishes this from simpler pick-and-place approaches.
 
 ### 2.5 References and Schematics
 
@@ -142,7 +143,7 @@ GPT-4o vision API connectivity was verified under the Tello WiFi constraint. Whe
 
 ### 4.1 System Overview
 
-The system operates as follows: the user presses START in the Tello controller UI, the drone takes off and stabilizes, the GPT vision loop begins scanning the camera feed, the drone descends toward the shelf, identifies a book, picks it up via magnetic attachment, transports it to the correct slot, the shelf electromagnet locks the book in place, and the drone returns. All three subsystems — drone, shelf, and vision controller — run simultaneously on a single laptop, communicating via WiFi (drone), serial USB (shelf), and HTTPS (OpenAI API).
+The system operates as follows: the user presses START in the Tello controller UI, the drone takes off and stabilizes, the YOLO detection loop begins scanning the camera feed, the drone descends toward the shelf, identifies a book, picks it up via magnetic attachment, transports it to the correct slot, the shelf electromagnet locks the book in place, and the drone returns. All three subsystems — drone, shelf, and vision controller — run simultaneously on a single laptop, communicating via WiFi (drone), serial USB (shelf), and a local model inference pipeline (YOLO).
 
 ### 4.2 DJI Tello Drone Subsystem
 
@@ -154,15 +155,21 @@ The shelf uses an ESP32-S3-DevKitC-1-N8R8 connected to an ANMBEST 16-channel 5V 
 
 ### 4.4 GPT Vision Controller
 
-`gpt_drone_controller.py` implements a 5-phase state machine. Each phase has its own GPT prompt that asks only the question relevant to that phase — no extraneous fields that GPT might hallucinate values for. Phase prompts ask for boolean fields only (`sees_bottle`, `sees_magnet`, `magnet_still_on_bottle`) to prevent GPT from returning out-of-range movement distances. The API is called at most once per 1.5 seconds to avoid rate limiting and excessive cost. JSON responses are stripped of markdown fences before parsing to handle GPT's tendency to wrap JSON in triple backticks.
+`gpt_drone_controller.py` is an earlier implementation of the drone navigation controller that used GPT-4o vision for real-time command generation. It has been superseded by the YOLOv8-based detection pipeline in the current implementation.
 
 ### 4.5 Book Detection and Sorting Algorithm
 
-Book identification uses the GPT-4o vision API via `Frame_converter.py`. Every 2 seconds, the video loop captures a frame and passes it to `FrameToSymbols.detect()` on a separate daemon thread so the video feed is never blocked. The frame is resized to a maximum of 640px on the longest side and JPEG-compressed at quality 70 before being base64-encoded and sent to GPT-4o with `detail: low`. The prompt asks GPT to return the six symbols it sees left to right as a comma-separated list with no extra text. The response is parsed and validated — if anything other than exactly 6 known symbols is returned, the result is dropped entirely.
+Book identification uses a YOLOv8n model trained on real footage of the physical shelf across three scripts.
 
-`Dataset_generator.py` generates a 3000-image synthetic YOLO training dataset (500 images per class) of the six shape markers with randomized size, position, stroke thickness, brightness, Gaussian noise, and blur. The dataset is formatted in YOLO annotation format with a `data.yaml` file for potential offline training on Google Colab. The trained model was not used in the final implementation due to insufficient detection accuracy on real drone footage; GPT-4o vision was adopted as the detection backend instead.
+`frame.py` extracts every 15th non-blurry frame from approximately 15 recorded shelf videos using Laplacian variance filtering.
 
-`Book_Sorter.py` implements the sorting algorithm as a stateful class. On initialization it holds slots 0-5 and releases slot 8 (temp). It maintains a `hardware_slot_map` tracking which physical slots are currently held or released, and a `slot_map` mapping each symbol to its inferred physical slot based on the current frame and hardware state. The algorithm walks `CORRECT_ORDER` left to right, finds the first mismatch, and executes a 3-step swap using slot 8 as temp. Each step sets an `expected_frame` — the exact symbol order GPT should return after the user completes the move. If the next frame deviates from the expected frame, the algorithm detects the deviation, resets hardware state, and prints a warning. `Book_Sorter_Test.py` provides six offline test cases covering simple swap, repeated frames, two-swap sequences, deviation detection, already-correct shelf, and heavy disorder (3 swaps).
+`dataset.py` processes those frames by detecting the white book faces via grayscale thresholding and contour detection, sorting boxes left to right, matching them against a per-video known label order, and outputting a YOLO-format annotated dataset with `data.yaml`.
+
+The dataset was trained on Google Colab using a notebook that mounts Drive, rewrites `data.yaml` for Colab paths, trains YOLOv8n for 50 epochs at 640px with batch size 16 and early stopping at patience 15, validates and reports mAP, then saves `best.pt` back to Drive.
+
+`Frame_converter.py` loads `best.pt` at runtime, runs inference per frame, sorts detections left to right, and validates exactly 6 unique known symbols before returning the ordered list or `None`.
+
+`Book_Sorter.py` receives the symbol list and executes a 4-step confirmation-based swap algorithm using slot 8 as temp. Each step sets an `expected_frame` and waits for camera confirmation before advancing. Step 4 confirms the completed swap and resets `last_frame` to None so the next mismatch check fires immediately. `Book_Sorter_Test.py` covers six offline test cases validating the full algorithm.
 
 ### 4.6 ESP32 Shelf Controller
 
@@ -208,6 +215,20 @@ Three network interfaces operate simultaneously on one laptop during a full syst
 **Dual-network constraint** — the laptop had to be simultaneously connected to the Tello's WiFi hotspot for drone control and to the internet for OpenAI API calls. These two connections cannot share the same WiFi adapter. Resolved using iPhone USB tethering to route internet traffic over cellular while keeping WiFi free for the Tello. This setup worked well for home testing but proved fragile in locations without reliable cellular coverage.
 
 **3D printing precision** — getting hole sizes, wall thicknesses, and slot dimensions right required calculating everything down to the millimeter. This was made more critical by the Tello's payload constraint of approximately 50g, which meant every gram of the book design had to be accounted for to stay within the drone's lift capacity.
+
+### 4.10 Controller UI
+
+The controller UI is built in PyQt5 and split into two panels.
+
+The left panel displays the live 640×480 H264 drone camera feed with START, STOP, and PAUSE controls below it.
+
+The right panel shows drone connection status, a CORRECT ORDER reference strip, per-slot shelf state with symbols rendered green for correct and red for misplaced, hardware slot hold/release indicators, an active swap indicator, and a LAST ACTION log. Detection runs every 1 second on a daemon thread. A separate thread sends a keepalive `command` every 5 seconds.
+
+![UI — sorting in progress](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/ui_sorting.png)
+
+![UI — swap complete](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/ui_swap_complete.png)
+
+![UI — shelf correct](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/ui_correct.png)
 
 ---
 
@@ -286,11 +307,11 @@ The result was adapted from AI output — the root cause analysis was correct, b
 
 ### 8.1 Project Summary
 
-This project delivered a working prototype of an autonomous drone-based book sorting system. The drone takes off, uses GPT-4o vision to navigate to a target, and a smart electromagnetic shelf controlled by an ESP32-S3 holds and releases books on command. The GPT-4o vision pipeline successfully detected a water bottle target and guided the drone to land on it in live testing. The book detection and sorting algorithm was implemented, tested offline against six test cases, and integrated into the live video pipeline. Full end-to-end autonomous sorting was demonstrated incrementally — drone navigation, shelf electromagnet control, and GPT-4o symbol detection all verified as working subsystems.
+This project delivered a working prototype of an autonomous drone-based book sorting system. The drone takes off, hovers over the shelf, and a smart electromagnetic shelf controlled by an ESP32-S3 holds and releases books on command. The book detection and sorting algorithm was implemented using YOLOv8n, tested offline against six test cases, and integrated into the live video pipeline. Full end-to-end autonomous sorting was demonstrated incrementally — drone navigation, shelf electromagnet control, and YOLOv8 symbol detection all verified as working subsystems.
 
 ### 8.2 Conclusions
 
-GPT-4o vision is a viable real-time controller for drone navigation at the prototype scale. The model reliably identifies visual targets, interprets spatial relationships, and returns structured JSON commands without requiring a trained local model. The dual-network constraint — Tello WiFi displacing internet access — was the single most impactful infrastructure challenge and was resolved cleanly with iPhone USB tethering. The electromagnetic shelf mechanism worked reliably for holding and releasing books. The primary gap between the prototype and a fully autonomous system is closing the drone-to-book positioning loop with enough precision for reliable magnetic pickup.
+The YOLOv8n model performed reliably on real drone footage, correctly identifying all six book spine symbols across varying lighting conditions and camera angles. The confirmation-based sorting algorithm handled multi-step physical swaps correctly — each step waiting for camera verification before advancing, preventing the system from declaring a swap complete before the physical move was confirmed. The dual-network constraint — Tello WiFi displacing internet access — was resolved cleanly with iPhone USB tethering. The electromagnetic shelf mechanism worked reliably for holding and releasing books. The primary gap between the prototype and a fully autonomous system is closing the drone-to-book positioning loop with enough precision for reliable magnetic pickup.
 
 ### 8.3 What I Would Do Differently
 
