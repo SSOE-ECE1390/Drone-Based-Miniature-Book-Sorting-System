@@ -97,7 +97,7 @@ Each book is 3D-printed PLA at 20% infill, 22×25×30mm, with an M3 screw securi
 
 ### 2.3 System Architecture
 
-![System Architecture](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/system_Architecture.png)
+![System Architecture](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/system_Archictecture.png)
 
 ### 2.4 How This Expands on Previous Work
 
@@ -224,11 +224,9 @@ The left panel displays the live 640×480 H264 drone camera feed with START, STO
 
 The right panel shows drone connection status, a CORRECT ORDER reference strip, per-slot shelf state with symbols rendered green for correct and red for misplaced, hardware slot hold/release indicators, an active swap indicator, and a LAST ACTION log. Detection runs every 1 second on a daemon thread. A separate thread sends a keepalive `command` every 5 seconds.
 
-![UI — sorting in progress](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/ui_sorting.png)
+![UI](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/UI.png)
 
-![UI — swap complete](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/ui_swap_complete.png)
-
-![UI — shelf correct](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/ui_correct.png)
+![Book Sorter](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/book_sorter.jpg)
 
 ---
 
