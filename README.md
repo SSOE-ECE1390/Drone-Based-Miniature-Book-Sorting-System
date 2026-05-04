@@ -172,13 +172,13 @@ All 3D-printed components were designed in OpenSCAD and printed in PLA at 20% in
 **OpenSCAD renders:**
 
 **Shelf — isometric view:**
-![Shelf isometric](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/images/shelf.png)
+![Shelf isometric](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/shelf.png)
 
 **Shelf — top view:**
-![Shelf bottom](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/images/bottom.png)
+![Shelf bottom](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/bottom.png)
 
 **Books — isometric view:**
-![Books isometric](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/images/book.png)
+![Books isometric](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/book.png)
 
 ### 4.8 Inter-Subsystem Communication
 
