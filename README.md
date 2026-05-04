@@ -34,11 +34,9 @@
 5. [Design Testing](#5-design-testing)
    - [5.1 Test Plan](#51-test-plan)
    - [5.2 Drone Takeoff and Landing Tests](#52-drone-takeoff-and-landing-tests)
-   - [5.3 GPT Water Bottle Detection Test](#53-gpt-water-bottle-detection-test)
-   - [5.4 Magnet Pickup Test](#54-magnet-pickup-test)
-   - [5.5 Full System Integration Test](#55-full-system-integration-test)
-   - [5.6 Unsuccessful Attempts and Fixes](#56-unsuccessful-attempts-and-fixes)
-   - [5.7 Demonstration Videos](#57-demonstration-videos)
+   - [5.3 Book Sorter Test](#53-book-sorter-test)
+   - [5.4 Unsuccessful Attempts and Fixes](#54-unsuccessful-attempts-and-fixes)
+   - [5.5 Demonstration Videos](#55-demonstration-videos)
 6. [Bill of Materials](#6-bill-of-materials)
    - [6.1 Hardware Components](#61-hardware-components)
 7. [AI Usage Summary](#7-ai-usage-summary)
@@ -308,19 +306,18 @@ Testing followed a progressive integration strategy: each subsystem was verified
 
 **Result: Pass.** The drone consistently responds to `takeoff` with `ok` and stabilizes within 3 seconds. The `land` command reliably brings the drone down. The `error Not joystick` issue was fully resolved after implementing `MOVE_DELAY`.
 
-### 5.3 GPT Water Bottle Detection Test
+### 5.3 Book Sorter Test
 
-**Result: Pass.** With iPhone USB tethering active and drone connected to Tello WiFi, the GPT-4o API was successfully reached. The drone took off, the vision loop scanned the camera feed, detected a Deer Park water bottle, printed `[GPT] Water spotted - landing now`, and landed. This test confirmed the full pipeline: takeoff → camera feed → GPT API → action execution → landing.
+**Result: Pass.** `Book_Sorter_Test.py` validates the sorting algorithm in isolation using a `FakeShelf` that prints `HOLD`/`RELEASE` commands instead of driving the ESP32. Four test cases were run:
 
-### 5.4 Magnet Pickup Test
+- **Test 1 — Simple swap:** Two out-of-order books (X at slot 0, I at slot 2) are swapped in three steps. The algorithm issues the correct hold/release sequence and reaches `CORRECT_ORDER`.
+- **Test 2 — Repeated frames:** The same frame is fed multiple times while the user is slow to move a book. The algorithm suppresses duplicate commands and only advances state when the frame actually changes.
+- **Test 3 — Two sequential swaps:** A shelf requiring two independent swaps is resolved completely. Each swap's three-step hold/release sequence executes correctly without interfering with the next.
+- **Test 4 — Deviation detection:** The algorithm commands a specific move, but the user moves the wrong book. The sorter detects the mismatch and prints a `DEVIATION` warning rather than proceeding with incorrect state.
 
-> *[Pending]*
+All four tests passed, confirming that the core swap logic, duplicate-frame suppression, and deviation detection all behave correctly before any drone or ESP32 hardware is involved.
 
-### 5.5 Full System Integration Test
-
-> *[Pending]*
-
-### 5.6 Unsuccessful Attempts and Fixes
+### 5.4 Unsuccessful Attempts and Fixes
 
 **Neodymium magnets on books** caused adjacent books on the shelf to attract each other and collapse the entire shelf. Replaced with carbon steel washers on books and a weak flexible ferrite magnet on the drone.
 
@@ -330,11 +327,19 @@ Testing followed a progressive integration strategy: each subsystem was verified
 
 **QR codes → ArUco markers → shape markers** — three full pivots in identification strategy, each driven by a practical constraint. QR codes required too much drone precision to resolve. ArUco markers at book size were below reliable detection resolution from the drone camera. Shape markers are large, bold, and distinguishable even at low resolution and off-axis angles.
 
-### 5.7 Demonstration Videos
+### 5.5 Demonstration Videos
 
-**Book Sort Demo 1**
+#### Book Sorting
 
-<video src="video_demos/book_sort_1.mp4" controls width="720"></video>
+![Book Sort Demo](video_demos/demo.mp4)
+
+#### Advanced Book Sorting
+
+*Pending*
+
+#### Drawing Drone Flying Commands
+
+*Pending*
 
 ---
 
