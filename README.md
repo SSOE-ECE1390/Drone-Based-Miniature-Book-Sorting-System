@@ -339,7 +339,11 @@ https://github.com/user-attachments/assets/a1bb452b-28a5-4dab-b7a9-c3783951165c
 
 #### Advanced Book Sorting
 
-*Pending*
+https://github.com/user-attachments/assets/b25b9f59-0693-4c01-8b49-99ffbe875736
+
+*Launching `main.py` → opening the Tello UI → sorting books using live image feed from the DJI Tello camera (advanced multi-swap demonstration).*
+
+> [Full uncompressed video](video_demos/book_sort_2_adv.mp4)
 
 #### Drawing Drone Flying Commands
 
