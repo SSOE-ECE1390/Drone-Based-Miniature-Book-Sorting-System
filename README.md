@@ -98,6 +98,7 @@ Each book is 3D-printed PLA at 20% infill, 22×25×30mm, with an M3 screw securi
 ### 2.3 System Architecture
 
 ```mermaid
+%%{init: {'theme': 'base', 'themeVariables': {'primaryColor': '#ffffff', 'primaryBorderColor': '#000000', 'primaryTextColor': '#000000', 'clusterBkg': '#ffffff', 'clusterBorder': '#000000', 'lineColor': '#000000', 'edgeLabelBackground': '#ffffff', 'secondaryColor': '#ffffff', 'tertiaryColor': '#ffffff'}}}%%
 flowchart TD
     subgraph Drone["DJI Tello Drone"]
         Camera["Onboard Camera - H.264 stream"]
@@ -161,7 +162,7 @@ ESP32-S3 DevKitC plugged directly into the 16-channel relay module via jumper wi
 
 ### 3.1 Drone Payload Verification
 
-Before committing to the magnetic pickup design, a full weight analysis was performed against the Tello's real-world payload limit of approximately 60g. The final drone-side components weigh approximately 7.3g total: Towjug adhesive magnet (~2.3g) and 3D-printed payload clip (~5g). This is well within the payload budget and leaves significant margin for any additional mounting hardware. The analysis explicitly rejected the option of mounting an electromagnet and microcontroller on the drone, which would have totaled approximately 45g and left no margin for error.
+The DJI Tello has a real-world payload limit of approximately 60g. The drone-side pickup assembly weighs approximately 7.3g total: Towjug 20mm adhesive ferrite magnet (~2.3g) and 3D-printed payload clip (~5g). This is well within the payload budget.
 
 ### 3.2 Shelf and Electromagnet Verification
 
