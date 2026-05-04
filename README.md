@@ -99,53 +99,47 @@ Each book is 3D-printed PLA at 20% infill, 22×25×30mm, with an M3 screw securi
 
 ```mermaid
 %%{init: {'theme': 'default'}}%%
-flowchart TD
-    subgraph Host["💻 Host Laptop"]
-        main["main.py\n(entry point)"]
-
-        subgraph UI["PyQt5 UI"]
-            TelloUI["tello_control_ui.py\nTelloUI (PyQt5)"]
-        end
-
-        subgraph Vision["Vision Pipeline"]
-            FrameToSymbols["Frame_converter.py\nFrameToSymbols"]
-            YOLOModel["YOLOv8n\nbest.pt\n(local inference)"]
-        end
-
-        subgraph Sorting["Sorting Logic"]
-            BookSorter["Book_Sorter.py\nBookSorter"]
-        end
-
-        subgraph Shelf["Shelf Interface"]
-            ShelfController["shelf_controller.py\nShelfController\n(pyserial → COM16)"]
-        end
+flowchart LR
+    subgraph Drone["🚁 DJI Tello"]
+        Camera["Camera\nH.264 stream"]
+        TelloPy["tello.py\nSDK wrapper"]
     end
 
-    subgraph Drone["🚁 DJI Tello Drone"]
-        TelloPy["tello.py\nTello SDK wrapper\n(UDP WiFi)"]
-        Camera["Onboard Camera\nH.264 stream"]
+    subgraph Host["💻 Host Laptop"]
+        main["main.py"]
+        TelloUI["TelloUI\ntello_control_ui.py"]
+        FTS["FrameToSymbols\nFrame_converter.py"]
+        YOLO["YOLOv8n\nbest.pt"]
+        BS["BookSorter\nBook_Sorter.py"]
+        SC["ShelfController\nshelf_controller.py"]
     end
 
     subgraph ESP32["🔌 ESP32-S3"]
-        Arduino["ESP32_Controller.ino\nRelay GPIO control"]
-        subgraph Relays["16-ch Relay Module"]
-            ShelfSlots["Slots 0–5\n(shelf electromagnets)"]
-            AuxSlots["Slots 6–8\n(aux/temp electromagnets)"]
-        end
+        Arduino["ESP32_Controller.ino"]
+        Slots05["Slots 0–5\nShelf magnets"]
+        Slots68["Slots 6–8\nAux magnets"]
     end
 
+    classDef drone fill:#dbeafe,stroke:#3b82f6,color:#1e3a5f
+    classDef host fill:#dcfce7,stroke:#22c55e,color:#14532d
+    classDef esp fill:#fef9c3,stroke:#eab308,color:#713f12
+
+    class Camera,TelloPy drone
+    class main,TelloUI,FTS,YOLO,BS,SC host
+    class Arduino,Slots05,Slots68 esp
+
     main --> TelloUI
-    main --> ShelfController
+    main --> SC
     TelloUI --> TelloPy
-    TelloPy -->|"H.264 frames"| Camera
-    Camera -->|"decoded frames"| FrameToSymbols
-    FrameToSymbols --> YOLOModel
-    YOLOModel -->|"ordered symbol list"| BookSorter
-    BookSorter --> ShelfController
-    BookSorter --> TelloUI
-    ShelfController -->|"serial commands\n115200 baud"| Arduino
-    Arduino --> ShelfSlots
-    Arduino --> AuxSlots
+    TelloPy -->|"WiFi UDP"| Camera
+    Camera -->|"decoded frames"| FTS
+    FTS --> YOLO
+    YOLO -->|"symbol list"| BS
+    BS --> SC
+    BS --> TelloUI
+    SC -->|"serial 115200 baud"| Arduino
+    Arduino --> Slots05
+    Arduino --> Slots68
 ```
 
 ### 2.4 How This Expands on Previous Work
