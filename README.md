@@ -97,7 +97,56 @@ Each book is 3D-printed PLA at 20% infill, 22×25×30mm, with an M3 screw securi
 
 ### 2.3 System Architecture
 
-![System Architecture](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/system_Architecture.png)
+```mermaid
+%%{init: {'theme': 'default'}}%%
+flowchart TD
+    subgraph Host["💻 Host Laptop"]
+        main["main.py\n(entry point)"]
+
+        subgraph UI["PyQt5 UI"]
+            TelloUI["tello_control_ui.py\nTelloUI (PyQt5)"]
+        end
+
+        subgraph Vision["Vision Pipeline"]
+            FrameToSymbols["Frame_converter.py\nFrameToSymbols"]
+            YOLOModel["YOLOv8n\nbest.pt\n(local inference)"]
+        end
+
+        subgraph Sorting["Sorting Logic"]
+            BookSorter["Book_Sorter.py\nBookSorter"]
+        end
+
+        subgraph Shelf["Shelf Interface"]
+            ShelfController["shelf_controller.py\nShelfController\n(pyserial → COM16)"]
+        end
+    end
+
+    subgraph Drone["🚁 DJI Tello Drone"]
+        TelloPy["tello.py\nTello SDK wrapper\n(UDP WiFi)"]
+        Camera["Onboard Camera\nH.264 stream"]
+    end
+
+    subgraph ESP32["🔌 ESP32-S3"]
+        Arduino["ESP32_Controller.ino\nRelay GPIO control"]
+        subgraph Relays["16-ch Relay Module"]
+            ShelfSlots["Slots 0–5\n(shelf electromagnets)"]
+            AuxSlots["Slots 6–8\n(aux/temp electromagnets)"]
+        end
+    end
+
+    main --> TelloUI
+    main --> ShelfController
+    TelloUI --> TelloPy
+    TelloPy -->|"H.264 frames"| Camera
+    Camera -->|"decoded frames"| FrameToSymbols
+    FrameToSymbols --> YOLOModel
+    YOLOModel -->|"ordered symbol list"| BookSorter
+    BookSorter --> ShelfController
+    BookSorter --> TelloUI
+    ShelfController -->|"serial commands\n115200 baud"| Arduino
+    Arduino --> ShelfSlots
+    Arduino --> AuxSlots
+```
 
 ### 2.4 How This Expands on Previous Work
 
@@ -117,7 +166,7 @@ This project combines autonomous drone flight, real-time YOLOv8 book spine detec
 
 **Wiring — ESP32 and relay module:**
 
-![Wiring](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/wire.JPG)
+![Wiring](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/wire.jpg)
 
 ESP32-S3 DevKitC plugged directly into the 16-channel relay module via jumper wires. 10 blue signal wires run out to the electromagnets under each shelf slot. Red and black power wires connect to the external 5V supply via a barrel jack adapter. A USB cable connects the ESP32 to the laptop for serial control.
 
@@ -165,7 +214,11 @@ Book identification uses a YOLOv8n model trained on real footage of the physical
 
 `dataset.py` processes those frames by detecting the white book faces via grayscale thresholding and contour detection, sorting boxes left to right, matching them against a per-video known label order, and outputting a YOLO-format annotated dataset with `data.yaml`.
 
-The dataset was trained on Google Colab using a notebook that mounts Drive, rewrites `data.yaml` for Colab paths, trains YOLOv8n for 50 epochs at 640px with batch size 16 and early stopping at patience 15, validates and reports mAP, then saves `best.pt` back to Drive.
+`Dataset_train.py` is the Google Colab training script. It mounts Drive, rewrites `data.yaml` for Colab paths, trains YOLOv8n for 50 epochs at 640px with batch size 16 and early stopping at patience 15, validates and reports mAP, then saves `best.pt` back to Drive.
+
+![Training Results](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/results.png)
+
+The chart shows training and validation loss (box, classification, and DFL) alongside precision, recall, mAP@50, and mAP@50-95 across 42 epochs. All three loss curves drop sharply in the first 5 epochs and flatten cleanly, with no divergence between training and validation — indicating no overfitting. Precision and recall both converge to ~0.99, and mAP@50 and mAP@50-95 both reach ~1.0 by epoch 10 and hold steady for the remainder of training — strong results for a 6-class symbol detection task on a custom dataset.
 
 `Frame_converter.py` loads `best.pt` at runtime, runs inference per frame, sorts detections left to right, and validates exactly 6 unique known symbols before returning the ordered list or `None`.
 
@@ -274,7 +327,7 @@ Testing followed a progressive integration strategy: each subsystem was verified
 
 | Component | Source | Part | Qty | Unit Price |
 |-----------|--------|------|-----|------------|
-| DJI Tello Drone | Ryze/DJI | — | 1 | — |
+| DJI Tello Drone | EAI Electronics | — | 1 | $219.00 |
 | 5V Electromagnet P20/15 | Adafruit | PID 3872 | 12 | $7.50 |
 | ESP32-S3-DevKitC-1-N8R8 | Adafruit | PID 5336 | 1 | $19.95 |
 | 16-Channel Relay Module | Amazon | ANMBEST | 1 | $16.99 |
