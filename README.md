@@ -128,11 +128,7 @@ flowchart TD
     BS --> SC
     BS --> TelloUI
     SC -->|serial 115200 baud| Arduino
-   *Pending*
-
-   #### Drone Controller Functionality
-
-   The drone controller (`drone_controller.py`) implements autonomous navigation and target tracking. It uses a Kalman filter to smooth the detected position of the target book and computes control commands to center the drone over the book. The controller issues real-time movement commands to the drone based on the detected book's position and area in the camera frame, adjusting lateral, forward/backward, and up/down velocities. When the book is centered and close enough (area threshold), the controller stops the drone and can trigger a landing or pickup sequence. Safety limits and emergency stop logic are included to prevent erratic movement. The controller can be enabled or disabled for tracking, and provides telemetry for UI display.
+    Arduino --> Slots05
     Arduino --> Slots68
 ```
 
@@ -156,59 +152,20 @@ This project combines autonomous drone flight, real-time YOLOv8 book spine detec
 
 ESP32-S3 DevKitC plugged directly into the 16-channel relay module via jumper wires. 10 blue signal wires run out to the electromagnets under each shelf slot. Red and black power wires connect to the external 5V supply via a barrel jack adapter. A USB cable connects the ESP32 to the laptop for serial control.
 
-
-   #### Drone Demo Videos
-
-   <details>
-   <summary><strong>Success: Drone Locates Book and Hovers</strong></summary>
-
-   <video src="https://github.com/user-attachments/assets/2ec5e80e-eb16-4b18-9a4b-80602a0870c3" controls width="480"></video>
-
-   <br/>
-   In this run, the drone successfully navigates to the book using the configured distance settings, hovers close to the target, and lands safely.
-
-   > [Full uncompressed video](video_demos/located_book_success.mp4)
-
-   </details>
-
-   <details>
-   <summary><strong>Crash: Drone Locates Book and Crashes</strong></summary>
-
-   <video src="https://github.com/user-attachments/assets/24025ef8-2d68-4dc7-9d4c-4a1f696bbad7" controls width="480"></video>
-
-   <br/>
-   In this run, the drone reaches the book but crashes upon arrival due to unstable flight or misconfiguration.
-
-   > [Full uncompressed video](video_demos/located_book_crashed.mp4)
-
-   </details>
 ---
 
-
-   <details>
-   <summary><strong>Success: Drone Locates Book and Hovers</strong></summary>
-
-   <video src="https://github.com/user-attachments/assets/2ec5e80e-eb16-4b18-9a4b-80602a0870c3" controls width="480"></video>
-
-   <br/>
-   In this run, the drone successfully navigates to the book using the configured distance settings, hovers close to the target, and lands safely.
-
-   > [Full uncompressed video](video_demos/located_book_success.mp4)
-
-   </details>
-
-   <details>
-   <summary><strong>Crash: Drone Locates Book and Crashes</strong></summary>
-
-   <video src="https://github.com/user-attachments/assets/24025ef8-2d68-4dc7-9d4c-4a1f696bbad7" controls width="480"></video>
-
-   <br/>
-   In this run, the drone reaches the book but crashes upon arrival due to unstable flight or misconfiguration.
-
-   > [Full uncompressed video](video_demos/located_book_crashed.mp4)
-
-   </details>
 ## 3. Preliminary Design Verification
+
+### 3.1 Drone Payload Verification
+
+Before committing to the magnetic pickup design, a full weight analysis was performed against the Tello's real-world payload limit of approximately 60g. The final drone-side components weigh approximately 7.3g total: Towjug adhesive magnet (~2.3g) and 3D-printed payload clip (~5g). This is well within the payload budget and leaves significant margin for any additional mounting hardware. The analysis explicitly rejected the option of mounting an electromagnet and microcontroller on the drone, which would have totaled approximately 45g and left no margin for error.
+
+### 3.2 Shelf and Electromagnet Verification
+
+The shelf subsystem was verified independently before integrating with the drone. Each relay channel requires a coil activation current of approximately 400mA at 5V. With up to 10 electromagnets potentially energized simultaneously, the total peak current draw is 4.0A. A 5V 5A DC barrel jack power supply was selected to meet this demand with margin.
+
+| Parameter | Value |
+|---|---|
 | Current per electromagnet | 400mA |
 | Supply voltage | 5V |
 | Total power draw | 20W |
@@ -375,7 +332,17 @@ https://github.com/user-attachments/assets/b25b9f59-0693-4c01-8b49-99ffbe875736
 
 #### Drone Flying Commands
 
-*Pending*
+https://github.com/user-attachments/assets/2ec5e80e-eb16-4b18-9a4b-80602a0870c3
+
+*In this run, the drone successfully navigates to the book using the configured distance settings, hovers close to the target, and lands safely.*
+
+> [Full uncompressed video](video_demos/located_book_success.mp4)
+
+https://github.com/user-attachments/assets/24025ef8-2d68-4dc7-9d4c-4a1f696bbad7
+
+*In this run, the drone reaches the book but crashes upon arrival due to unstable flight or misconfiguration.*
+
+> [Full uncompressed video](video_demos/located_book_crashed.mp4)
 
 ---
 
