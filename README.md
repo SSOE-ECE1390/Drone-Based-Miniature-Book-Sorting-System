@@ -98,38 +98,37 @@ Each book is 3D-printed PLA at 20% infill, 22×25×30mm, with an M3 screw securi
 ### 2.3 System Architecture
 
 ```mermaid
-%%{init: {'theme': 'neutral'}}%%
 flowchart TD
-    subgraph Drone["🚁 DJI Tello Drone"]
-        Camera["Onboard Camera\nH.264 stream"]
-        TelloPy["tello.py\nTello SDK wrapper — UDP WiFi"]
+    subgraph Drone["DJI Tello Drone"]
+        Camera["Onboard Camera - H.264 stream"]
+        TelloPy["tello.py - Tello SDK wrapper"]
     end
 
-    subgraph Host["💻 Host Laptop"]
-        main["main.py\nEntry point"]
-        TelloUI["tello_control_ui.py\nTelloUI — PyQt5"]
-        FTS["Frame_converter.py\nFrameToSymbols"]
-        YOLO["best.pt\nYOLOv8n — local inference"]
-        BS["Book_Sorter.py\nBookSorter — swap algorithm"]
-        SC["shelf_controller.py\nShelfController — pyserial"]
+    subgraph Host["Host Laptop"]
+        main["main.py - Entry point"]
+        TelloUI["tello_control_ui.py - PyQt5 UI"]
+        FTS["Frame_converter.py - FrameToSymbols"]
+        YOLO["best.pt - YOLOv8n local inference"]
+        BS["Book_Sorter.py - Swap algorithm"]
+        SC["shelf_controller.py - ShelfController"]
     end
 
-    subgraph ESP32["🔌 ESP32-S3 + 16-ch Relay Module"]
-        Arduino["ESP32_Controller.ino\nRelay GPIO control"]
-        Slots05["Slots 0–5\nShelf electromagnets"]
-        Slots68["Slots 6–8\nAux electromagnets"]
+    subgraph ESP32["ESP32-S3 + 16-ch Relay Module"]
+        Arduino["ESP32_Controller.ino - Relay GPIO"]
+        Slots05["Slots 0-5 - Shelf electromagnets"]
+        Slots68["Slots 6-8 - Aux electromagnets"]
     end
 
     main --> TelloUI
     main --> SC
     TelloUI --> TelloPy
-    TelloPy -->|"WiFi UDP"| Camera
-    Camera -->|"decoded frames"| FTS
+    TelloPy -->|WiFi UDP| Camera
+    Camera -->|decoded frames| FTS
     FTS --> YOLO
-    YOLO -->|"ordered symbol list"| BS
+    YOLO -->|ordered symbol list| BS
     BS --> SC
     BS --> TelloUI
-    SC -->|"serial — 115200 baud"| Arduino
+    SC -->|serial 115200 baud| Arduino
     Arduino --> Slots05
     Arduino --> Slots68
 ```
