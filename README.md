@@ -332,7 +332,7 @@ Testing followed a progressive integration strategy: each subsystem was verified
 
 ### 5.7 Demonstration Videos
 
-> *[To be added]*
+**Book Sort Demo 1** — [video_demos/book_sort_1.mp4](video_demos/book_sort_1.mp4)
 
 ---
 
