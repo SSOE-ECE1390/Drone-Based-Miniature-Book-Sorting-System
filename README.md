@@ -333,6 +333,8 @@ All four tests passed, confirming that the core swap logic, duplicate-frame supp
 
 https://github.com/user-attachments/assets/a1bb452b-28a5-4dab-b7a9-c3783951165c
 
+*Launching `main.py` → opening the Tello UI → sorting books using live image feed from the DJI Tello camera.*
+
 > [Full uncompressed video](video_demos/book_sort_1.mp4)
 
 #### Advanced Book Sorting
