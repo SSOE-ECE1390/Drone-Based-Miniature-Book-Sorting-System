@@ -19,12 +19,12 @@
 3. [Preliminary Design Verification](#3-preliminary-design-verification)
    - [3.1 Drone Payload Verification](#31-drone-payload-verification)
    - [3.2 Shelf and Electromagnet Verification](#32-shelf-and-electromagnet-verification)
-   - [3.3 GPT Vision API Verification](#33-gpt-vision-api-verification)
+   - [3.3 Vision Model Verification](#33-vision-model-verification)
 4. [Design Implementation](#4-design-implementation)
    - [4.1 System Overview](#41-system-overview)
    - [4.2 DJI Tello Drone Subsystem](#42-dji-tello-drone-subsystem)
    - [4.3 Smart Shelf Subsystem](#43-smart-shelf-subsystem)
-   - [4.4 GPT Vision Controller](#44-gpt-vision-controller)
+   - [4.4 Vision Controller](#44-vision-controller)
    - [4.5 Book Detection and Sorting Algorithm](#45-book-detection-and-sorting-algorithm)
    - [4.6 ESP32 Shelf Controller](#46-esp32-shelf-controller)
    - [4.7 3D Printed Books](#47-3d-printed-books)
@@ -56,7 +56,7 @@
 
 ### 1.1 Project Overview
 
-This project is an Autonomous Drone-Based Librarian System — a prototype that uses a DJI Tello drone to autonomously identify, pick up, and reorder miniature 3D-printed books on a smart electromagnetic shelf. The drone uses a GPT-4o vision model to interpret its camera feed in real time, identify books by shape markers printed on their spines, and execute pick-and-place operations using a magnetic attachment mechanism. The shelf is controlled by an ESP32-S3 microcontroller that activates individual electromagnets to hold books securely in their assigned slots.
+This project is an Autonomous Drone-Based Librarian System — a prototype that uses a DJI Tello drone to autonomously identify, pick up, and reorder miniature 3D-printed books on a smart electromagnetic shelf. The drone uses a YOLOv8n vision model to interpret its camera feed in real time, identify books by shape markers printed on their spines, and execute pick-and-place operations using a magnetic attachment mechanism. The shelf is controlled by an ESP32-S3 microcontroller that activates individual electromagnets to hold books securely in their assigned slots.
 
 ### 1.2 Motivation
 
@@ -64,7 +64,7 @@ The idea came directly from real library work experience. Manual shelf reading �
 
 ### 1.3 Project Goals
 
-- A DJI Tello drone takes off autonomously and navigates a shelf using its onboard camera and GPT-4o vision
+- A DJI Tello drone takes off autonomously and navigates a shelf using its onboard camera and YOLOv8n vision
 - The drone identifies each book by its unique shape marker using a trained YOLOv8 model
 - The drone picks up misplaced books using a magnetic attachment mechanism
 - The drone transports books to their correct shelf positions
@@ -133,9 +133,9 @@ Before committing to the magnetic pickup design, a full weight analysis was perf
 
 The shelf subsystem was verified independently before integrating with the drone. The ESP32-S3 successfully activates individual relay channels via GPIO, energizing the Adafruit P20/15 electromagnets on demand. The 5V 5A wall adapter provides sufficient current for up to 6 electromagnets drawing ~400mA each. Books with carbon steel washers at the base were confirmed to be held securely in slots when the electromagnet is active and released cleanly when the electromagnet is deactivated.
 
-### 3.3 GPT Vision API Verification
+### 3.3 Vision Model Verification
 
-GPT-4o vision API connectivity was verified under the Tello WiFi constraint. When the laptop connects to the Tello's WiFi network, internet access is lost — the OpenAI API is unreachable. This was solved using iPhone USB tethering, which routes internet traffic through the phone's cellular data over a USB connection while leaving the laptop's WiFi adapter free for the Tello. With this setup, the GPT-4o API was confirmed reachable while the drone was connected and flying. In a controlled test, the drone took off, the GPT loop detected a Deer Park water bottle in the camera feed, printed `[GPT] Water spotted - landing now`, and the drone landed successfully.
+The YOLOv8n model (`best.pt`) runs entirely on the local machine — no internet connection is required for inference. This was an important design advantage over earlier cloud-based approaches: the drone's WiFi connection does not affect the vision pipeline at all. The model was verified to load and run in real time on the host laptop while connected to the Tello WiFi network, with no measurable impact on inference latency.
 
 ---
 
@@ -147,15 +147,15 @@ The system operates as follows: the user presses START in the Tello controller U
 
 ### 4.2 DJI Tello Drone Subsystem
 
-The drone subsystem is built on a custom `tello.py` wrapper around the Tello SDK. The key fix introduced in this project was adding `MOVE_DELAY = 3.0` seconds after every movement command. Without this delay, the Tello returns `error Not joystick` because it receives a new command before finishing the previous one. The `takeoff()` method includes a 3-second stabilization sleep after liftoff. All movement commands (`move_forward`, `move_down`, etc.) send raw SDK strings directly to the drone via UDP socket rather than going through the unit-converting `move()` method, which was found to produce out-of-range values when GPT returned distances in centimeters.
+The drone subsystem is built on a custom `tello.py` wrapper around the Tello SDK. The key fix introduced in this project was adding `MOVE_DELAY = 3.0` seconds after every movement command. Without this delay, the Tello returns `error Not joystick` because it receives a new command before finishing the previous one. The `takeoff()` method includes a 3-second stabilization sleep after liftoff. All movement commands (`move_forward`, `move_down`, etc.) send raw SDK strings directly to the drone via UDP socket rather than going through the unit-converting `move()` method, which was found to produce out-of-range values for standard movement distances.
 
 ### 4.3 Smart Shelf Subsystem
 
 The shelf uses an ESP32-S3-DevKitC-1-N8R8 connected to an ANMBEST 16-channel 5V optocoupler relay module. The relay module is wired with its VCC connected to the external 5V 5A wall adapter — not the ESP32's onboard 3.3V pin — so the optocoupler LEDs receive the full 5V they require. Each relay channel connects to one Adafruit P20/15 electromagnet. The ESP32 receives slot activation commands over serial from the main Python script and toggles the corresponding GPIO pin LOW to energize the relay.
 
-### 4.4 GPT Vision Controller
+### 4.4 Vision Controller
 
-`gpt_drone_controller.py` is an earlier implementation of the drone navigation controller that used GPT-4o vision for real-time command generation. It has been superseded by the YOLOv8-based detection pipeline in the current implementation.
+The vision controller is implemented across `Frame_converter.py` and `Book_Sorter.py`. `Frame_converter.py` receives live frames from the drone's H.264 stream, runs YOLOv8n inference using `best.pt`, and returns an ordered list of detected book symbols (left to right) or `None` if fewer than 6 unique symbols are detected. `Book_Sorter.py` consumes that output on each frame tick, compares the detected order against the correct sequence, and drives the shelf controller to execute the appropriate hold/release commands for each swap operation.
 
 ### 4.5 Book Detection and Sorting Algorithm
 
@@ -226,7 +226,7 @@ The right panel shows drone connection status, a CORRECT ORDER reference strip, 
 
 ![UI](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/UI.png)
 
-![Book Sorter](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/book_sorter.jpg)
+![Swap](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/swap.jpg)
 
 ---
 
@@ -234,7 +234,7 @@ The right panel shows drone connection status, a CORRECT ORDER reference strip, 
 
 ### 5.1 Test Plan
 
-Testing followed a progressive integration strategy: each subsystem was verified independently before being integrated with the others. The sequence was: drone takeoff and landing → GPT API connection under Tello WiFi → water bottle detection and landing → magnet pickup from stationary target → book shape detection → full system integration.
+Testing followed a progressive integration strategy: each subsystem was verified independently before being integrated with the others. The sequence was: drone takeoff and landing → vision model local inference verification → water bottle detection and landing → magnet pickup from stationary target → book shape detection → full system integration.
 
 ### 5.2 Drone Takeoff and Landing Tests
 
