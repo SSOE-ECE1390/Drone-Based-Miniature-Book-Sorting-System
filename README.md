@@ -97,7 +97,7 @@ Each book is 3D-printed PLA at 20% infill, 22×25×30mm, with an M3 screw securi
 
 ### 2.3 System Architecture
 
-![System Architecture](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/system_Archictecture.png)
+![System Architecture](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/system_Architecture.png)
 
 ### 2.4 How This Expands on Previous Work
 
