@@ -300,6 +300,10 @@ The right panel shows drone connection status, a CORRECT ORDER reference strip, 
 
 Testing followed a progressive integration strategy: each subsystem was verified independently before being integrated with the others. The sequence was: drone takeoff and landing → vision model local inference verification → water bottle detection and landing → magnet pickup from stationary target → book shape detection → full system integration.
 
+`test_ui.py` was used to test the shelf controller in isolation — verifying that each relay channel could hold and release independently before connecting the drone.
+
+![Shelf Controller Test UI](https://raw.githubusercontent.com/SSOE-ECE1390/Drone-Based-Miniature-Book-Sorting-System/main/Images/test.png)
+
 ### 5.2 Drone Takeoff and Landing Tests
 
 **Result: Pass.** The drone consistently responds to `takeoff` with `ok` and stabilizes within 3 seconds. The `land` command reliably brings the drone down. The `error Not joystick` issue was fully resolved after implementing `MOVE_DELAY`.
