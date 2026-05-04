@@ -332,7 +332,9 @@ Testing followed a progressive integration strategy: each subsystem was verified
 
 ### 5.7 Demonstration Videos
 
-**Book Sort Demo 1** — [video_demos/book_sort_1.mp4](video_demos/book_sort_1.mp4)
+**Book Sort Demo 1**
+
+<video src="video_demos/book_sort_1.mp4" controls width="720"></video>
 
 ---
 
