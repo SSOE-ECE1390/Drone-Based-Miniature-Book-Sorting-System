@@ -333,6 +333,8 @@ All four tests passed, confirming that the core swap logic, duplicate-frame supp
 
 ![Book Sort Demo](video_demos/demo.mp4)
 
+> [Full uncompressed video](video_demos/book_sort_1.mp4)
+
 #### Advanced Book Sorting
 
 *Pending*
