@@ -184,34 +184,32 @@ ESP32-S3 DevKitC plugged directly into the 16-channel relay module via jumper wi
    </details>
 ---
 
+
+   <details>
+   <summary><strong>Success: Drone Locates Book and Hovers</strong></summary>
+
+   <video src="https://github.com/user-attachments/assets/2ec5e80e-eb16-4b18-9a4b-80602a0870c3" controls width="480"></video>
+
+   <br/>
+   In this run, the drone successfully navigates to the book using the configured distance settings, hovers close to the target, and lands safely.
+
+   > [Full uncompressed video](video_demos/located_book_success.mp4)
+
+   </details>
+
+   <details>
+   <summary><strong>Crash: Drone Locates Book and Crashes</strong></summary>
+
+   <video src="https://github.com/user-attachments/assets/24025ef8-2d68-4dc7-9d4c-4a1f696bbad7" controls width="480"></video>
+
+   <br/>
+   In this run, the drone reaches the book but crashes upon arrival due to unstable flight or misconfiguration.
+
+   > [Full uncompressed video](video_demos/located_book_crashed.mp4)
+
+   </details>
 ## 3. Preliminary Design Verification
-
-### 3.1 Drone Payload Verification
-
-The DJI Tello has a real-world payload limit of approximately 60g. The full pickup assembly was verified as follows:
-
-| Component | Weight |
-|---|---|
-| PLA book body (22×25×30mm, 20% infill) | ~8.4g |
-| 2× M10×20×2mm carbon steel washer | ~7.4g |
-| 2× M3×8mm carbon steel screw | ~1.0g |
-| **Book assembly total** | **~16.8g** |
-| Towjug 20mm adhesive ferrite magnet (drone underside) | ~2.3g |
-| **Grand total** | **~19.1g** |
-
-This is well within the 60g payload budget.
-
-### 3.2 Shelf and Electromagnet Verification
-
-The shelf subsystem was verified independently before integrating with the drone. The system uses 10 Adafruit P20/15 5V electromagnets, each drawing approximately 400mA at full activation.
-
-**Power calculations:**
-
-| Parameter | Value |
-|---|---|
-| Electromagnets | 10 |
 | Current per electromagnet | 400mA |
-| Total current (all active) | 4.0A |
 | Supply voltage | 5V |
 | Total power draw | 20W |
 
