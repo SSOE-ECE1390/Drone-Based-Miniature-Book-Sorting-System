@@ -34,6 +34,7 @@ class BookSorter:
 
         self.last_frame = None
         self.expected_frame = None
+        self.step_issued_at = None
         self.hw_state = {"swap": None}
         self.last_print = None
 
@@ -50,7 +51,14 @@ class BookSorter:
         if not frame or len(frame) != 6:
             return
         if frame == self.last_frame:
-            return
+            if (
+                self.expected_frame == frame
+                and self.step_issued_at is not None
+                and time.time() - self.step_issued_at >= 8.0
+            ):
+                self.step_issued_at = None  # consumed
+            else:
+                return
 
         if self.expected_frame is not None and frame != self.expected_frame:
             self._log(f"DEVIATION: expected {self.expected_frame}, got {frame}")
@@ -168,6 +176,8 @@ class BookSorter:
         )
         self.expected_frame = remaining_syms + [a_sym]
         self._log(f"EXPECTED FRAME: {self.expected_frame}")
+        if self.expected_frame == self.last_frame:
+            self.step_issued_at = time.time()
 
         self._release(a_slot)
         self._hold(TEMP_SLOT)
@@ -201,6 +211,8 @@ class BookSorter:
         )
         self.expected_frame = shelf_syms + [a_sym]
         self._log(f"EXPECTED FRAME: {self.expected_frame}")
+        if self.expected_frame == self.last_frame:
+            self.step_issued_at = time.time()
 
         self._release(b_slot)
         self._hold(a_slot)
@@ -228,6 +240,8 @@ class BookSorter:
         )
         self.expected_frame = shelf_syms
         self._log(f"EXPECTED FRAME: {self.expected_frame}")
+        if self.expected_frame == self.last_frame:
+            self.step_issued_at = time.time()
 
         self._release(TEMP_SLOT)
         self._hold(b_slot)

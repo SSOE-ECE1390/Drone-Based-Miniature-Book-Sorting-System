@@ -1,0 +1,2693 @@
+[DETECTOR] target O not found in frame (boxes present)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (boxes present)
+[TRACK] no target — hovering
+[DETECTOR] target acquired: O at (389, 440) area=2035
+[TRACK] center=(389,440) area=2035 mvx=-9 mvy=-20 dist=-389 cmd_lr=-9 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (388, 444) area=1998
+[TRACK] center=(388,444) area=1998 mvx=-9 mvy=-21 dist=-389 cmd_lr=-9 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (389, 450) area=2035
+[TRACK] center=(389,450) area=2035 mvx=-9 mvy=-23 dist=-389 cmd_lr=-9 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target acquired: O at (577, 140) area=5184
+[DETECTOR] target acquired: O at (591, 122) area=5742
+[DETECTOR] target acquired: O at (596, 116) area=5655
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target acquired: O at (643, 14) area=2240
+[DETECTOR] target acquired: O at (639, 19) area=3040
+[DETECTOR] target acquired: O at (641, 21) area=3698
+[DETECTOR] target acquired: O at (631, 33) area=5082
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target acquired: O at (600, 117) area=7828
+[DETECTOR] target acquired: O at (598, 124) area=8181
+[DETECTOR] target acquired: O at (590, 141) area=8112
+[DETECTOR] target acquired: O at (585, 147) area=8058
+[DETECTOR] target acquired: O at (584, 149) area=8400
+[DETECTOR] target acquired: O at (583, 151) area=8374
+[DETECTOR] target acquired: O at (577, 152) area=8502
+[DETECTOR] target acquired: O at (572, 150) area=8856
+[DETECTOR] target acquired: O at (564, 144) area=9047
+[DETECTOR] target acquired: O at (553, 142) area=9130
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target acquired: O at (565, 222) area=11280
+[DETECTOR] target acquired: O at (559, 220) area=11040
+[DETECTOR] target acquired: O at (554, 215) area=10974
+[DETECTOR] target acquired: O at (554, 217) area=10764
+[DETECTOR] target acquired: O at (557, 224) area=10440
+[DETECTOR] target acquired: O at (560, 227) area=10465
+[DETECTOR] target acquired: O at (561, 228) area=10647
+[DETECTOR] target acquired: O at (562, 228) area=11067
+[DETECTOR] target acquired: O at (567, 222) area=11374
+[DETECTOR] target acquired: O at (576, 199) area=11685
+[DETECTOR] target acquired: O at (589, 171) area=12200
+[DETECTOR] target acquired: O at (596, 149) area=12152
+[DETECTOR] target acquired: O at (602, 135) area=12648
+[DETECTOR] target acquired: O at (606, 115) area=11780
+[DETECTOR] target acquired: O at (616, 98) area=12152
+[DETECTOR] target acquired: O at (621, 81) area=11532
+[DETECTOR] target acquired: O at (626, 75) area=11780
+[DETECTOR] target acquired: O at (633, 69) area=11868
+[DETECTOR] target acquired: O at (636, 76) area=11193
+[DETECTOR] target acquired: O at (636, 87) area=11011
+[DETECTOR] target acquired: O at (633, 98) area=10974
+[DETECTOR] target acquired: O at (635, 118) area=10580
+[DETECTOR] target acquired: O at (637, 139) area=9890
+[DETECTOR] target acquired: O at (642, 159) area=10488
+[DETECTOR] target acquired: O at (644, 173) area=10488
+[DETECTOR] target acquired: O at (643, 186) area=10509
+[DETECTOR] target acquired: O at (643, 191) area=10752
+[DETECTOR] target acquired: O at (643, 196) area=10848
+[DETECTOR] target acquired: O at (644, 200) area=10622
+[DETECTOR] target acquired: O at (646, 202) area=11286
+[DETECTOR] target acquired: O at (647, 201) area=11300
+[DETECTOR] target acquired: O at (647, 202) area=11628
+[DETECTOR] target acquired: O at (647, 204) area=11286
+[DETECTOR] target acquired: O at (651, 206) area=10528
+[DETECTOR] target acquired: O at (660, 208) area=10848
+[DETECTOR] target acquired: O at (663, 206) area=10416
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target acquired: O at (679, 212) area=10890
+[DETECTOR] target acquired: O at (695, 236) area=10890
+[DETECTOR] target acquired: O at (696, 238) area=10780
+[DETECTOR] target acquired: O at (693, 235) area=10800
+[DETECTOR] target acquired: O at (684, 224) area=10791
+[DETECTOR] target acquired: O at (671, 216) area=10152
+[DETECTOR] target acquired: O at (665, 214) area=10355
+[DETECTOR] target acquired: O at (658, 220) area=9309
+[DETECTOR] target acquired: O at (658, 230) area=8904
+[DETECTOR] target acquired: O at (661, 251) area=9828
+[DETECTOR] target acquired: O at (659, 281) area=9152
+[DETECTOR] target acquired: O at (652, 299) area=9612
+[DETECTOR] target acquired: O at (642, 308) area=9450
+[DETECTOR] target acquired: O at (634, 310) area=9416
+[DETECTOR] target acquired: O at (635, 313) area=8964
+[DETECTOR] target acquired: O at (642, 315) area=9030
+[DETECTOR] target acquired: O at (646, 311) area=9202
+[DETECTOR] target acquired: O at (636, 291) area=8118
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (boxes present)
+[TRACK] no target — hovering
+[DETECTOR] target acquired: O at (416, 189) area=1600
+[TRACK] center=(416,189) area=1600 mvx=-6 mvy=42 dist=-534 cmd_lr=-6 cmd_fb=20 cmd_ud=20
+[DETECTOR] target O not found in frame (boxes present)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (boxes present)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (boxes present)
+[TRACK] no target — hovering
+[DETECTOR] target acquired: O at (403, 518) area=1519
+[TRACK] center=(403,518) area=1519 mvx=-7 mvy=-40 dist=-539 cmd_lr=-7 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (399, 573) area=1421
+[TRACK] center=(399,573) area=1421 mvx=-8 mvy=-54 dist=-556 cmd_lr=-8 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (399, 616) area=1421
+[TRACK] center=(399,616) area=1421 mvx=-8 mvy=-64 dist=-575 cmd_lr=-8 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (399, 652) area=1344
+[TRACK] center=(399,652) area=1344 mvx=-8 mvy=-73 dist=-601 cmd_lr=-8 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (399, 679) area=1363
+[TRACK] center=(399,679) area=1363 mvx=-8 mvy=-80 dist=-617 cmd_lr=-8 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (400, 701) area=945
+[TRACK] center=(400,701) area=945 mvx=-8 mvy=-86 dist=-689 cmd_lr=-8 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target acquired: O at (393, 700) area=1140
+[TRACK] center=(393,700) area=1140 mvx=-8 mvy=-85 dist=-711 cmd_lr=-8 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (390, 688) area=1728
+[TRACK] center=(390,688) area=1728 mvx=-9 mvy=-82 dist=-636 cmd_lr=-9 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (386, 673) area=1600
+[TRACK] center=(386,673) area=1600 mvx=-9 mvy=-79 dist=-597 cmd_lr=-9 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (385, 663) area=1550
+[TRACK] center=(385,663) area=1550 mvx=-9 mvy=-76 dist=-574 cmd_lr=-9 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (381, 645) area=1450
+[TRACK] center=(381,645) area=1450 mvx=-9 mvy=-72 dist=-572 cmd_lr=-9 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (380, 628) area=1500
+[TRACK] center=(380,628) area=1500 mvx=-10 mvy=-67 dist=-565 cmd_lr=-10 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (377, 615) area=1550
+[TRACK] center=(377,615) area=1550 mvx=-10 mvy=-64 dist=-553 cmd_lr=-10 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (375, 601) area=1488
+[TRACK] center=(375,601) area=1488 mvx=-10 mvy=-61 dist=-554 cmd_lr=-10 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (375, 592) area=1550
+[TRACK] center=(375,592) area=1550 mvx=-10 mvy=-58 dist=-547 cmd_lr=-10 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (376, 580) area=1716
+[TRACK] center=(376,580) area=1716 mvx=-10 mvy=-55 dist=-518 cmd_lr=-10 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (378, 573) area=1683
+[TRACK] center=(378,573) area=1683 mvx=-10 mvy=-54 dist=-503 cmd_lr=-10 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (380, 566) area=1716
+[TRACK] center=(380,566) area=1716 mvx=-10 mvy=-52 dist=-489 cmd_lr=-10 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (387, 549) area=1855
+[TRACK] center=(387,549) area=1855 mvx=-9 mvy=-48 dist=-460 cmd_lr=-9 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (392, 541) area=1782
+[TRACK] center=(392,541) area=1782 mvx=-8 mvy=-46 dist=-451 cmd_lr=-8 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (402, 527) area=1925
+[TRACK] center=(402,527) area=1925 mvx=-7 mvy=-42 dist=-426 cmd_lr=-7 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (411, 520) area=2016
+[TRACK] center=(411,520) area=2016 mvx=-6 mvy=-40 dist=-397 cmd_lr=-6 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (423, 506) area=2052
+[TRACK] center=(423,506) area=2052 mvx=-5 mvy=-37 dist=-373 cmd_lr=-5 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (441, 492) area=2440
+[TRACK] center=(441,492) area=2440 mvx=-3 mvy=-33 dist=-300 cmd_lr=-3 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (455, 481) area=2520
+[TRACK] center=(455,481) area=2520 mvx=-2 mvy=-31 dist=-239 cmd_lr=-2 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (466, 476) area=2542
+[TRACK] center=(466,476) area=2542 mvx=-1 mvy=-29 dist=-196 cmd_lr=-1 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (484, 465) area=2688
+[TRACK] center=(484,465) area=2688 mvx=1 mvy=-27 dist=-149 cmd_lr=1 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (496, 458) area=2992
+[TRACK] center=(496,458) area=2992 mvx=2 mvy=-25 dist=-76 cmd_lr=2 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (508, 449) area=3243
+[TRACK] center=(508,449) area=3243 mvx=3 mvy=-23 dist=9 cmd_lr=3 cmd_fb=-9 cmd_ud=-20
+[DETECTOR] target acquired: O at (532, 433) area=3528
+[DETECTOR] target acquired: O at (538, 427) area=3650
+[DETECTOR] target acquired: O at (548, 417) area=4134
+[DETECTOR] target acquired: O at (564, 401) area=4503
+[DETECTOR] target acquired: O at (573, 389) area=4720
+[DETECTOR] target acquired: O at (583, 374) area=5185
+[DETECTOR] target acquired: O at (604, 343) area=5984
+[DETECTOR] target acquired: O at (621, 312) area=6319
+[DETECTOR] target acquired: O at (636, 289) area=7520
+[DETECTOR] target acquired: O at (646, 265) area=7600
+[DETECTOR] target acquired: O at (656, 225) area=8160
+[DETECTOR] target acquired: O at (658, 196) area=8330
+[DETECTOR] target acquired: O at (660, 164) area=8652
+[DETECTOR] target acquired: O at (660, 120) area=8715
+[DETECTOR] target acquired: O at (661, 92) area=8692
+[DETECTOR] target acquired: O at (663, 60) area=9324
+[DETECTOR] target acquired: O at (663, 37) area=6734
+[DETECTOR] target acquired: O at (658, 22) area=3735
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target acquired: O at (469, 231) area=1376
+[TRACK] center=(469,231) area=1376 mvx=-1 mvy=32 dist=-258 cmd_lr=-1 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (470, 305) area=1504
+[TRACK] center=(470,305) area=1504 mvx=-1 mvy=13 dist=-388 cmd_lr=-1 cmd_fb=20 cmd_ud=13
+[DETECTOR] target acquired: O at (472, 364) area=1457
+[TRACK] center=(472,364) area=1457 mvx=0 mvy=-1 dist=-491 cmd_lr=0 cmd_fb=20 cmd_ud=-1
+[DETECTOR] target acquired: O at (476, 424) area=1568
+[TRACK] center=(476,424) area=1568 mvx=0 mvy=-16 dist=-547 cmd_lr=0 cmd_fb=20 cmd_ud=-16
+[DETECTOR] target acquired: O at (477, 461) area=1568
+[TRACK] center=(477,461) area=1568 mvx=0 mvy=-26 dist=-582 cmd_lr=0 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (481, 528) area=1550
+[TRACK] center=(481,528) area=1550 mvx=1 mvy=-42 dist=-603 cmd_lr=1 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (482, 565) area=1664
+[TRACK] center=(482,565) area=1664 mvx=1 mvy=-52 dist=-596 cmd_lr=1 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (487, 643) area=2065
+[TRACK] center=(487,643) area=2065 mvx=1 mvy=-71 dist=-525 cmd_lr=1 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (487, 663) area=2030
+[TRACK] center=(487,663) area=2030 mvx=1 mvy=-76 dist=-473 cmd_lr=1 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (489, 681) area=2432
+[TRACK] center=(489,681) area=2432 mvx=1 mvy=-81 dist=-374 cmd_lr=1 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (490, 689) area=2301
+[TRACK] center=(490,689) area=2301 mvx=1 mvy=-83 dist=-322 cmd_lr=1 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target O not found in frame (boxes present)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target acquired: O at (493, 695) area=2832
+[TRACK] center=(493,695) area=2832 mvx=2 mvy=-84 dist=-208 cmd_lr=2 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target acquired: O at (340, 555) area=6666
+[DETECTOR] target acquired: O at (336, 391) area=6256
+[DETECTOR] target acquired: O at (336, 263) area=5934
+[DETECTOR] target acquired: O at (339, 70) area=6745
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target acquired: O at (416, 73) area=1836
+[TRACK] center=(416,73) area=1836 mvx=-6 mvy=71 dist=-193 cmd_lr=-6 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (396, 181) area=1680
+[TRACK] center=(396,181) area=1680 mvx=-8 mvy=44 dist=-325 cmd_lr=-8 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (369, 266) area=1551
+[TRACK] center=(369,266) area=1551 mvx=-11 mvy=23 dist=-442 cmd_lr=-11 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (349, 304) area=1485
+[TRACK] center=(349,304) area=1485 mvx=-13 mvy=14 dist=-534 cmd_lr=-13 cmd_fb=20 cmd_ud=14
+[DETECTOR] target acquired: O at (306, 348) area=1575
+[TRACK] center=(306,348) area=1575 mvx=-17 mvy=3 dist=-582 cmd_lr=-17 cmd_fb=20 cmd_ud=3
+[DETECTOR] target acquired: O at (294, 362) area=1610
+[TRACK] center=(294,362) area=1610 mvx=-18 mvy=-1 dist=-604 cmd_lr=-18 cmd_fb=20 cmd_ud=-1
+[DETECTOR] target acquired: O at (284, 375) area=1728
+[TRACK] center=(284,375) area=1728 mvx=-19 mvy=-4 dist=-594 cmd_lr=-19 cmd_fb=20 cmd_ud=-4
+[DETECTOR] target acquired: O at (273, 393) area=1680
+[TRACK] center=(273,393) area=1680 mvx=-20 mvy=-9 dist=-587 cmd_lr=-20 cmd_fb=20 cmd_ud=-9
+[DETECTOR] target acquired: O at (268, 402) area=2028
+[TRACK] center=(268,402) area=2028 mvx=-21 mvy=-11 dist=-524 cmd_lr=-20 cmd_fb=20 cmd_ud=-11
+[DETECTOR] target acquired: O at (263, 413) area=2120
+[TRACK] center=(263,413) area=2120 mvx=-21 mvy=-14 dist=-460 cmd_lr=-20 cmd_fb=20 cmd_ud=-14
+[DETECTOR] target acquired: O at (257, 429) area=2296
+[TRACK] center=(257,429) area=2296 mvx=-22 mvy=-18 dist=-386 cmd_lr=-20 cmd_fb=20 cmd_ud=-18
+[DETECTOR] target acquired: O at (254, 443) area=2320
+[TRACK] center=(254,443) area=2320 mvx=-22 mvy=-21 dist=-328 cmd_lr=-20 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (257, 456) area=2394
+[TRACK] center=(257,456) area=2394 mvx=-22 mvy=-24 dist=-278 cmd_lr=-20 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (260, 466) area=2668
+[TRACK] center=(260,466) area=2668 mvx=-22 mvy=-27 dist=-205 cmd_lr=-20 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (270, 471) area=2914
+[TRACK] center=(270,471) area=2914 mvx=-21 mvy=-28 dist=-120 cmd_lr=-20 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (292, 472) area=3332
+[TRACK] center=(292,472) area=3332 mvx=-18 mvy=-28 dist=-2 cmd_lr=-18 cmd_fb=2 cmd_ud=-20
+[DETECTOR] target acquired: O at (317, 469) area=3723
+[DETECTOR] target acquired: O at (353, 460) area=4134
+[DETECTOR] target acquired: O at (388, 455) area=4592
+[DETECTOR] target acquired: O at (445, 448) area=5310
+[DETECTOR] target acquired: O at (512, 445) area=6080
+[DETECTOR] target acquired: O at (586, 449) area=7154
+[DETECTOR] target acquired: O at (649, 453) area=9180
+[DETECTOR] target acquired: O at (756, 474) area=12705
+[DETECTOR] target acquired: O at (827, 489) area=13734
+[DETECTOR] target acquired: O at (869, 496) area=15367
+[DETECTOR] target acquired: O at (907, 496) area=14595
+[DETECTOR] target acquired: O at (916, 500) area=11880
+[DETECTOR] target acquired: O at (928, 501) area=8680
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target acquired: O at (933, 606) area=7208
+[DETECTOR] target acquired: O at (930, 631) area=8520
+[DETECTOR] target acquired: O at (928, 650) area=8768
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target acquired: O at (493, 37) area=1696
+[TRACK] center=(493,37) area=1696 mvx=2 mvy=80 dist=-194 cmd_lr=2 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (491, 108) area=1500
+[TRACK] center=(491,108) area=1500 mvx=2 mvy=63 dist=-339 cmd_lr=2 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (488, 217) area=1440
+[TRACK] center=(488,217) area=1440 mvx=1 mvy=35 dist=-458 cmd_lr=1 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (486, 277) area=1302
+[TRACK] center=(486,277) area=1302 mvx=1 mvy=20 dist=-564 cmd_lr=1 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (485, 334) area=1260
+[TRACK] center=(485,334) area=1260 mvx=1 mvy=6 dist=-643 cmd_lr=1 cmd_fb=20 cmd_ud=6
+[DETECTOR] target acquired: O at (484, 373) area=1189
+[TRACK] center=(484,373) area=1189 mvx=1 mvy=-4 dist=-703 cmd_lr=1 cmd_fb=20 cmd_ud=-4
+[DETECTOR] target acquired: O at (485, 403) area=1080
+[TRACK] center=(485,403) area=1080 mvx=1 mvy=-11 dist=-755 cmd_lr=1 cmd_fb=20 cmd_ud=-11
+[DETECTOR] target acquired: O at (488, 427) area=1014
+[TRACK] center=(488,427) area=1014 mvx=1 mvy=-17 dist=-794 cmd_lr=1 cmd_fb=20 cmd_ud=-17
+[DETECTOR] target acquired: O at (491, 450) area=975
+[TRACK] center=(491,450) area=975 mvx=2 mvy=-23 dist=-819 cmd_lr=2 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (492, 460) area=975
+[TRACK] center=(492,460) area=975 mvx=2 mvy=-25 dist=-829 cmd_lr=2 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target O not found in frame (boxes present)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (boxes present)
+[TRACK] no target — hovering
+[DETECTOR] target acquired: O at (501, 483) area=900
+[TRACK] center=(501,483) area=900 mvx=3 mvy=-31 dist=-840 cmd_lr=3 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (504, 489) area=950
+[TRACK] center=(504,489) area=950 mvx=3 mvy=-33 dist=-833 cmd_lr=3 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target O not found in frame (boxes present)
+[TRACK] no target — hovering
+[DETECTOR] target acquired: O at (506, 506) area=1014
+[TRACK] center=(506,506) area=1014 mvx=3 mvy=-37 dist=-813 cmd_lr=3 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (506, 508) area=1161
+[TRACK] center=(506,508) area=1161 mvx=3 mvy=-37 dist=-771 cmd_lr=3 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (507, 508) area=1276
+[TRACK] center=(507,508) area=1276 mvx=3 mvy=-37 dist=-721 cmd_lr=3 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (506, 507) area=1176
+[TRACK] center=(506,507) area=1176 mvx=3 mvy=-37 dist=-697 cmd_lr=3 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target O not found in frame (boxes present)
+[TRACK] no target — hovering
+[DETECTOR] target acquired: O at (501, 491) area=1276
+[TRACK] center=(501,491) area=1276 mvx=3 mvy=-33 dist=-666 cmd_lr=3 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (499, 479) area=1320
+[TRACK] center=(499,479) area=1320 mvx=2 mvy=-30 dist=-638 cmd_lr=2 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (494, 466) area=1504
+[TRACK] center=(494,466) area=1504 mvx=2 mvy=-27 dist=-592 cmd_lr=2 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (489, 462) area=1392
+[TRACK] center=(489,462) area=1392 mvx=1 mvy=-26 dist=-577 cmd_lr=1 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (488, 456) area=1568
+[TRACK] center=(488,456) area=1568 mvx=1 mvy=-24 dist=-544 cmd_lr=1 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (487, 447) area=1734
+[TRACK] center=(487,447) area=1734 mvx=1 mvy=-22 dist=-498 cmd_lr=1 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (485, 439) area=1768
+[TRACK] center=(485,439) area=1768 mvx=1 mvy=-20 dist=-463 cmd_lr=1 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (479, 421) area=1872
+[TRACK] center=(479,421) area=1872 mvx=0 mvy=-16 dist=-427 cmd_lr=0 cmd_fb=20 cmd_ud=-16
+[DETECTOR] target acquired: O at (478, 406) area=1980
+[TRACK] center=(478,406) area=1980 mvx=0 mvy=-12 dist=-389 cmd_lr=0 cmd_fb=20 cmd_ud=-12
+[DETECTOR] target acquired: O at (485, 384) area=2014
+[TRACK] center=(485,384) area=2014 mvx=1 mvy=-6 dist=-362 cmd_lr=1 cmd_fb=20 cmd_ud=-6
+[DETECTOR] target acquired: O at (496, 357) area=2166
+[TRACK] center=(496,357) area=2166 mvx=2 mvy=0 dist=-324 cmd_lr=2 cmd_fb=20 cmd_ud=0
+[DETECTOR] target acquired: O at (501, 337) area=2200
+[TRACK] center=(501,337) area=2200 mvx=3 mvy=5 dist=-297 cmd_lr=3 cmd_fb=20 cmd_ud=5
+[DETECTOR] target acquired: O at (505, 323) area=2337
+[TRACK] center=(505,323) area=2337 mvx=3 mvy=9 dist=-263 cmd_lr=3 cmd_fb=20 cmd_ud=9
+[DETECTOR] target acquired: O at (511, 309) area=2408
+[TRACK] center=(511,309) area=2408 mvx=4 mvy=12 dist=-232 cmd_lr=4 cmd_fb=20 cmd_ud=12
+[DETECTOR] target acquired: O at (514, 296) area=2537
+[TRACK] center=(514,296) area=2537 mvx=4 mvy=16 dist=-196 cmd_lr=4 cmd_fb=20 cmd_ud=16
+[DETECTOR] target acquired: O at (524, 288) area=2898
+[TRACK] center=(524,288) area=2898 mvx=5 mvy=18 dist=-122 cmd_lr=5 cmd_fb=20 cmd_ud=18
+[DETECTOR] target acquired: O at (535, 289) area=3120
+[TRACK] center=(535,289) area=3120 mvx=6 mvy=17 dist=-40 cmd_lr=6 cmd_fb=20 cmd_ud=17
+[DETECTOR] target acquired: O at (538, 293) area=3570
+[DETECTOR] target acquired: O at (541, 297) area=3942
+[DETECTOR] target acquired: O at (541, 306) area=4332
+[DETECTOR] target acquired: O at (543, 316) area=4740
+[DETECTOR] target acquired: O at (545, 322) area=5376
+[DETECTOR] target acquired: O at (542, 325) area=6348
+[DETECTOR] target acquired: O at (542, 331) area=7300
+[DETECTOR] target acquired: O at (540, 331) area=7650
+[DETECTOR] target acquired: O at (545, 330) area=7752
+[DETECTOR] target acquired: O at (560, 335) area=8453
+[DETECTOR] target acquired: O at (573, 354) area=7777
+[DETECTOR] target acquired: O at (580, 381) area=7800
+[DETECTOR] target acquired: O at (606, 413) area=8346
+[DETECTOR] target acquired: O at (626, 435) area=8216
+[DETECTOR] target acquired: O at (634, 444) area=7821
+[DETECTOR] target acquired: O at (638, 448) area=7752
+[DETECTOR] target acquired: O at (635, 453) area=7904
+[DETECTOR] target acquired: O at (624, 458) area=7171
+[DETECTOR] target acquired: O at (613, 461) area=7548
+[DETECTOR] target acquired: O at (591, 472) area=7171
+[DETECTOR] target acquired: O at (578, 478) area=7384
+[DETECTOR] target acquired: O at (561, 485) area=7038
+[DETECTOR] target acquired: O at (548, 484) area=6767
+[DETECTOR] target acquired: O at (534, 479) area=6732
+[DETECTOR] target acquired: O at (524, 476) area=6272
+[DETECTOR] target acquired: O at (511, 480) area=6336
+[DETECTOR] target acquired: O at (500, 476) area=6336
+[DETECTOR] target acquired: O at (494, 457) area=6208
+[DETECTOR] target acquired: O at (490, 429) area=5859
+[DETECTOR] target acquired: O at (495, 418) area=5760
+[DETECTOR] target acquired: O at (502, 417) area=5642
+[DETECTOR] target acquired: O at (508, 422) area=6110
+[DETECTOR] target acquired: O at (507, 427) area=6175
+[DETECTOR] target acquired: O at (505, 441) area=5888
+[DETECTOR] target acquired: O at (499, 445) area=5673
+[DETECTOR] target acquired: O at (497, 455) area=5704
+[DETECTOR] target acquired: O at (496, 471) area=5985
+[DETECTOR] target acquired: O at (492, 482) area=5856
+[DETECTOR] target acquired: O at (487, 497) area=5664
+[DETECTOR] target acquired: O at (487, 524) area=6000
+[DETECTOR] target acquired: O at (486, 562) area=6572
+[DETECTOR] target acquired: O at (490, 616) area=7169
+[DETECTOR] target acquired: O at (491, 644) area=7920
+[DETECTOR] target acquired: O at (496, 653) area=8176
+[DETECTOR] target acquired: O at (504, 655) area=8136
+[DETECTOR] target acquired: O at (503, 638) area=7630
+[DETECTOR] target acquired: O at (501, 627) area=7169
+[DETECTOR] target acquired: O at (498, 617) area=6678
+[DETECTOR] target acquired: O at (492, 605) area=7276
+[DETECTOR] target acquired: O at (485, 608) area=7150
+[DETECTOR] target acquired: O at (484, 617) area=6912
+[DETECTOR] target acquired: O at (492, 621) area=8547
+[DETECTOR] target acquired: O at (495, 573) area=7548
+[DETECTOR] target acquired: O at (498, 490) area=7700
+[DETECTOR] target acquired: O at (498, 366) area=7344
+[DETECTOR] target acquired: O at (501, 165) area=7650
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target acquired: O at (433, 188) area=6552
+[DETECTOR] target acquired: O at (438, 323) area=5841
+[DETECTOR] target acquired: O at (445, 479) area=5472
+[DETECTOR] target acquired: O at (448, 566) area=5600
+[DETECTOR] target acquired: O at (450, 670) area=6000
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target acquired: O at (438, 689) area=3245
+[DETECTOR] target acquired: O at (424, 661) area=4876
+[DETECTOR] target acquired: O at (407, 620) area=4770
+[DETECTOR] target acquired: O at (389, 565) area=4698
+[DETECTOR] target acquired: O at (381, 531) area=4816
+[DETECTOR] target acquired: O at (376, 499) area=4590
+[DETECTOR] target acquired: O at (345, 382) area=4756
+[DETECTOR] target acquired: O at (336, 354) area=4389
+[DETECTOR] target acquired: O at (329, 328) area=4543
+[DETECTOR] target acquired: O at (321, 306) area=4425
+[DETECTOR] target acquired: O at (310, 282) area=4292
+[DETECTOR] target acquired: O at (304, 269) area=4440
+[DETECTOR] target acquired: O at (303, 265) area=4350
+[DETECTOR] target acquired: O at (304, 259) area=4425
+[DETECTOR] target acquired: O at (303, 251) area=4425
+[DETECTOR] target acquired: O at (300, 241) area=4218
+[DETECTOR] target acquired: O at (298, 233) area=4425
+[DETECTOR] target acquired: O at (297, 227) area=4636
+[DETECTOR] target acquired: O at (300, 227) area=4332
+[DETECTOR] target acquired: O at (305, 231) area=4560
+[DETECTOR] target acquired: O at (319, 240) area=4543
+[DETECTOR] target acquired: O at (323, 245) area=4560
+[DETECTOR] target acquired: O at (321, 252) area=4602
+[DETECTOR] target acquired: O at (317, 270) area=4740
+[DETECTOR] target acquired: O at (316, 290) area=4819
+[DETECTOR] target acquired: O at (314, 310) area=5312
+[DETECTOR] target acquired: O at (310, 323) area=5292
+[DETECTOR] target acquired: O at (304, 340) area=5632
+[DETECTOR] target acquired: O at (303, 364) area=5785
+[DETECTOR] target acquired: O at (303, 383) area=6006
+[DETECTOR] target acquired: O at (298, 407) area=6650
+[DETECTOR] target acquired: O at (295, 437) area=7242
+[DETECTOR] target acquired: O at (298, 469) area=7650
+[DETECTOR] target acquired: O at (297, 485) area=8502
+[DETECTOR] target acquired: O at (291, 498) area=9153
+[DETECTOR] target acquired: O at (282, 511) area=10370
+[DETECTOR] target acquired: O at (274, 523) area=11592
+[DETECTOR] target acquired: O at (268, 528) area=12707
+[DETECTOR] target acquired: O at (253, 545) area=14832
+[DETECTOR] target acquired: O at (236, 561) area=17024
+[DETECTOR] target acquired: O at (209, 584) area=20295
+[DETECTOR] target acquired: O at (189, 616) area=22490
+[DETECTOR] target acquired: O at (167, 639) area=21624
+[DETECTOR] target acquired: O at (147, 651) area=20502
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target acquired: O at (426, 96) area=1518
+[TRACK] center=(426,96) area=1518 mvx=-5 mvy=66 dist=-259 cmd_lr=-5 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (427, 120) area=1485
+[TRACK] center=(427,120) area=1485 mvx=-5 mvy=60 dist=-389 cmd_lr=-5 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (429, 124) area=1395
+[TRACK] center=(429,124) area=1395 mvx=-5 mvy=59 dist=-499 cmd_lr=-5 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (431, 123) area=1290
+[TRACK] center=(431,123) area=1290 mvx=-4 mvy=59 dist=-592 cmd_lr=-4 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (433, 115) area=1376
+[TRACK] center=(433,115) area=1376 mvx=-4 mvy=61 dist=-642 cmd_lr=-4 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (433, 110) area=1440
+[TRACK] center=(433,110) area=1440 mvx=-4 mvy=62 dist=-661 cmd_lr=-4 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (435, 97) area=1440
+[TRACK] center=(435,97) area=1440 mvx=-4 mvy=65 dist=-667 cmd_lr=-4 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (437, 88) area=1408
+[TRACK] center=(437,88) area=1408 mvx=-4 mvy=68 dist=-670 cmd_lr=-4 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (438, 81) area=1530
+[TRACK] center=(438,81) area=1530 mvx=-4 mvy=69 dist=-647 cmd_lr=-4 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (439, 73) area=1598
+[TRACK] center=(439,73) area=1598 mvx=-4 mvy=71 dist=-616 cmd_lr=-4 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (439, 66) area=1551
+[TRACK] center=(439,66) area=1551 mvx=-4 mvy=73 dist=-596 cmd_lr=-4 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (441, 60) area=1666
+[TRACK] center=(441,60) area=1666 mvx=-3 mvy=75 dist=-563 cmd_lr=-3 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (442, 57) area=1850
+[TRACK] center=(442,57) area=1850 mvx=-3 mvy=75 dist=-511 cmd_lr=-3 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (444, 56) area=1785
+[TRACK] center=(444,56) area=1785 mvx=-3 mvy=76 dist=-483 cmd_lr=-3 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (448, 59) area=2014
+[TRACK] center=(448,59) area=2014 mvx=-3 mvy=75 dist=-430 cmd_lr=-3 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (450, 62) area=1961
+[TRACK] center=(450,62) area=1961 mvx=-3 mvy=74 dist=-402 cmd_lr=-3 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (454, 66) area=2145
+[TRACK] center=(454,66) area=2145 mvx=-2 mvy=73 dist=-357 cmd_lr=-2 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (457, 70) area=2255
+[TRACK] center=(457,70) area=2255 mvx=-2 mvy=72 dist=-313 cmd_lr=-2 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (464, 74) area=2394
+[TRACK] center=(464,74) area=2394 mvx=-1 mvy=71 dist=-264 cmd_lr=-1 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (468, 80) area=2580
+[TRACK] center=(468,80) area=2580 mvx=-1 mvy=70 dist=-206 cmd_lr=-1 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (471, 89) area=2684
+[TRACK] center=(471,89) area=2684 mvx=0 mvy=67 dist=-153 cmd_lr=0 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (470, 100) area=2835
+[TRACK] center=(470,100) area=2835 mvx=-1 mvy=65 dist=-99 cmd_lr=-1 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (470, 113) area=2944
+[TRACK] center=(470,113) area=2944 mvx=-1 mvy=61 dist=-51 cmd_lr=-1 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (470, 128) area=2990
+[TRACK] center=(470,128) area=2990 mvx=-1 mvy=58 dist=-16 cmd_lr=-1 cmd_fb=16 cmd_ud=20
+[DETECTOR] target acquired: O at (472, 139) area=3283
+[TRACK] center=(472,139) area=3283 mvx=0 mvy=55 dist=45 cmd_lr=0 cmd_fb=-20 cmd_ud=20
+[DETECTOR] target acquired: O at (473, 153) area=3468
+[TRACK] center=(473,153) area=3468 mvx=0 mvy=51 dist=110 cmd_lr=0 cmd_fb=-20 cmd_ud=20
+[DETECTOR] target acquired: O at (476, 170) area=3816
+[DETECTOR] target acquired: O at (479, 192) area=3744
+[DETECTOR] target acquired: O at (486, 217) area=4088
+[DETECTOR] target acquired: O at (495, 246) area=4332
+[DETECTOR] target acquired: O at (501, 268) area=4466
+[DETECTOR] target acquired: O at (507, 288) area=4582
+[DETECTOR] target acquired: O at (509, 303) area=4819
+[DETECTOR] target acquired: O at (510, 310) area=5166
+[DETECTOR] target acquired: O at (511, 311) area=5440
+[DETECTOR] target acquired: O at (512, 311) area=5440
+[DETECTOR] target acquired: O at (516, 311) area=5355
+[DETECTOR] target acquired: O at (521, 311) area=5440
+[DETECTOR] target acquired: O at (520, 310) area=5376
+[DETECTOR] target acquired: O at (514, 306) area=5525
+[DETECTOR] target acquired: O at (511, 304) area=5742
+[DETECTOR] target acquired: O at (515, 305) area=5610
+[DETECTOR] target acquired: O at (522, 304) area=5418
+[DETECTOR] target acquired: O at (526, 303) area=5504
+[DETECTOR] target acquired: O at (533, 309) area=5355
+[DETECTOR] target acquired: O at (544, 313) area=5916
+[DETECTOR] target acquired: O at (542, 307) area=5676
+[DETECTOR] target acquired: O at (542, 309) area=5695
+[DETECTOR] target acquired: O at (544, 311) area=5655
+[DETECTOR] target acquired: O at (544, 314) area=5655
+[DETECTOR] target acquired: O at (544, 320) area=5610
+[DETECTOR] target acquired: O at (539, 330) area=5762
+[DETECTOR] target acquired: O at (536, 334) area=5610
+[DETECTOR] target acquired: O at (531, 345) area=5655
+[DETECTOR] target acquired: O at (527, 360) area=5824
+[DETECTOR] target acquired: O at (526, 377) area=6072
+[DETECTOR] target acquired: O at (528, 393) area=5824
+[DETECTOR] target acquired: O at (526, 405) area=6138
+[DETECTOR] target acquired: O at (520, 413) area=6240
+[DETECTOR] target acquired: O at (512, 418) area=6596
+[DETECTOR] target acquired: O at (506, 422) area=6596
+[DETECTOR] target acquired: O at (504, 417) area=6900
+[DETECTOR] target acquired: O at (507, 417) area=6800
+[DETECTOR] target acquired: O at (511, 419) area=7038
+[DETECTOR] target acquired: O at (519, 419) area=7072
+[DETECTOR] target acquired: O at (519, 411) area=6831
+[DETECTOR] target acquired: O at (518, 401) area=7242
+[DETECTOR] target acquired: O at (523, 400) area=7070
+[DETECTOR] target acquired: O at (536, 401) area=7548
+[DETECTOR] target acquired: O at (551, 404) area=7875
+[DETECTOR] target acquired: O at (567, 404) area=8250
+[DETECTOR] target acquired: O at (577, 405) area=8624
+[DETECTOR] target acquired: O at (587, 408) area=8991
+[DETECTOR] target acquired: O at (594, 416) area=9408
+[DETECTOR] target acquired: O at (601, 421) area=9266
+[DETECTOR] target acquired: O at (605, 430) area=9632
+[DETECTOR] target acquired: O at (606, 430) area=10170
+[DETECTOR] target acquired: O at (602, 429) area=10170
+[DETECTOR] target acquired: O at (601, 427) area=9130
+[DETECTOR] target acquired: O at (601, 418) area=9396
+[DETECTOR] target acquired: O at (597, 415) area=9605
+[DETECTOR] target acquired: O at (594, 406) area=9718
+[DETECTOR] target acquired: O at (586, 403) area=9095
+[DETECTOR] target acquired: O at (582, 404) area=8586
+[DETECTOR] target acquired: O at (579, 404) area=8881
+[DETECTOR] target acquired: O at (576, 404) area=8938
+[DETECTOR] target acquired: O at (573, 406) area=8580
+[DETECTOR] target acquired: O at (573, 413) area=8008
+[DETECTOR] target acquired: O at (574, 425) area=8008
+[DETECTOR] target acquired: O at (573, 428) area=8374
+[DETECTOR] target acquired: O at (564, 441) area=8991
+[DETECTOR] target acquired: O at (564, 448) area=8748
+[DETECTOR] target acquired: O at (563, 463) area=9040
+[DETECTOR] target acquired: O at (564, 475) area=9040
+[DETECTOR] target acquired: O at (559, 485) area=9440
+[DETECTOR] target acquired: O at (554, 479) area=8848
+[DETECTOR] target acquired: O at (555, 476) area=8470
+[DETECTOR] target acquired: O at (561, 468) area=8769
+[DETECTOR] target acquired: O at (563, 463) area=8938
+[DETECTOR] target acquired: O at (565, 451) area=8346
+[DETECTOR] target acquired: O at (566, 438) area=8162
+[DETECTOR] target acquired: O at (568, 418) area=7696
+[DETECTOR] target acquired: O at (565, 386) area=7373
+[DETECTOR] target acquired: O at (561, 363) area=7081
+[DETECTOR] target acquired: O at (557, 346) area=6789
+[DETECTOR] target acquired: O at (549, 336) area=6370
+[DETECTOR] target acquired: O at (534, 339) area=6392
+[DETECTOR] target acquired: O at (519, 342) area=6298
+[DETECTOR] target acquired: O at (499, 349) area=5915
+[DETECTOR] target acquired: O at (491, 354) area=5952
+[DETECTOR] target acquired: O at (485, 361) area=5733
+[DETECTOR] target acquired: O at (481, 370) area=5760
+[DETECTOR] target acquired: O at (477, 371) area=5696
+[DETECTOR] target acquired: O at (474, 370) area=5429
+[DETECTOR] target acquired: O at (472, 370) area=5670
+[DETECTOR] target acquired: O at (476, 374) area=5580
+[DETECTOR] target acquired: O at (478, 377) area=5796
+[DETECTOR] target acquired: O at (481, 383) area=5850
+[DETECTOR] target acquired: O at (485, 383) area=5888
+[DETECTOR] target acquired: O at (491, 383) area=5952
+[DETECTOR] target acquired: O at (497, 386) area=6240
+[DETECTOR] target acquired: O at (504, 388) area=6204
+[DETECTOR] target acquired: O at (504, 389) area=6072
+[DETECTOR] target acquired: O at (501, 386) area=6138
+[DETECTOR] target acquired: O at (500, 385) area=5760
+[DETECTOR] target acquired: O at (501, 387) area=5824
+[DETECTOR] target acquired: O at (503, 388) area=5824
+[DETECTOR] target acquired: O at (505, 389) area=5760
+[DETECTOR] target acquired: O at (507, 388) area=5980
+[DETECTOR] target acquired: O at (512, 386) area=6138
+[DETECTOR] target acquired: O at (516, 381) area=5632
+[DETECTOR] target acquired: O at (522, 364) area=5915
+[DETECTOR] target acquired: O at (531, 338) area=6030
+[DETECTOR] target acquired: O at (535, 325) area=6052
+[DETECTOR] target acquired: O at (535, 327) area=6164
+[DETECTOR] target acquired: O at (535, 338) area=6486
+[DETECTOR] target acquired: O at (532, 346) area=6532
+[DETECTOR] target acquired: O at (527, 352) area=6650
+[DETECTOR] target acquired: O at (518, 349) area=6580
+[DETECTOR] target acquired: O at (510, 341) area=6720
+[DETECTOR] target acquired: O at (505, 338) area=6580
+[DETECTOR] target acquired: O at (509, 334) area=6696
+[DETECTOR] target acquired: O at (515, 308) area=7008
+[DETECTOR] target acquired: O at (518, 268) area=6840
+[DETECTOR] target acquired: O at (522, 206) area=7104
+[DETECTOR] target acquired: O at (530, 117) area=7600
+[DETECTOR] target acquired: O at (540, 32) area=4940
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (boxes present)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (boxes present)
+[TRACK] no target — hovering
+[DETECTOR] target acquired: O at (439, 356) area=1364
+[TRACK] center=(439,356) area=1364 mvx=-4 mvy=1 dist=-193 cmd_lr=-4 cmd_fb=20 cmd_ud=1
+[DETECTOR] target acquired: O at (437, 448) area=1305
+[TRACK] center=(437,448) area=1305 mvx=-4 mvy=-22 dist=-394 cmd_lr=-4 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (435, 497) area=1276
+[TRACK] center=(435,497) area=1276 mvx=-4 mvy=-35 dist=-545 cmd_lr=-4 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (432, 529) area=1215
+[TRACK] center=(432,529) area=1215 mvx=-4 mvy=-43 dist=-656 cmd_lr=-4 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (429, 557) area=1232
+[TRACK] center=(429,557) area=1232 mvx=-5 mvy=-50 dist=-725 cmd_lr=-5 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (425, 579) area=1260
+[TRACK] center=(425,579) area=1260 mvx=-5 mvy=-55 dist=-758 cmd_lr=-5 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (422, 593) area=1288
+[TRACK] center=(422,593) area=1288 mvx=-5 mvy=-59 dist=-767 cmd_lr=-5 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (418, 619) area=1380
+[TRACK] center=(418,619) area=1380 mvx=-6 mvy=-65 dist=-748 cmd_lr=-6 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (413, 635) area=1488
+[TRACK] center=(413,635) area=1488 mvx=-6 mvy=-69 dist=-709 cmd_lr=-6 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (408, 644) area=1581
+[TRACK] center=(408,644) area=1581 mvx=-7 mvy=-71 dist=-659 cmd_lr=-7 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (403, 653) area=1815
+[TRACK] center=(403,653) area=1815 mvx=-7 mvy=-74 dist=-583 cmd_lr=-7 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (399, 660) area=1760
+[TRACK] center=(399,660) area=1760 mvx=-8 mvy=-75 dist=-534 cmd_lr=-8 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (391, 666) area=2160
+[TRACK] center=(391,666) area=2160 mvx=-8 mvy=-77 dist=-439 cmd_lr=-8 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (382, 662) area=2600
+[TRACK] center=(382,662) area=2600 mvx=-9 mvy=-76 dist=-306 cmd_lr=-9 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (377, 662) area=2800
+[TRACK] center=(377,662) area=2800 mvx=-10 mvy=-76 dist=-184 cmd_lr=-10 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (367, 660) area=3300
+[TRACK] center=(367,660) area=3300 mvx=-11 mvy=-75 dist=-28 cmd_lr=-11 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (358, 652) area=4316
+[DETECTOR] target acquired: O at (352, 643) area=4950
+[DETECTOR] target acquired: O at (348, 627) area=5723
+[DETECTOR] target acquired: O at (334, 610) area=7480
+[DETECTOR] target acquired: O at (315, 607) area=9875
+[DETECTOR] target acquired: O at (303, 615) area=12638
+[DETECTOR] target acquired: O at (296, 640) area=14259
+[DETECTOR] target acquired: O at (282, 650) area=14734
+[DETECTOR] target acquired: O at (263, 660) area=12168
+[DETECTOR] target acquired: O at (206, 655) area=14300
+[DETECTOR] target acquired: O at (189, 658) area=13189
+[DETECTOR] target acquired: O at (170, 655) area=14605
+[DETECTOR] target acquired: O at (143, 646) area=16128
+[DETECTOR] target acquired: O at (120, 643) area=16240
+[DETECTOR] target acquired: O at (101, 659) area=13560
+[DETECTOR] target acquired: O at (72, 674) area=10980
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (boxes present)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (boxes present)
+[TRACK] no target — hovering
+[DETECTOR] target acquired: O at (430, 556) area=1242
+[TRACK] center=(430,556) area=1242 mvx=-5 mvy=-49 dist=-255 cmd_lr=-5 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (428, 624) area=1288
+[TRACK] center=(428,624) area=1288 mvx=-5 mvy=-66 dist=-397 cmd_lr=-5 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (430, 653) area=1188
+[TRACK] center=(430,653) area=1188 mvx=-5 mvy=-74 dist=-521 cmd_lr=-5 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (434, 671) area=1334
+[TRACK] center=(434,671) area=1334 mvx=-4 mvy=-78 dist=-589 cmd_lr=-4 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (441, 695) area=1488
+[TRACK] center=(441,695) area=1488 mvx=-3 mvy=-84 dist=-612 cmd_lr=-3 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target acquired: O at (443, 551) area=2600
+[DETECTOR] target acquired: O at (453, 307) area=2494
+[DETECTOR] target acquired: O at (458, 78) area=2640
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target O not found in frame (no boxes)
+[TRACK] no target — hovering
+[DETECTOR] target acquired: O at (378, 242) area=1764
+[TRACK] center=(378,242) area=1764 mvx=-10 mvy=29 dist=-486 cmd_lr=-10 cmd_fb=20 cmd_ud=20
+[DETECTOR] target acquired: O at (352, 385) area=1617
+[TRACK] center=(352,385) area=1617 mvx=-12 mvy=-7 dist=-537 cmd_lr=-12 cmd_fb=20 cmd_ud=-7
+[DETECTOR] target acquired: O at (330, 438) area=1617
+[TRACK] center=(330,438) area=1617 mvx=-15 mvy=-20 dist=-569 cmd_lr=-15 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (332, 469) area=1551
+[TRACK] center=(332,469) area=1551 mvx=-14 mvy=-28 dist=-596 cmd_lr=-14 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (348, 501) area=1716
+[TRACK] center=(348,501) area=1716 mvx=-13 mvy=-36 dist=-585 cmd_lr=-13 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (387, 516) area=1870
+[TRACK] center=(387,516) area=1870 mvx=-9 mvy=-39 dist=-547 cmd_lr=-9 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (443, 515) area=2318
+[TRACK] center=(443,515) area=2318 mvx=-3 mvy=-39 dist=-449 cmd_lr=-3 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (521, 514) area=3102
+[TRACK] center=(521,514) area=3102 mvx=5 mvy=-39 dist=-257 cmd_lr=5 cmd_fb=20 cmd_ud=-20
+[DETECTOR] target acquired: O at (653, 517) area=4819
+[DETECTOR] target O not found in frame (boxes present)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)
+[DETECTOR] target O not found in frame (no boxes)

@@ -47,6 +47,10 @@ class Tello:
         self.tello_address = (tello_ip, tello_port)
         self.local_video_port = 11111
         self.last_height = 0
+        self.battery = None
+        self.height = None
+        self.flight_time = None
+        self.speed = None
         self.socket.bind((local_ip, local_port))
 
         self.receive_thread = threading.Thread(target=self._receive_thread)
@@ -186,6 +190,7 @@ class Tello:
         try:
             height = int(height)
             self.last_height = height
+            self.height = height
         except:
             height = self.last_height
         return height
@@ -194,14 +199,17 @@ class Tello:
         battery = self.send_command("battery?")
         try:
             battery = int(battery)
+            self.battery = battery
         except:
             pass
         return battery
 
     def get_flight_time(self):
         flight_time = self.send_command("time?")
+        flight_time = "".join(filter(str.isdigit, str(flight_time)))
         try:
             flight_time = int(flight_time)
+            self.flight_time = flight_time
         except:
             pass
         return flight_time
@@ -214,6 +222,7 @@ class Tello:
                 speed = round((speed / 44.704), 1)
             else:
                 speed = round((speed / 27.7778), 1)
+            self.speed = speed
         except:
             pass
         return speed
@@ -245,3 +254,13 @@ class Tello:
 
     def move_up(self, distance):
         return self.move("up", distance)
+
+    def send_rc_control(
+        self,
+        left_right_velocity: int,
+        forward_backward_velocity: int,
+        up_down_velocity: int,
+        yaw_velocity: int,
+    ):
+        cmd = f"rc {left_right_velocity} {forward_backward_velocity} {up_down_velocity} {yaw_velocity}"
+        return self.send_command_without_wait(cmd)

@@ -11,14 +11,21 @@ class FakeShelf:
         print(f"[ESP32] HOLD {slot}")
 
 
-def run_test(name, frames):
+def run_test(name, frames, print_expected_from=None, sleep_before=None):
+    import time as _time
+
     print(f"\n===== {name} =====")
 
     sorter = BookSorter(FakeShelf())
 
     for i, frame in enumerate(frames):
-        print(f"\n[FRAME {i}] {frame}")
+        if sleep_before and i in sleep_before:
+            print(f"[FRAME {i}] (sleeping 8.1s to simulate user delay...)")
+            _time.sleep(8.1)
+        print(f"\n[FRAME {i}] actual:   {frame}")
         sorter.process_frame(frame)
+        if print_expected_from is not None and i >= print_expected_from:
+            print(f"[FRAME {i}] expected: {sorter.expected_frame}")
 
     print(f"\n===== END {name} =====\n")
 
@@ -107,6 +114,47 @@ test6 = [
 ]
 
 
+# -------------------------
+# TEST 7: 5 swaps with edge cases — consecutive identical expected frames
+# initial: [[], O, I, X, +, -]
+#   swap 1: []@0 ↔ I@2
+#   swap 2: O@1 ↔ +@4
+#   swap 3: []@2 ↔ X@3  — step 1 and step 2 identical (edge case)
+#   swap 4: []@3 ↔ -@5  — step 2 and step 3 identical (edge case)
+#   swap 5: O@4 ↔ []@5  — steps 1, 2, 3 all identical AND match CORRECT_ORDER (edge case)
+# -------------------------
+test7 = [
+    ["[]", "O", "I", "X", "+", "-"],  # initial
+    ["O", "I", "X", "+", "-", "[]"],  # swap1 step 1
+    ["I", "O", "X", "+", "-", "[]"],  # swap1 step 2
+    ["I", "O", "[]", "X", "+", "-"],  # swap1 step 3
+    ["I", "O", "[]", "X", "+", "-"],  # swap1 step 4 confirm
+    ["I", "[]", "X", "+", "-", "O"],  # swap2 step 1
+    ["I", "+", "[]", "X", "-", "O"],  # swap2 step 2
+    ["I", "+", "[]", "X", "O", "-"],  # swap2 step 3
+    ["I", "+", "[]", "X", "O", "-"],  # swap2 step 4 confirm
+    ["I", "+", "X", "O", "-", "[]"],  # swap3 step 1
+    ["I", "+", "X", "O", "-", "[]"],  # swap3 step 2 — identical to step 1 (edge case)
+    ["I", "+", "X", "[]", "O", "-"],  # swap3 step 3
+    ["I", "+", "X", "[]", "O", "-"],  # swap3 step 4 confirm
+    ["I", "+", "X", "O", "-", "[]"],  # swap4 step 1
+    ["I", "+", "X", "-", "O", "[]"],  # swap4 step 2
+    ["I", "+", "X", "-", "O", "[]"],  # swap4 step 3 — identical to step 2 (edge case)
+    ["I", "+", "X", "-", "O", "[]"],  # swap4 step 4 confirm
+    [
+        "I",
+        "+",
+        "X",
+        "-",
+        "[]",
+        "O",
+    ],  # swap5 step 1 — matches CORRECT_ORDER but O in TEMP
+    ["I", "+", "X", "-", "[]", "O"],  # swap5 step 2 — identical (edge case)
+    ["I", "+", "X", "-", "[]", "O"],  # swap5 step 3 — identical (edge case)
+    ["I", "+", "X", "-", "[]", "O"],  # swap5 step 4 confirm = CORRECT
+]
+
+
 if __name__ == "__main__":
     run_test("TEST 1 - SIMPLE SWAP", test1)
     run_test("TEST 2 - REPEATED FRAMES (DELAYED USER)", test2)
@@ -114,3 +162,9 @@ if __name__ == "__main__":
     run_test("TEST 4 - DEVIATION (WRONG MOVE)", test4)
     run_test("TEST 5 - ALREADY CORRECT", test5)
     run_test("TEST 6 - HEAVY DISORDER (3 SWAPS)", test6)
+    run_test(
+        "TEST 7 - 5 SWAPS WITH EDGE CASES",
+        test7,
+        print_expected_from=10,
+        sleep_before={10, 15, 18, 19},
+    )

@@ -19,6 +19,14 @@ from shelf_controller import ShelfController
 
 
 def main():
+    # Clear tracking_log.txt at program start
+    log_path = os.path.join(os.path.dirname(__file__), "tracking_log.txt")
+    try:
+        with open(log_path, "w") as f:
+            f.write("")
+    except Exception:
+        pass
+
     shelf = ShelfController()
     shelf.connect()
 

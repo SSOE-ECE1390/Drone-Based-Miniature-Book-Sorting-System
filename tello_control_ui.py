@@ -17,6 +17,7 @@ import time
 import platform
 from Book_Sorter import BookSorter
 from Frame_converter import FrameToSymbols
+from drone_controller import BookDetector, DroneController, DroneState
 
 CORRECT_ORDER = ["I", "+", "X", "-", "[]", "O"]
 SYMBOL_CORRECT_COLOR = QColor("#00e676")
@@ -185,11 +186,109 @@ class HardwareSlotWidget(QWidget):
                 label.setStyleSheet(f"color: {SYMBOL_WRONG_COLOR.name()};")
 
 
+class TelemetryWidget(QWidget):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        self._data = {}
+        self.setFixedHeight(120)
+
+    def update_telemetry(self, data: dict):
+        self._data = data
+        self.update()
+
+    def paintEvent(self, event):
+        p = QPainter(self)
+        p.setRenderHint(QPainter.Antialiasing)
+        p.fillRect(self.rect(), QColor(BG_COLOR))
+        W = self.width()
+
+        # section label
+        p.setFont(QFont("Consolas", 8))
+        p.setPen(QColor(DIM_COLOR))
+        p.drawText(0, 0, W, 14, Qt.AlignLeft | Qt.AlignVCenter, "TELEMETRY")
+
+        # battery bar
+        bat = self._data.get("battery")
+        bar_y, bar_h = 16, 18
+        p.setPen(QColor(BORDER_COLOR))
+        p.drawRect(0, bar_y, W - 1, bar_h)
+        if bat is not None:
+            fill_w = max(1, int((bat / 100.0) * (W - 3)))
+            if bat > 50:
+                bat_color = SYMBOL_CORRECT_COLOR
+            elif bat > 20:
+                bat_color = QColor("#ffeb3b")
+            else:
+                bat_color = SYMBOL_WRONG_COLOR
+            p.fillRect(1, bar_y + 1, fill_w, bar_h - 2, bat_color)
+            p.setFont(QFont("Consolas", 8, QFont.Bold))
+            p.setPen(QColor("#000000"))
+            p.drawText(1, bar_y + 1, fill_w, bar_h - 2, Qt.AlignCenter, f"BAT  {bat}%")
+        else:
+            p.setFont(QFont("Consolas", 8))
+            p.setPen(QColor(DIM_COLOR))
+            p.drawText(0, bar_y, W, bar_h, Qt.AlignCenter, "BAT  —")
+
+        # metric boxes with clarified units
+        # Height: convert cm to meters for display
+        height_cm = self._data.get("height")
+        height_m = None
+        if height_cm is not None:
+            try:
+                height_m = float(height_cm) / 100.0
+            except Exception:
+                height_m = None
+        # Time: show as seconds (s)
+        flight_time = self._data.get("flight_time")
+        # Speed: keep as cm/s
+        speed = self._data.get("speed")
+
+        metrics = [
+            ("ALT", height_m, "m"),
+            ("TIME", flight_time, "s"),
+            ("SPEED", speed, "cm/s"),
+        ]
+        n = len(metrics)
+        cell_w = (W - (n - 1) * 4) // n
+        box_y = 40
+        box_h = self.height() - box_y - 2
+        for i, (label, val, unit) in enumerate(metrics):
+            x = i * (cell_w + 4)
+            p.setPen(QColor(BORDER_COLOR))
+            p.drawRect(x, box_y, cell_w, box_h)
+            p.setFont(QFont("Consolas", 7))
+            p.setPen(QColor(DIM_COLOR))
+            p.drawText(
+                x + 2, box_y + 1, cell_w - 4, 12, Qt.AlignLeft | Qt.AlignVCenter, label
+            )
+            p.setFont(QFont("Consolas", 11, QFont.Bold))
+            p.setPen(QColor(TEXT_COLOR))
+            if val is None:
+                val_str = "—"
+            elif label == "ALT":
+                val_str = f"{val:.2f}" if isinstance(val, float) else str(val)
+            else:
+                val_str = str(val)
+            p.drawText(x, box_y + 14, cell_w, box_h - 28, Qt.AlignCenter, val_str)
+            p.setFont(QFont("Consolas", 7))
+            p.setPen(QColor(DIM_COLOR))
+            p.drawText(
+                x + 2,
+                box_y + box_h - 14,
+                cell_w - 4,
+                12,
+                Qt.AlignRight | Qt.AlignVCenter,
+                unit,
+            )
+        p.end()
+
+
 class TelloUI(QMainWindow):
     sig_connected = pyqtSignal()
     sig_disconnected = pyqtSignal()
     sig_frame = pyqtSignal(object)
     sig_shelf = pyqtSignal()
+    sig_telemetry = pyqtSignal(dict)
 
     def __init__(self, tello, outputpath, shelf=None):
         super().__init__()
@@ -199,6 +298,7 @@ class TelloUI(QMainWindow):
         self.thread = None
         self.stopEvent = None
         self.sending_command_thread = None
+        self.telemetry_thread = None
         self.is_streaming = False
         self.is_paused = False
         self.degree = 30
@@ -210,6 +310,11 @@ class TelloUI(QMainWindow):
             BookSorter(shelf, log_callback=self.set_log) if shelf else None
         )
         self.symbol_detector = FrameToSymbols()
+        self.book_detector = BookDetector()
+        self.drone_controller = DroneController(
+            self.tello, on_target_reached=self.set_log
+        )
+        self.drone_controller.set_state(DroneState.HOVERING)
 
         self.stopEvent = threading.Event()
 
@@ -217,6 +322,7 @@ class TelloUI(QMainWindow):
         self.sig_disconnected.connect(self._on_disconnected)
         self.sig_frame.connect(self._on_frame)
         self.sig_shelf.connect(self._refresh_shelf)
+        self.sig_telemetry.connect(self._refresh_telemetry)
 
         self._build_ui()
         self._apply_styles()
@@ -252,6 +358,20 @@ class TelloUI(QMainWindow):
         self.btn_pause.clicked.connect(self.pauseVideo)
         btn_row.addWidget(self.btn_pause)
         left.addLayout(btn_row)
+
+        flight_row = QHBoxLayout()
+        self.btn_takeoff = QPushButton("TAKEOFF")
+        self.btn_land = QPushButton("LAND")
+        self.btn_takeoff.setFixedHeight(44)
+        self.btn_land.setFixedHeight(44)
+        self.btn_takeoff.setObjectName("btn_takeoff")
+        self.btn_land.setObjectName("btn_land")
+        self.btn_takeoff.clicked.connect(self.telloTakeOff)
+        self.btn_land.clicked.connect(self.telloLanding)
+        flight_row.addWidget(self.btn_takeoff)
+        flight_row.addWidget(self.btn_land)
+        left.addLayout(flight_row)
+
         root_layout.addLayout(left)
 
         right = QVBoxLayout()
@@ -268,6 +388,11 @@ class TelloUI(QMainWindow):
         status_row.addWidget(self.conn_label)
         status_row.addStretch()
         right.addLayout(status_row)
+
+        right.addWidget(self._divider())
+
+        self.telemetry_widget = TelemetryWidget()
+        right.addWidget(self.telemetry_widget)
 
         right.addWidget(self._divider())
 
@@ -349,6 +474,12 @@ class TelloUI(QMainWindow):
             QPushButton#btn_stop {{
                 border-left: 3px solid {SYMBOL_WRONG_COLOR.name()};
             }}
+            QPushButton#btn_takeoff {{
+                border-left: 3px solid {SYMBOL_NEUTRAL_COLOR.name()};
+            }}
+            QPushButton#btn_land {{
+                border-left: 3px solid {TEMP_COLOR.name()};
+            }}
         """)
         self.btn_start.setObjectName("btn_start")
         self.btn_stop.setObjectName("btn_stop")
@@ -387,6 +518,20 @@ class TelloUI(QMainWindow):
         else:
             self.swap_label.setStyleSheet(f"color: {DIM_COLOR};")
             self.swap_label.setText("no active swap")
+
+    def _refresh_telemetry(self, data: dict):
+        self.telemetry_widget.update_telemetry(data)
+
+    def _telemetryLoop(self):
+        while self.is_streaming and not self.stopEvent.is_set():
+            data = {
+                "battery": self.tello.battery,
+                "height": self.tello.height,
+                "flight_time": self.tello.flight_time,
+                "speed": self.tello.speed,
+            }
+            self.sig_telemetry.emit(data)
+            self.stopEvent.wait(2.0)
 
     def videoLoop(self):
         try:
@@ -428,7 +573,72 @@ class TelloUI(QMainWindow):
                         t.daemon = True
                         t.start()
 
+                    target_symbol = (
+                        self.book_sorter.hw_state.get("swap", {})
+                        if self.book_sorter
+                        else {}
+                    )
+                    target = None
+                    bbox = None
+                    center = None
+                    if target_symbol:
+                        a_sym = target_symbol.get("a_sym")
+                        if a_sym:
+                            target = self.book_detector.detect_target(
+                                self.tello.frame, a_sym
+                            )
+                            self.drone_controller.track_target(target, a_sym)
+                            if target is not None:
+                                bbox = target.get_bbox()
+                                center = target.get_center()
+
                     frame_copy = self.frame.copy()
+
+                    # Draw bounding box and center if target found
+                    if bbox is not None and center is not None:
+                        x1, y1, x2, y2 = bbox
+                        cv2.rectangle(frame_copy, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                        cv2.circle(frame_copy, center, 8, (0, 0, 255), -1)
+                        # Overlay last command in the top-left corner of the bounding box
+                        cmd = (
+                            self.drone_controller.last_cmd
+                            if hasattr(self.drone_controller, "last_cmd")
+                            else {"lr": 0, "fb": 0, "ud": 0}
+                        )
+                        cmd_text = (
+                            f"LR:{cmd['lr']:+d}  FB:{cmd['fb']:+d}  UD:{cmd['ud']:+d}"
+                        )
+                        # Offset a bit inside the box
+                        text_x = x1 + 4
+                        text_y = y1 + 18
+                        cv2.putText(
+                            frame_copy,
+                            cmd_text,
+                            (text_x, text_y),
+                            cv2.FONT_HERSHEY_SIMPLEX,
+                            0.55,
+                            (255, 255, 0),
+                            2,
+                            cv2.LINE_AA,
+                        )
+
+                    # Overlay last command in bottom left (always)
+                    cmd = (
+                        self.drone_controller.last_cmd
+                        if hasattr(self.drone_controller, "last_cmd")
+                        else {"lr": 0, "fb": 0, "ud": 0}
+                    )
+                    cv2.putText(
+                        frame_copy,
+                        f"LR:{cmd['lr']:+d}  FB:{cmd['fb']:+d}  UD:{cmd['ud']:+d}",
+                        (10, frame_copy.shape[0] - 10),
+                        cv2.FONT_HERSHEY_SIMPLEX,
+                        0.55,
+                        (0, 255, 0),
+                        1,
+                        cv2.LINE_AA,
+                    )
+
                     h, w, ch = frame_copy.shape
                     qt_image = QImage(
                         frame_copy.data, w, h, ch * w, QImage.Format_RGB888
@@ -450,6 +660,10 @@ class TelloUI(QMainWindow):
             self.stopEvent.clear()
             self.thread = threading.Thread(target=self.videoLoop, args=())
             self.thread.start()
+            self.telemetry_thread = threading.Thread(
+                target=self._telemetryLoop, daemon=True
+            )
+            self.telemetry_thread.start()
 
     def stopVideo(self):
         if self.is_streaming:
@@ -462,6 +676,9 @@ class TelloUI(QMainWindow):
             if self.sending_command_thread is not None:
                 self.sending_command_thread.join(timeout=2.0)
                 self.sending_command_thread = None
+            if self.telemetry_thread is not None:
+                self.telemetry_thread.join(timeout=2.0)
+                self.telemetry_thread = None
 
     def pauseVideo(self):
         self.is_paused = not self.is_paused
@@ -473,15 +690,24 @@ class TelloUI(QMainWindow):
                 self.tello.send_command("command")
             except:
                 pass
+            try:
+                self.tello.get_battery()
+                self.tello.get_height()
+                self.tello.get_flight_time()
+                self.tello.get_speed()
+            except:
+                pass
             time.sleep(5)
 
     def _setQuitWaitingFlag(self):
         self.quit_waiting_flag = True
 
     def telloTakeOff(self):
+        self.drone_controller.enable_tracking()
         return self.tello.takeoff()
 
     def telloLanding(self):
+        self.drone_controller.disable_tracking()
         return self.tello.land()
 
     def telloFlip_l(self):
